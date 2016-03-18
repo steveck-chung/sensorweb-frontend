@@ -192,11 +192,20 @@ footer.page-footer {
   margin-top: 4px;
 }
 
-.logo-tabzilla {
+#tabzilla a{
+  text-indent: 120%;
+  white-space: nowrap;
+  overflow: hidden;
   display: block;
   width: 147px;
   height: 36px;
-  background: url("../images/tabzilla-static.png");
+  background-image: url("../images/tabzilla-static.png");
+  background-repeat: no-repeat;
   margin-left: 20px;
+  z-index: 2;
+}
+
+#tabzilla a:hover{
+  background-color: rgba(0,0,0,0);
 }
 
