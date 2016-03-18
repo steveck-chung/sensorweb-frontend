@@ -12,8 +12,8 @@ html, body{
 }
 
 nav{
+  border-top: 2px #FFF solid;
   z-index: 1000 !important;
-  top:0;
 }
 
 nav ul a,
@@ -73,8 +73,7 @@ p {
 
 h2 {
   font-size: 3.2em;
-  font-weight: 100 !important;
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
 }
 
 h3, h4 {
@@ -83,6 +82,7 @@ h3, h4 {
   font-size: 2.2em;
   font-weight: 700;
 }
+
 
 .contents{
   font-size: 1.25em;
@@ -190,5 +190,13 @@ footer.page-footer {
 
 .logo-mozilla {
   margin-top: 4px;
+}
+
+.logo-tabzilla {
+  display: block;
+  width: 147px;
+  height: 36px;
+  background: url("../images/tabzilla-static.png");
+  margin-left: 20px;
 }
 
