@@ -42,6 +42,12 @@ nav .brand-logo {
   height: 555px;
 }
 
+.tagline {
+  color: #FFF;
+  font-weight: 100;
+  font-size: 1.2em;
+}
+
 #what {
   padding-top: 40px;
 }
@@ -118,16 +124,17 @@ h3, h4 {
 
 .btn-large {
   height: 55px;
-  width: 180px;
+  width: 160px;
+  text-align: center;
   border-radius: 55px !important;
   text-transform: capitalize;
   font-size: 1.1em;
   background-color: #5cc7b8;
 }
-
+/*
 .button-collapse {
   color: #26a69a;
-}
+}*/
 
 /*Parallax*/
 
@@ -179,5 +186,9 @@ h3, h4 {
 
 footer.page-footer {
   margin: 0;
+}
+
+.logo-mozilla {
+  margin-top: 4px;
 }
 
