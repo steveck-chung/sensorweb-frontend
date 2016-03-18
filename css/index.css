@@ -1,11 +1,11 @@
 #index-form {
-  margin: 0 20%;
+  /*margin: 0 20%;*/
 }
 
 #index-contact-banner {
   background-image: url("../images/01_contact.png");
   background-size: cover;
-  background-repeat: none;
+  background-repeat: no-repeat;
   background-position: center center;
 }
 
