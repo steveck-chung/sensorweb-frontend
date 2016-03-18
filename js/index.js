@@ -21,4 +21,3 @@ $('#subscribe').click(function(e){
     }, 700);
     return false;
 });
-    
