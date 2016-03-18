@@ -7,6 +7,7 @@
 }
 
 #index-contact-banner h3,
-#index-form .title {
+#index-form .title,
+#index-form .content {
   color: white;
 }
