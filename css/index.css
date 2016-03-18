@@ -11,7 +11,6 @@
 }
 
 #index-contact-banner h3,
-#index-form .title,
 #index-form .content {
   color: white;
 }
@@ -20,3 +19,24 @@
 	margin-left: 20px;
 }
 
+#index-form .content {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-left: 1px solid #9e9e9e;
+  border-right: 1px solid #9e9e9e;
+  border-top: 1px solid #9e9e9e;
+  padding: 0 1rem;
+  box-sizing: padding-box;
+}
+
+#index-form .btn-large {
+  padding: 0;
+}
+
+#index-form .btn-large {
+  padding: 0;
+}
+
+#index-form .waves-button-input {
+  height: 100%;
+  width:100%;
+}
