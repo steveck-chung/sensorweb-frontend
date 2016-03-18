@@ -18,27 +18,27 @@
 #background-1{
   background: url(../images/02_cover.png);
   background-size: cover;
-  background-repeat: none;
+  background-repeat: no-repeat;
   background-position: center center;
 }
 
 #background-2{
   background: url(../images/02_give_feedback.png);
   background-size: cover;
-  background-repeat: none;
+  background-repeat: no-repeat;
   background-position: center center;
 }
 
 #image-1{
   background: url(../images/02_contribute_all.png);
-  background-size: cover;
-  background-repeat: none;
-  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center 0;
 }
 
 #image-2{
   background: url(../images/02_contribute.png);
-  background-size: cover;
-  background-repeat: none;
-  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center 0;
 }
