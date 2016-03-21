@@ -86,12 +86,16 @@ h3, h4 {
   font-weight: 500;
 }
 
+.dropdown-content{
+  margin-top:62.5px;
+  z-index: 1;
+}
 
 .contents{
   font-size: 1.25em;
   line-height: 1.6;
   font-weight: 300;
-  color: #757575;
+  color: #545353;
   text-align: left;
 }
 
