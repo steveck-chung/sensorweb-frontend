@@ -42,7 +42,7 @@
 .banner .projects-input,
 .banner .projects-textarea {
   border: 2px solid #26a69a !important;
-  box-sizing: padding-box;
+  box-sizing: border-box;
   transition: none;
 }
 
@@ -60,6 +60,15 @@
   padding: 1rem;
   margin-top: 1rem;
   min-height: 4rem;
+}
+
+.form-submit .btn-large {
+  padding: 0;
+}
+
+.form-submit .waves-button-input {
+  height: 100%;
+  width:100%;
 }
 
 ::-webkit-input-placeholder {

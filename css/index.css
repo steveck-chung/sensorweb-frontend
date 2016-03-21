@@ -31,11 +31,7 @@
   border-right: 1px solid #9e9e9e;
   border-top: 1px solid #9e9e9e;
   padding: 0 1rem;
-  box-sizing: padding-box;
-}
-
-#index-form .btn-large {
-  padding: 0;
+  box-sizing: border-box;
 }
 
 #index-form .btn-large {
