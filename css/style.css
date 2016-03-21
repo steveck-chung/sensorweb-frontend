@@ -103,7 +103,7 @@ h3, h4 {
 .page-footer a{
   /*font-weight: 300;*/
 }
-.page-footer a:hover{
+.page-footer li a:hover{
   opacity: 0.6;
 }
 
