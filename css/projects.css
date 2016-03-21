@@ -61,3 +61,10 @@
   margin-top: 1rem;
   min-height: 4rem;
 }
+
+::-webkit-input-placeholder {
+	color: #aaa;
+}
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #aaa;
+}
