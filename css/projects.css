@@ -44,6 +44,7 @@
   border: 1px solid #5CC7B9 !important;
   box-sizing: border-box;
   transition: none;
+  color: #333;
 }
 
 .banner .projects-input:focus:not([readonly]),
@@ -54,12 +55,26 @@
 
 .banner .projects-input {
   padding: 0 1rem;
+  /*margin-bottom: 2px;*/
+}
+
+.banner .input-field {
+	margin-top: 0px;
 }
 
 .banner .projects-textarea {
   padding: 1rem;
-  margin-top: 1rem;
+  margin-top: 16px;
   min-height: 7rem;
+}
+
+.banner .set-margin {
+	margin-top: 3px !important;
+	margin-bottom: 38px !important;
+}
+
+.projects-textarea.set-margin {
+	margin-bottom: 36px !important;
 }
 
 .form-submit .btn-large {
