@@ -2,10 +2,6 @@
   width: 60%;
 }
 
-.projects-fb-form {
-  padding: 2%;
-}
-
 /*Sections*/
 
 .fullscreen{
@@ -41,4 +37,27 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center 0;
+}
+
+.banner .projects-input,
+.banner .projects-textarea {
+  border: 2px solid #26a69a !important;
+  box-sizing: padding-box;
+  transition: none;
+}
+
+.banner .projects-input:focus:not([readonly]),
+.banner .projects-textarea:focus:not([readonly]) {
+  border-bottom: 2px;
+  box-shadow: unset;
+}
+
+.banner .projects-input {
+  padding: 0 1rem;
+}
+
+.banner .projects-textarea {
+  padding: 1rem;
+  margin-top: 1rem;
+  min-height: 4rem;
 }
