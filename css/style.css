@@ -17,6 +17,7 @@ nav{
   -webkit-box-shadow: 0 1px 0 0 rgba(0,0,0,.15);
   -moz-box-shadow: 0 1px 0 0 rgba(0,0,0,.15);
   box-shadow: 0 1px 0 0 rgba(0,0,0,.15);
+  height: 66px !important;
 }
 
 nav ul a,
@@ -78,6 +79,7 @@ nav li a{
 
 /*Typography*/
 
+
 p {
   line-height: 2rem;
   color: #333;
@@ -96,7 +98,7 @@ h3, h4 {
 }
 
 .dropdown-content{
-  margin-top:62.5px;
+  margin-top:65px;
   z-index: 1;
 }
 
@@ -106,6 +108,14 @@ h3, h4 {
   font-weight: 300;
   color: #757575;
   text-align: left;
+}
+
+.contents a {
+  color: #87D9D1;
+}
+
+.contents a:hover {
+  color: #1CBCAD;
 }
 
 .text-white {
