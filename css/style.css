@@ -98,6 +98,7 @@ h3, h4 {
 }
 
 .dropdown-content{
+  width: 200px !important;
   margin-top:65px;
   z-index: 1;
 }
