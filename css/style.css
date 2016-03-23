@@ -226,6 +226,9 @@ footer.page-footer {
 
 .logo-mozilla {
   margin-top: 4px;
+  display: block;
+  width: 96px;
+  height:26px;
 }
 
 #tabzilla a{
