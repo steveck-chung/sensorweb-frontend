@@ -1,0 +1,10 @@
+#about-us,
+#our-team,
+#faq {
+  padding: 3rem 0;
+}
+
+#our-team {
+  width: 100%;
+  background-color: grey;
+}
