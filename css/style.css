@@ -239,6 +239,7 @@ footer.page-footer {
   width: 147px;
   height: 36px;
   background-image: url("../images/tabzilla-static.png");
+  background-size: contain;
   background-repeat: no-repeat;
   margin-left: 20px;
   z-index: 2;
