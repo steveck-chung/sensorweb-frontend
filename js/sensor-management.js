@@ -8,7 +8,8 @@
     sensors.forEach(function(sensor) {
       var html = '<li class="collection-item">' +
                    '<div>' +
-                     sensor.name + '<a href="sensor-detail.html" class="secondary-content"><i class="material-icons">info</i></a>' +
+                     sensor.name + '<a href="sensor-detail.html?id=' + sensor._id +
+                     '" class="secondary-content"><i class="material-icons">info</i></a>' +
                    '</div>' +
                  '</li>';
       sensorList.append(html);
