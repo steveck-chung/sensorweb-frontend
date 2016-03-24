@@ -1,6 +1,10 @@
 (function(){
   $('.button-collapse').sideNav();
   //$('.parallax').parallax();
+  $(document).ready(function(){
+    $('.modal-trigger').leanModal();
+    $('select').material_select();
+  });
 })();
 
 
