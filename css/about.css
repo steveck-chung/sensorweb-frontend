@@ -25,3 +25,17 @@ h5 {
 	font-size: 1.2em;
 	line-height: 1.8;
 }
+
+.card-name{
+font-size: 1.2em;
+margin-bottom: 0 !important;
+font-weight: 500;
+
+}
+.card-name-title{
+margin-top: 0 !important;
+margin-bottom: 50px;
+font-weight: 300;
+color: #757575;
+line-height: 1.5;
+}
