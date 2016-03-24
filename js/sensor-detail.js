@@ -3,11 +3,16 @@
   $.ajax({
     url: 'sensors/' + sensorId,
   })
-  .done(function(sensor) {
+  .done(function(sensors) {
+    var sensor = sensors[0];
     var sensorName = $('#sensor-name');
     var sensorDescription = $('#sensor-description');
-    sensorName.html(sensor[0].name);
-    sensorDescription.text(sensor[0].description);
+    var latestUpdate = $('#latest-update');
+    var pm25 = $('#pm25');
+    sensorName.text(sensor.name);
+    sensorDescription.text(sensor.description);
+    latestUpdate.text(sensor.latestUpdate);
+    pm25.text(sensor.pm25Index)
   })
   .fail(function(error) {
     console.error(error);
