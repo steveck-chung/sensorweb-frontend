@@ -35,43 +35,40 @@
         </div>
       </div>
       <div class="row">
-        <form class="col s12">
-          <div class="row">
-            <div class="input-field col s12">
-              <input placeholder="PM2.5 at home" id="first_name" type="text" class="validate">
-              <label for="first_name">Sensor Name</label>
-            </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="sensor-name" placeholder="PM2.5 at home" id="first_name" type="text" class="validate">
+            <label for="first_name">Sensor Name</label>
           </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <input placeholder="No. 106, Section 5, Xinyi Rd, Xinyi District, Taipei City, 110" id="first_name" type="text" class="validate">
-              <label for="first_name">Location</label>
-            </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="sensor-location" placeholder="No. 106, Section 5, Xinyi Rd, Xinyi District, Taipei City, 110" id="first_name" type="text" class="validate">
+            <label for="first_name">Location</label>
           </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <textarea id="textarea1" placeholder="Sensor that detect PM2.5." class="materialize-textarea"></textarea>
-              <label for="textarea1">Description</label>
-            </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea id="sensor-description" placeholder="Sensor that detect PM2.5." class="materialize-textarea"></textarea>
+            <label for="sensor-description">Description</label>
           </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <select>
-                <option value="" disabled selected>Choose Program</option>
-                <option value="1">PM2.5</option>
-                <option value="2">+ Other Program</option>
-              </select>
-              <label>Program</label>
-            </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <select id="sensor-project">
+              <option value="" disabled>Choose Project</option>
+              <option value="pm25" selected>PM2.5</option>
+              <option value="">+ Add a New Project</option>
+            </select>
+            <label>Project</label>
           </div>
-          <div class="row center">
-            <button class="btn waves-effect waves-light" type="submit">Create
-              <i class="material-icons right">send</i>
-            </button>
-          </div>
-        </form>
+        </div>
+        <div class="row center">
+          <button id="setup-sensor" class="btn waves-effect waves-light" type="submit">Setup
+            <i class="material-icons right">send</i>
+          </button>
+        </div>
       </div>
-
     </div>
   </div>
 
@@ -110,6 +107,7 @@
   </footer>
 
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/lib/purl.js"></script>
   <script src="js/materialize.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/sensor-setup.js"></script>
