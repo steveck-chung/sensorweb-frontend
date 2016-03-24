@@ -36,26 +36,24 @@
   <div class="container">
     <div class="section">
       <div class="row">
-        <div class="col s12 center">
-          <h4 id="sensor-name"></h4>
-          <a class="waves-effect waves-light btn" href="sensor-setup.html">Edit<i class="large material-icons right">mode_edit</i></a>
-          <a class="waves-effect waves-light btn">Delete<i class="material-icons right">delete</i></a>
-        </div>
-      </div>
-      <div class="row">
         <div class="col s12">
-          <h5>State</h5>
-          <p>Online</p>
+          <h4 id="sensor-name" class="center"></h4>
+          <h5>Description</h5>
+          <p id="sensor-description"></p>
           <h5>Latest Update</h5>
           <p id="latest-update"></p>
           <h5>PM2.5</h5>
           <p id="pm25"></p>
-          <h5>Description</h5>
-          <p id="sensor-description"></p>
+          <h5>Data</h5>
+          <ul id="sensor-data" class="collection"></ul>
           <h5>Project</h5>
           <p><a href="program-detail.html?id=pm25">PM2.5</a></p>
           <h5>Location</h5>
           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d57840.629545957665!2d121.53171502725436!3d25.03273874475111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abb11338f209%3A0xfb51fd33eca2ee9f!2z576O5ZWG6KyA5pm6!5e0!3m2!1szh-TW!2stw!4v1457605536858" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+          <div class="center">
+            <a class="waves-effect waves-light btn" href="sensor-setup.html">Edit<i class="large material-icons right">mode_edit</i></a>
+            <a class="waves-effect waves-light btn">Delete<i class="material-icons right">delete</i></a>
+          </div>
         </div>
       </div>
     </div>

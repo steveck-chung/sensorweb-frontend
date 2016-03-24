@@ -16,5 +16,20 @@
   })
   .fail(function(error) {
     console.error(error);
+  });
+
+  $.ajax({
+    url: 'sensors/' + sensorId + '/data',
   })
+  .done(function(dataArray) {
+    var sensorData = $('#sensor-data');
+    var html = '';
+    dataArray.forEach(function(data) {
+      sensorData.append('<li class="collection-item">' + 
+        new Date(data.datatime) + ', ' + data.pm25Index + '</li>');
+    });
+  })
+  .fail(function(error) {
+    console.error(error);
+  });
 })();
