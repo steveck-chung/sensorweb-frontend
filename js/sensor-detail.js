@@ -26,7 +26,7 @@
     var html = '';
     dataArray.forEach(function(data) {
       sensorData.append('<li class="collection-item">' + 
-        new Date(data.datatime) + ', ' + data.pm25Index + '</li>');
+        new Date(data.datetime) + ', ' + data.pm25Index + '</li>');
     });
   })
   .fail(function(error) {
