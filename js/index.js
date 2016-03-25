@@ -25,3 +25,8 @@ $('#subscribe').click(function(e){
     }, 700);
     return false;
 });
+
+$('.modal-trigger').click(function(e){
+	console.log("!");
+	$('input.select-dropdown').attr('placeholder','Pick any that applies');
+});
