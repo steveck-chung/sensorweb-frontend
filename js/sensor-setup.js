@@ -17,7 +17,7 @@
       coords: sensorLocation.val()
     })
     .done(function(result) {
-      alert('Added the ' + name + ' sensor.');
+      window.location = './sensor-management.html';
     })
     .fail(function(err) {
       console.error(err)
