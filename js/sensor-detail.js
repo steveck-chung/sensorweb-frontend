@@ -6,10 +6,12 @@
   .done(function(sensors) {
     var sensor = sensors[0];
     var sensorName = $('#sensor-name');
+    var sensorKey = $('#sensor-key')
     var sensorDescription = $('#sensor-description');
     var latestUpdate = $('#latest-update');
     var pm25 = $('#pm25');
     sensorName.text(sensor.name);
+    sensorKey.text(sensor._id);
     sensorDescription.text(sensor.description);
     latestUpdate.text(sensor.latestUpdate);
     pm25.text(sensor.pm25Index)
