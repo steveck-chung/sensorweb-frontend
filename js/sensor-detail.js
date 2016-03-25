@@ -43,10 +43,13 @@
     })
     .done(function(sensors) {
       var sensor = sensors[0];
-      latestUpdate.text(sensor.latestUpdate);
-      pm25.text(sensor.pm25Index);
-      sensorData.prepend('<li class="collection-item">' +
-        new Date(sensor.latestUpdate) + ', ' + sensor.pm25Index + '</li>');
+      if (sensor.latestUpdate !== undefined &&
+          sensor.pm25Index !== undefined) {
+        latestUpdate.text(sensor.latestUpdate);
+        pm25.text(sensor.pm25Index);
+        sensorData.prepend('<li class="collection-item">' +
+          new Date(sensor.latestUpdate) + ', ' + sensor.pm25Index + '</li>');
+      }
     });
   }, 2500);
 })();
