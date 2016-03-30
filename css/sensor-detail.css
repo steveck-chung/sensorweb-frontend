@@ -1,3 +1,8 @@
 #sensor-location-map {
   height: 550px;
 }
+
+#sensor-data-chart {
+  width: 80%;
+  height: 400px;
+}
