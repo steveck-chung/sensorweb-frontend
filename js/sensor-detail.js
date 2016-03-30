@@ -1,4 +1,6 @@
 (function(exports){
+  var fakeDataMode = false;
+
   var latestUpdateElm = $('#latest-update');
   var pm25Elm = $('#pm25');
   var sensorDataElm = $('#sensor-data');
@@ -14,6 +16,26 @@
 
   // Chart related
   var dataChart;
+
+  if (fakeDataMode) {
+    latestSensorData = {
+      name: "Mozilla Taiwan",
+      description: "Mozilla Taiwan Taipei office",
+      latestUpdate: moment().format('LLL'),
+      pm25Index: Math.random() * 100
+    }
+
+    var ctx = $("#sensor-data-chart").get(0).getContext("2d");
+    var fakeArray = [];
+
+    for (var i=300; i>0; i--) {
+      fakeArray.push({
+        datetime: Date.now() - i * 60000,
+        pm25Index: Math.random() * 100
+      })
+    }
+    dataChart = new Chart(ctx, dataConvertion(fakeArray));
+  }
 
   function updateInfo(sensor) {
     var newContent = '<div id="map-infowindow">'+
