@@ -13,10 +13,17 @@
   var ctx = $("#sensor-data-chart").get(0).getContext("2d");
 
   var dataChartContainer = document.getElementById("sensor-data-chart-container");
+  var dataChart;
   var chartName = $('#sensor-information .name');
   var chartDescription = $('#sensor-information .description');
   var chartValue = $('#sensor-information .value');
   var chartLatestUpdate = $('#sensor-information .latest-update');
+  var chartCloseBtn = $('#chart-close-btn');
+
+  chartCloseBtn.click(function () {
+    dataChartContainer.classList.add('hide');
+    dataChart && dataChart.destroy();
+  });
 
   function dataConvertion(dataArray) {
     var config = {
@@ -79,11 +86,23 @@
         chartLatestUpdate.text(sensor.latestUpdate);
         dataChartContainer.classList.remove('hide');
 
+        if (fakeDataMode) {
+          var fakeArray = [];
+          for (var i=100; i>0; i--) {
+            fakeArray.push({
+              datetime: Date.now() - i * 60000,
+              pm25Index: Math.random() * 100
+            })
+          }
+          dataChart = new Chart(ctx, dataConvertion(fakeArray));
+          return;
+        }
+
         $.ajax({
           url: 'sensors/' + sensor.id + '/data',
         })
         .done(function(dataArray) {
-          var dataChart = new Chart(ctx, dataConvertion(dataArray));
+          dataChart = new Chart(ctx, dataConvertion(dataArray));
         })
         .fail(function(error) {
           console.error(error);
@@ -138,12 +157,6 @@
     }
 
     updateMap(latestSensors);
-
-    // infowindow.open(gMap, gMapMarker);
-
-    // gMapMarker.addListener('click', function() {
-    //   infowindow.open(gMap, gMapMarker);
-    // });
   }
 
 
@@ -152,17 +165,8 @@
     url: 'sensors',
   })
   .done(function(sensors) {
-    sensors.forEach(function(sensor) {
-      var gMapMarker = new google.maps.Marker({
-        position: sensor.location,
-        map: gMap,
-        title: sensor.name
-      });
-
-      gMapMarker.addListener('click', function() {
-        // infowindow.open(gMap, gMapMarker);
-      });
-    });
+    latestSensors = sensors;
+    updateMap(latestSensors);
   })
   .fail(function(error) {
     console.error(error);

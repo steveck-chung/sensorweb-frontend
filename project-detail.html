@@ -112,8 +112,10 @@
               <p><span>PM2.5 index: </span><span class="value"></span></p>
               <p><span>Latest update: </span><span class="latest-update"></span></p>
             </div>
-            <canvas id="sensor-data-chart" class="col s12 l9"></canvas>
-            <button id="chart-close-btn" class="waves-effect waves-light btn"><i class="material-icons center">close</i></button>
+            <div class="col s12 l9">
+              <canvas id="sensor-data-chart"></canvas>
+              <button id="chart-close-btn" class="waves-effect waves-light btn"><i class="material-icons center">close</i></button>
+            </div>
           </div>
           </div>
         </div>
@@ -158,6 +160,8 @@
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="js/lib/purl.js"></script>
   <script src="js/materialize.min.js"></script>
+  <script src="js/moment-with-locales.min.js"></script>
+  <script src="js/Chart.min.js"></script>
   <script src="js/init.js"></script>
   <script async defer
        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARU2PzmGdJRiMJAE7L4bY_s25LPkx65Jo&signed_in=true&callback=initMap">
