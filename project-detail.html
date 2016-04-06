@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="css/program-detail.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/project-detail.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 <body>
   <div class="navbar-fixed">
@@ -21,7 +21,7 @@
           <li><a href="about.html">About</a></li>
           <!-- <li><a href="blog.html">Blog</a></li> -->
         </ul>
-        
+
         <ul id="nav-mobile" class="side-nav">
           <li><a href="sensor-management.html">Dashboard</a></li>
           <li><a href="projects.html">Projects</a></li>
@@ -100,6 +100,26 @@
           </div>
         </div>
       </div>
+      <div>
+        <h4>sensors map</h4>
+        <div id="map-container">
+          <div id="sensors-location-map"></div>
+          <div id="sensor-data-chart-container" class="hide">
+            <div class="row">
+            <div id="sensor-information" class="col s12 l3">
+              <h3 class="name"></h3>
+              <p class="description"></p>
+              <p><span>PM2.5 index: </span><span class="value"></span></p>
+              <p><span>Latest update: </span><span class="latest-update"></span></p>
+            </div>
+            <div class="col s12 l9">
+              <canvas id="sensor-data-chart"></canvas>
+              <button id="chart-close-btn" class="waves-effect waves-light btn"><i class="material-icons center">close</i></button>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -138,9 +158,15 @@
   </footer>
 
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/lib/purl.js"></script>
   <script src="js/materialize.min.js"></script>
+  <script src="js/moment-with-locales.min.js"></script>
+  <script src="js/Chart.min.js"></script>
   <script src="js/init.js"></script>
-  <script src="js/program-detail.js"></script>
+  <script async defer
+       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARU2PzmGdJRiMJAE7L4bY_s25LPkx65Jo&signed_in=true&callback=initMap">
+  </script>
+  <script src="js/project-detail.js"></script>
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
