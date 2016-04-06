@@ -1,0 +1,10 @@
+#user-projects .card-image {
+  background-image: url("../images/01_cover.png");
+  padding-top: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+#sensor-list .title {
+  line-height: 36px;
+}
