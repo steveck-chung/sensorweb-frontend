@@ -21,7 +21,7 @@
     latestSensorData = {
       name: "Mozilla Taiwan",
       description: "Mozilla Taiwan Taipei office",
-      latestUpdate: moment().format('LLL'),
+      latestUpdate: moment().format(),
       pm25Index: Math.random() * 100
     }
 
@@ -90,7 +90,7 @@
     			 pointBorderWidth: 1,
           fill: false,
           data: dataArray.map(function(d) {
-            return { x: moment(d.datetime).format('LLL'), y: d.pm25Index };
+            return { x: moment(d.datetime).format(), y: d.pm25Index };
           })
         }]
       },
@@ -146,12 +146,14 @@
     url: 'sensors/' + sensorId + '/data',
   })
   .done(function(dataArray) {
+    if (dataArray.length === 0) {
+      return;
+    }
+
+    dataChart && dataChart.destroy();
+
     var ctx = $("#sensor-data-chart").get(0).getContext("2d");
     dataChart = new Chart(ctx, dataConvertion(dataArray));
-    dataArray.forEach(function(data) {
-      sensorDataElm.append('<li class="collection-item">' +
-        new Date(data.datetime) + ', ' + data.pm25Index + '</li>');
-    });
   })
   .fail(function(error) {
     console.error(error);
@@ -168,23 +170,24 @@
           sensor.pm25Index !== undefined) {
         latestUpdateElm.text(sensor.latestUpdate);
         pm25Elm.text(sensor.pm25Index);
-        sensorDataElm.prepend('<li class="collection-item">' +
-          new Date(sensor.latestUpdate) + ', ' + sensor.pm25Index + '</li>');
 
         latestSensorData = sensor;
         updateInfo(sensor);
 
-        var formattedDate = moment(sensor.latestUpdate).format('LLL');
-        if (formattedDate !== dataChart.data.datasets[0].data.slice(-1)[0].x) {
-          dataChart.data.datasets[0].data.push({
-            x: moment(sensor.latestUpdate).format('LLL'),
+        var formattedDate = moment(sensor.latestUpdate).format();
+        if (!dataChart) {
+          var ctx = $("#sensor-data-chart").get(0).getContext("2d");
+          dataChart = new Chart(ctx, dataConvertion([sensor]));
+        } else if (formattedDate > dataChart.data.datasets[0].data[0].x) {
+          dataChart.data.datasets[0].data.unshift({
+            x: moment(sensor.latestUpdate).format(),
             y: sensor.pm25Index
           });
           dataChart.update();
         }
       }
     });
-  }, 2500);
+  }, 5000);
 
   exports.initMap = initMap;
 
