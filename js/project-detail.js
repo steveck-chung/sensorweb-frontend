@@ -123,8 +123,9 @@
     var location = {lat: 25.032506, lng: 121.5674536};
 
     gMap = new google.maps.Map(document.getElementById('sensors-location-map'), {
-      zoom: 12,
-      center: location
+      zoom: 14,
+      center: location,
+      scrollwheel: false
     });
 
     if (fakeDataMode) {

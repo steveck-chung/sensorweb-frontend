@@ -8,14 +8,15 @@
 }
 
 #sensors-location-map {
-  height: 550px;
+  height: 700px;
+  width: 100%;
 }
 
 #sensor-data-chart-container {
   position: absolute;
   top: 0;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.95);
 }
 
 #map-container {
@@ -26,4 +27,12 @@
   position: absolute;
   top: 0;
   right: 0;
+}
+
+#contributor .card-title{
+  font-size: 1em;
+}
+
+#join-project {
+  background-color: #f7f7f7;
 }

@@ -10,143 +10,181 @@
   <link href="css/project-detail.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 <body>
+
+  <!-- Navigation -->
+  <ul id="dropdown" class="dropdown-content">
+    <li><a href="about.html">English Version</a></li>
+    <li class="divider"></li>
+    <li><a href="tw/about.html">中文版</a></li>
+  </ul>
   <div class="navbar-fixed">
     <nav class="teal" role="navigation">
       <div class="nav-wrapper container">
         <a id="logo-container" href="/" class="brand-logo">SensorWeb</a>
+
         <ul class="right hide-on-med-and-down">
-          <li><a href="sensor-management.html">Dashboard</a></li>
-          <li><a href="projects.html">Projects</a></li>
-          <li><a href="documentation.html">Documentation</a></li>
           <li><a href="about.html">About</a></li>
-          <!-- <li><a href="blog.html">Blog</a></li> -->
+          <li><a href="pilot-project.html">Projects</a></li>
+          <li><a href="documentation.html">Documentation</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <!-- Dropdown Trigger -->
+          <li><a class="dropdown-button" href="#!" data-activates="dropdown">EN<i id="arrow" class="material-icons right">arrow_drop_down</i></a></li>
+          <li class="login"><a href="sensor-management.html">Log In</a></li>
+          <!-- <li>
+            <div id="tabzilla">
+              <a href="https://www.mozilla.org/en-US/" data-link-type="nav" data-link-name="tabzilla">Mozilla</a>
+            </div>
+          </li> -->
         </ul>
 
+        <!-- Mobile Navigation -->
         <ul id="nav-mobile" class="side-nav">
-          <li><a href="sensor-management.html">Dashboard</a></li>
-          <li><a href="projects.html">Projects</a></li>
-          <li><a href="documentation.html">Documentation</a></li>
           <li><a href="about.html">About</a></li>
-          <!-- <li><a href="blog.html">Blog</a></li> -->
+          <li><a href="pilot-project.html">Projects</a></li>
+          <li><a href="documentation.html">Documentation</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="sensor-management.html">Log In</a></li>
         </ul>
         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+
       </div>
     </nav>
   </div>
 
-  <div class="container">
+  <div id="pm25" class="container projects">
     <div class="section">
       <div class="row">
-        <div class="col s12 m6">
-          <div class="card">
-            <div class="card-image">
-              <img src="images/01_cover.png">
-              <span class="card-title">PM2.5</span>
-            </div>
-            <div class="card-action">
-              <a class="waves-effect waves-light btn" href="sensor-management.html">Contribute<i class="material-icons right">thumbs_up_down</i></a>
-            </div>
+          <div class="col l6 s12">
+            <div class="place-image"></div>
+          </div>
+          <div class="col l6 s12">
+            <h3>PM2.5 Project</h3>
+            <p class="contents">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. 
+            </p>
           </div>
         </div>
-        <div class="col s12 m6">
-          <h4>PM2.5 Program</h4>
-          <p class="left-align light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
-        </div>
-      </div>
-      <div class="row">
-        <h4>Current Overview</h4>
-        <p class="left-align light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
-      </div>
-      <div class="row">
-        <h4>Contributors</h4>
-        <div class="col s12 m2">
-          <div class="card">
-            <div class="card-image">
-              <img src="https://avatars3.githubusercontent.com/u/3013038?v=3&s=460">
-              <span class="card-title">evanxd</span>
-            </div>
+    </div>
+  </div>
+
+  <div class="fullscreen projects">
+    <h3 class="center-align">Sensors Map</h3>
+    <div id="map-container">
+      <div id="sensors-location-map"></div>
+        <div id="sensor-data-chart-container" class="hide">
+          <div class="row">
+          <div id="sensor-information" class="col s12 l3">
+            <h3 class="name"></h3>
+            <p class="description"></p>
+            <p><span>PM2.5 index: </span><span class="value"></span></p>
+            <p><span>Latest update: </span><span class="latest-update"></span></p>
           </div>
-        </div>
-        <div class="col s12 m2">
-          <div class="card">
-            <div class="card-image">
-              <img src="https://avatars2.githubusercontent.com/u/12151568?v=3&s=460">
-              <span class="card-title">chsiang</span>
-            </div>
-          </div>
-        </div>
-        <div class="col s12 m2">
-          <div class="card">
-            <div class="card-image">
-              <img src="https://avatars0.githubusercontent.com/u/8919308?v=3&s=400">
-              <span class="card-title">youwenliang</span>
-            </div>
-          </div>
-        </div>
-        <div class="col s12 m2">
-          <div class="card">
-            <div class="card-image">
-              <img src="https://avatars3.githubusercontent.com/u/1704452?v=3&s=460">
-              <span class="card-title">steveck-chung</span>
-            </div>
-          </div>
-        </div>
-        <div class="col s12 m2">
-          <div class="card">
-            <div class="card-image">
-              <img src="https://avatars1.githubusercontent.com/u/936571?v=3&s=460">
-              <span class="card-title">yshlin</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <h4>sensors map</h4>
-        <div id="map-container">
-          <div id="sensors-location-map"></div>
-          <div id="sensor-data-chart-container" class="hide">
-            <div class="row">
-            <div id="sensor-information" class="col s12 l3">
-              <h3 class="name"></h3>
-              <p class="description"></p>
-              <p><span>PM2.5 index: </span><span class="value"></span></p>
-              <p><span>Latest update: </span><span class="latest-update"></span></p>
-            </div>
-            <div class="col s12 l9">
-              <canvas id="sensor-data-chart"></canvas>
-              <button id="chart-close-btn" class="waves-effect waves-light btn"><i class="material-icons center">close</i></button>
-            </div>
-          </div>
+          <div class="col s12 l9">
+            <canvas id="sensor-data-chart"></canvas>
+            <button id="chart-close-btn" class="waves-effect waves-light btn"><i class="material-icons center">close</i></button>
           </div>
         </div>
       </div>
     </div>
   </div>
 
+  <div id="contributor" class="container projects">
+    <div class="section">
+      <div class="row">
+          <div class="col s12">
+            <h3 class="center-align">Contributors</h3>
+            <div class="col s6 m3 l2">
+              <div class="card">
+                <div class="card-image">
+                  <img src="https://avatars3.githubusercontent.com/u/3013038?v=3&s=460">
+                  <span class="card-title">evanxd</span>
+                </div>
+              </div>
+            </div>
+            <div class="col s6 m3 l2">
+              <div class="card">
+                <div class="card-image">
+                  <img src="https://avatars2.githubusercontent.com/u/12151568?v=3&s=460">
+                  <span class="card-title">chsiang</span>
+                </div>
+              </div>
+            </div>
+            <div class="col s6 m3 l2">
+              <div class="card">
+                <div class="card-image">
+                  <img src="https://avatars0.githubusercontent.com/u/8919308?v=3&s=400">
+                  <span class="card-title">youwenliang</span>
+                </div>
+              </div>
+            </div>
+            <div class="col s6 m3 l2">
+              <div class="card">
+                <div class="card-image">
+                  <img src="https://avatars3.githubusercontent.com/u/1704452?v=3&s=460">
+                  <span class="card-title">steveck-chung</span>
+                </div>
+              </div>
+            </div>
+            <div class="col s6 m3 l2">
+              <div class="card">
+                <div class="card-image">
+                  <img src="https://avatars1.githubusercontent.com/u/936571?v=3&s=460">
+                  <span class="card-title">yshlin</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+  <div class="fullscreen" id="join-project">
+      <div class="container projects">
+        <div class="section">
+          <div class="row">
+            <div class="col s12 l8 offset-l2">
+              <h3 class="center-align">Join as a Contributor</h3>
+              <p class="contents">
+                The Mozilla team believes SensorWeb is a model that can be used to solve diverse problems worldwide. Please let us know if you have  ideas or are experiencing a problem that you believe can be solved by using sensors to monitor an environment and publishing that data for public access.</br></br>
+              </p>
+              <div class="center">
+                <a href="#new-idea-fb-modal" class="waves-effect waves-light btn-large modal-trigger" style="width: auto;">Join Project</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!-- Footer -->
   <footer class="page-footer teal">
     <div class="container">
       <div class="row">
         <div class="col l3 s12">
-          <h5 class="white-text">SensorWeb</h5>
+          <a href="http://mozilla.org" target="_blank"><img class="logo-mozilla" src="images/footer-mozilla-white.png"/></a>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text head">SensorWeb</h5>
           <ul>
-            <li><a class="white-text" href="#">Overview</a></li>
-            <li><a class="white-text" href="#">Developers</a></li>
-            <li><a class="white-text" href="#">App</a></li>
-            <li><a class="white-text" href="#">Blog</a></li>
-            <li><a class="white-text" href="#">FAQ</a></li>
+            <li><a class="white-text" href="about.html">About</a></li>
+            <li><a class="white-text" href="pilot-project.html">Projects</a></li>
+            <li><a class="white-text" href="documentation.html">Documentation</a></li>
+            <li><a class="white-text" href="blog.html">Blog</a></li>
           </ul>
         </div>
         <div class="col l3 s12">
-          <h5 class="white-text">Connect</h5>
+          <h5 class="white-text head">Connect</h5>
           <ul>
             <li><a class="white-text" href="https://github.com/sensor-web" target="_blank">GitHub</a></li>
             <li><a class="white-text" href="https://wiki.mozilla.org/SensorWeb" target="_blank">Wiki</a></li>
             <li><a class="white-text" href="https://wiki.mozilla.org/Connected_Devices/Participation" target="_blank">Participation</a></li>
           </ul>
         </div>
-        <div class="col l6 s12">
-          <h5 class="white-text">Contact Us</h5>
-          <p class="grey-text text-lighten-4">sensorweb@mozilla.com</p>
+        <div class="col l3 s12">
+          <h5 class="white-text head">Contact Us</h5>
+          <ul>
+            <li><a class="white-text" href="mailto:sensorweb@mozilla.com" target="_blank">sensorweb@mozilla.com</a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
