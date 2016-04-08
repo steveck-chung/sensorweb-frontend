@@ -1,8 +1,9 @@
-.projects-input,
-.projects-textarea, 
-.select-dropdown {
-  border: 1px solid #5CC7B9 !important;
-  box-sizing: border-box;
+#sensor-setup .projects-input,
+#sensor-setup .projects-textarea,
+#sensor-setup .select-dropdown {
+  padding-left: 1rem;
+  margin-left: -0.5rem;
+  border: 1px solid #5CC7B9;
   transition: none;
   color: #333;
 }
@@ -13,33 +14,41 @@
   box-shadow: unset;
 }
 
-.projects-input,
-.projects-textarea,
-.select-dropdown {
-padding-left: 1rem !important;
-margin-left: -0.5rem !important;
+#sensor-setup .projects-input,
+#sensor-setup .projects-textarea,
+#sensor-setup .select-dropdown {
+
 }
 
-.dropdown-content {
-  padding: 0 !important;
+#sensor-setup .dropdown-content {
+  padding: 0;
   z-index: 2000;
-  margin-left: 0rem !important;
+  margin-left: 0rem;
 }
 
-.projects-textarea{
-  padding-top: .75rem !important;
+#sensor-setup .projects-textarea{
+  padding-top: .75rem;
 }
 
 .input-field {
 	margin-top: 0px;
 }
 
-.caret {
-  color: #5CC7B9 !important;
+#sensor-setup .caret {
+  color: #5CC7B9;
 }
 
 #sensor-setup input,
 #sensor-setup textarea
 {
-  margin: 15px 0 20px 0 !important;
+  margin: 15px 0 20px 0;
+}
+
+#location-map {
+  height: 350px;
+}
+
+#check-addr-btn {
+  margin-bottom: 1rem;
+  width: auto;
 }
