@@ -3,6 +3,8 @@
     $('.modal-trigger').leanModal();
   });
 
+
+
   var fakeDataMode = true;
   var projectId = $.url().param('id');
   var latestSensors;
@@ -25,15 +27,17 @@
     dataChart && dataChart.destroy();
   });
 
+
+
   function dataConvertion(dataArray) {
     var config = {
       type: 'line',
       data: {
         datasets: [{
           label: "PM2.5 value",
-    			 pointBorderWidth: 1,
+    			 pointBorderWidth: .2,
           fill: false,
-          data: dataArray.map(function(d) {
+          data: dataArray.slice(dataArray.length-30,dataArray.length).map(function(d) {
             return { x: moment(d.datetime).format('LLL'), y: d.pm25Index };
           })
         }]
@@ -46,7 +50,7 @@
             display: true,
             scaleLabel: {
               display: true,
-              labelString: 'Time'
+              // labelString: 'Time'
             }
           }, ],
           yAxes: [{
@@ -95,6 +99,7 @@
             })
           }
           dataChart = new Chart(ctx, dataConvertion(fakeArray));
+          // $('#sensor-information').height($('#sensor-chart').height());
           return;
         }
 
@@ -132,24 +137,24 @@
       latestSensors = [
         {
           id: 1,
-          name: 'test 1',
-          description: 'test 1\'s data',
+          name: 'Test 1',
+          description: 'Test 1\'s data',
           location: {lat: 25.032506, lng: 121.5674536},
           pm25Index: Math.random()*100,
           latestUpdate: Date.now()
         },
         {
           id: 2,
-          name: 'test 2',
-          description: 'test 2\'s data',
+          name: 'Test 2',
+          description: 'Test 2\'s data',
           location: {lat: 25.0, lng: 121.6674536},
           pm25Index: Math.random()*100,
           latestUpdate: Date.now()
         },
         {
           id: 3,
-          name: 'test 3',
-          description: 'test 3\'s data',
+          name: 'Test 3',
+          description: 'Test 3\'s data',
           location: {lat: 25.05, lng: 121.5},
           pm25Index: Math.random()*100,
           latestUpdate: Date.now()
@@ -159,6 +164,7 @@
 
     updateMap(latestSensors);
   }
+
 
 
   // Fetch sensor list

@@ -3,93 +3,129 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
-  <title>SensorWeb</title>
+  <title>Sensor Detail</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/sensor-detail.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 <body>
+
+  <!-- Navigation -->
+  <ul id="dropdown" class="dropdown-content">
+    <li><a href="about.html">English Version</a></li>
+    <li class="divider"></li>
+    <li><a href="tw/about.html">中文版</a></li>
+  </ul>
   <div class="navbar-fixed">
     <nav class="teal" role="navigation">
       <div class="nav-wrapper container">
         <a id="logo-container" href="/" class="brand-logo">SensorWeb</a>
+
         <ul class="right hide-on-med-and-down">
-          <li><a href="sensor-management.html">Dashboard</a></li>
+          <li><a href="about.html">About</a></li>
           <li><a href="projects.html">Projects</a></li>
           <li><a href="documentation.html">Documentation</a></li>
-          <li><a href="about.html">About</a></li>
-          <!-- <li><a href="blog.html">Blog</a></li> -->
+          <li><a href="blog.html">Blog</a></li>
+          <!-- Dropdown Trigger -->
+          <li><a class="dropdown-button" href="#!" data-activates="dropdown">EN<i id="arrow" class="material-icons right">arrow_drop_down</i></a></li>
+          <li class="login"><a href="user-detail.html">Log In</a></li>
+          <!-- <li>
+            <div id="tabzilla">
+              <a href="https://www.mozilla.org/en-US/" data-link-type="nav" data-link-name="tabzilla">Mozilla</a>
+            </div>
+          </li> -->
         </ul>
 
+        <!-- Mobile Navigation -->
         <ul id="nav-mobile" class="side-nav">
-          <li><a href="sensor-management.html">Dashboard</a></li>
-          <li><a href="projects.html">Projects</a></li>
-          <li><a href="documentation.html">Documentation</a></li>
           <li><a href="about.html">About</a></li>
-          <!-- <li><a href="blog.html">Blog</a></li> -->
+          <li><a href="pilot-project.html">Projects</a></li>
+          <li><a href="documentation.html">Documentation</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="user-detail.html">Logn</a></li>
         </ul>
         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+
       </div>
     </nav>
   </div>
 
-  <div class="container">
+  <div class="container projects">
+    <h3 class="center-align">Sensor Details</h3>
+    
     <div class="section">
       <div class="row">
         <div class="col s12">
           <h4 id="sensor-name" class="center"></h4>
-          <h5>Sensor Key</h5>
+          <h3 class="sensor-info">Sensor Key</h3>
           <p id="sensor-key"></p>
-          <h5>API Key</h5>
-          <p id="api-key">bkayZOMvuy8aZOhIgxq94K9Oe7Y70Hw55</p>
-          <h5>Description</h5>
+          <h3 class="sensor-info">API Key</h5>
+          <p id="api-key" class="contents">bkayZOMvuy8aZOhIgxq94K9Oe7Y70Hw55</p>
+          <h3 class="sensor-info">Description</h3>
           <p id="sensor-description"></p>
-          <h5>Latest Update</h5>
+          <h3 class="sensor-info">Latest Update</h3>
           <p id="latest-update"></p>
-          <h5>PM2.5</h5>
+          <h3 class="sensor-info">PM2.5</h3>
           <p id="pm25"></p>
-          <h5>Data</h5>
+          <h3 class="sensor-info">Data</h3>
           <ul id="sensor-data" class="collection"></ul>
-          <h5>Project</h5>
-          <p><a href="project-detail.html?id=pm25">PM2.5</a></p>
-          <h5>Location</h5>
-          <div id="sensor-location-map"></div>
-          <h5>Dashboard</h5>
-          <canvas id="sensor-data-chart" class="center"></canvas>
-          <div class="center">
-            <a class="waves-effect waves-light btn" href="sensor-setup.html">Edit<i class="large material-icons right">mode_edit</i></a>
-            <a class="waves-effect waves-light btn">Delete<i class="material-icons right">delete</i></a>
-          </div>
         </div>
       </div>
     </div>
   </div>
+  <div class="container projects">
+    <div class="section">
+      <div class="row">
+        <div class="col s12">
+          <h3 class="sensor-info">Project</h3>
+          <p><a href="project-detail.html?id=pm25">PM2.5</a></p></br></br>
+          <h3 class="sensor-info">Location</h3>
+          <div id="sensor-location-map"></div></br></br>
+          <h3 class="sensor-info">Dashboard</h3>
+          <canvas id="sensor-data-chart" class="center"></canvas></br></br>
+        </div>
+      </div>
+    </div>
+    <div class="center">
+      <a class="waves-effect waves-light btn-large btn-control" href="sensor-setup.html">Edit<i class="large material-icons right">mode_edit</i></a>
+      <a class="waves-effect waves-light btn-large btn-control">Delete<i class="material-icons right">delete</i></a>
+    </div>
+    </br></br>
+  </div>
 
+
+
+  <!-- Footer -->
   <footer class="page-footer teal">
     <div class="container">
       <div class="row">
         <div class="col l3 s12">
-          <h5 class="white-text">SensorWeb</h5>
+          <a href="http://mozilla.org" target="_blank"><img class="logo-mozilla" src="images/footer-mozilla-white.png"/></a>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text head">SensorWeb</h5>
           <ul>
-            <li><a class="white-text" href="#">Overview</a></li>
-            <li><a class="white-text" href="#">Developers</a></li>
-            <li><a class="white-text" href="#">App</a></li>
-            <li><a class="white-text" href="#">Blog</a></li>
-            <li><a class="white-text" href="#">FAQ</a></li>
+            <li><a class="white-text" href="about.html">About</a></li>
+            <li><a class="white-text" href="projects.html">Projects</a></li>
+            <li><a class="white-text" href="documentation.html">Documentation</a></li>
+            <li><a class="white-text" href="blog.html">Blog</a></li>
           </ul>
         </div>
         <div class="col l3 s12">
-          <h5 class="white-text">Connect</h5>
+          <h5 class="white-text head">Connect</h5>
           <ul>
             <li><a class="white-text" href="https://github.com/sensor-web" target="_blank">GitHub</a></li>
             <li><a class="white-text" href="https://wiki.mozilla.org/SensorWeb" target="_blank">Wiki</a></li>
             <li><a class="white-text" href="https://wiki.mozilla.org/Connected_Devices/Participation" target="_blank">Participation</a></li>
           </ul>
         </div>
-        <div class="col l6 s12">
-          <h5 class="white-text">Contact Us</h5>
-          <p class="grey-text text-lighten-4">sensorweb@mozilla.com</p>
+        <div class="col l3 s12">
+          <h5 class="white-text head">Contact Us</h5>
+          <ul>
+            <li><a class="white-text" href="mailto:sensorweb@mozilla.com" target="_blank">sensorweb@mozilla.com</a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>

@@ -37,6 +37,7 @@ nav li a{
 }
 
 #arrow {
+  margin-top: 4px;
   margin-left: 5px;
   font-size: 1.2rem;
 }
@@ -120,8 +121,8 @@ h3, h4 {
 }
 
 .contents{
-  font-size: 1.25em;
-  line-height: 1.6;
+  font-size: 1.1em;
+  line-height: 1.65;
   font-weight: 300;
   color: #757575;
   text-align: left;
@@ -198,6 +199,8 @@ a.white-text:hover {
   -moz-box-shadow: 0 3px 5px 0 rgba(0,0,0,.15);
   box-shadow: 0 3px 5px 0 rgba(0,0,0,.15);
 }
+
+
 /*
 .button-collapse {
   color: #26a69a;
@@ -306,3 +309,10 @@ footer.page-footer {
   padding: .5rem;
 }
 
+.col-right {
+  padding-left: 40px !important;
+}
+
+.no-margin {
+  margin: 0;
+}

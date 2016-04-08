@@ -1,0 +1,45 @@
+.projects-input,
+.projects-textarea, 
+.select-dropdown {
+  border: 1px solid #5CC7B9 !important;
+  box-sizing: border-box;
+  transition: none;
+  color: #333;
+}
+
+.projects-input:focus:not([readonly]),
+.projects-textarea:focus:not([readonly]) {
+  border-bottom: 2px;
+  box-shadow: unset;
+}
+
+.projects-input,
+.projects-textarea,
+.select-dropdown {
+padding-left: 1rem !important;
+margin-left: -0.5rem !important;
+}
+
+.dropdown-content {
+  padding: 0 !important;
+  z-index: 2000;
+  margin-left: 0rem !important;
+}
+
+.projects-textarea{
+  padding-top: .75rem !important;
+}
+
+.input-field {
+	margin-top: 0px;
+}
+
+.caret {
+  color: #5CC7B9 !important;
+}
+
+#sensor-setup input,
+#sensor-setup textarea
+{
+  margin: 15px 0 20px 0 !important;
+}

@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
-  <title>SensorWeb</title>
+  <title>Project Detail</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
@@ -24,12 +24,12 @@
 
         <ul class="right hide-on-med-and-down">
           <li><a href="about.html">About</a></li>
-          <li><a href="pilot-project.html">Projects</a></li>
+          <li><a href="projects.html">Projects</a></li>
           <li><a href="documentation.html">Documentation</a></li>
           <li><a href="blog.html">Blog</a></li>
           <!-- Dropdown Trigger -->
           <li><a class="dropdown-button" href="#!" data-activates="dropdown">EN<i id="arrow" class="material-icons right">arrow_drop_down</i></a></li>
-          <li class="login"><a href="sensor-management.html">Log In</a></li>
+          <li class="login"><a href="user-detail.html">Log In</a></li>
           <!-- <li>
             <div id="tabzilla">
               <a href="https://www.mozilla.org/en-US/" data-link-type="nav" data-link-name="tabzilla">Mozilla</a>
@@ -43,7 +43,7 @@
           <li><a href="pilot-project.html">Projects</a></li>
           <li><a href="documentation.html">Documentation</a></li>
           <li><a href="blog.html">Blog</a></li>
-          <li><a href="sensor-management.html">Log In</a></li>
+          <li><a href="user-detail.html">Logn</a></li>
         </ul>
         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
 
@@ -55,12 +55,17 @@
     <div class="section">
       <div class="row">
           <div class="col l6 s12">
-            <div class="place-image"></div>
-          </div>
-          <div class="col l6 s12">
-            <h3>PM2.5 Project</h3>
+            <h3>Project PM2.5</h3>
             <p class="contents">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. 
+            </p>
+          </div>
+          <div class="col l6 s12">
+            <p class="project-info contents">
+              Project creator: Evan Tseng</br>
+              Contributors: 10 people</br>
+              Last updated: 1hrs ago</br>
+              Project created: 28 Mar. 2016</br>
             </p>
           </div>
         </div>
@@ -72,16 +77,16 @@
     <div id="map-container">
       <div id="sensors-location-map"></div>
         <div id="sensor-data-chart-container" class="hide">
-          <div class="row">
+          <div class="row no-margin">
           <div id="sensor-information" class="col s12 l3">
             <h3 class="name"></h3>
             <p class="description"></p>
             <p><span>PM2.5 index: </span><span class="value"></span></p>
             <p><span>Latest update: </span><span class="latest-update"></span></p>
           </div>
-          <div class="col s12 l9">
+          <div id="sensor-chart" class="col s12 l9">
             <canvas id="sensor-data-chart"></canvas>
-            <button id="chart-close-btn" class="waves-effect waves-light btn"><i class="material-icons center">close</i></button>
+            <button id="chart-close-btn" class="waves-effect waves-light btn teal"><i class="material-icons center">close</i></button>
           </div>
         </div>
       </div>
@@ -166,7 +171,7 @@
           <h5 class="white-text head">SensorWeb</h5>
           <ul>
             <li><a class="white-text" href="about.html">About</a></li>
-            <li><a class="white-text" href="pilot-project.html">Projects</a></li>
+            <li><a class="white-text" href="projects.html">Projects</a></li>
             <li><a class="white-text" href="documentation.html">Documentation</a></li>
             <li><a class="white-text" href="blog.html">Blog</a></li>
           </ul>

@@ -1,5 +1,5 @@
 (function(exports){
-  var fakeDataMode = false;
+  var fakeDataMode = true;
 
   var latestUpdateElm = $('#latest-update');
   var pm25Elm = $('#pm25');
