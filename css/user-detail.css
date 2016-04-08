@@ -8,3 +8,55 @@
 #sensor-list .title {
   line-height: 36px;
 }
+
+.user-name {
+	font-size: 1.6em;
+	line-height: 1em;
+}
+
+.user-info {
+	line-height: .1em;
+}
+
+.user-description {
+	margin-top: 30px;
+	color: #757575;
+	line-height: 1.6;
+}
+
+#user-card {
+	padding-right: 30px;
+}
+
+#user-card .card {
+	border-radius: 4px !important;
+	overflow: hidden;
+}
+
+#add-device {
+	background-color: #5BA4C7;
+}
+
+#add-device:hover {
+	background-color: #3990B2;
+}
+
+#edit-device.btn-control i{
+	left: 30px !important;
+}
+#edit-device.btn-control span{
+	left: 55px !important;
+}
+
+.collection-item {
+	line-height: 36px !important;
+	color: #333 !important;
+}
+
+a.collection-item:hover {
+	background-color: #EFF8F7 !important;
+}
+
+.collection-item.title{
+	color: #979797 !important;
+}

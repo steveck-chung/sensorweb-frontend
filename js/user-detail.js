@@ -1,6 +1,6 @@
 (function(exports){
 
-  const SENSOR_LIST_MARKUP = '<a href=${url} class="collection-item">${name}</a>';
+  const SENSOR_LIST_MARKUP = '<a href=${url} class="collection-item">${name}<button id="edit-device" class="waves-effect waves-light btn-large btn-control right" href="sensor-setup.html?userId=evanxd"><i class="material-icons left">mode_edit</i><span>Edit</span></button></a>';
   var fakeDataMode = true;
 
   function renderSensorList(sensors) {

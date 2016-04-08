@@ -200,6 +200,31 @@ a.white-text:hover {
   box-shadow: 0 3px 5px 0 rgba(0,0,0,.15);
 }
 
+.btn-control {
+  margin-top: 2.5px;
+  height: 30px;
+  border-radius: 30px;
+  width: 120px;
+  font-size: 1em;
+  overflow: auto;
+  z-index: 10;
+}
+
+.btn-control i{
+  font-size: 1.2em;
+  line-height: 30px;
+  position: absolute;
+  left: 10px;
+  top: -1px;
+}
+
+.btn-control span{
+  font-size: .8em;
+  line-height: 30px;
+  position: absolute;
+  left: 35px;
+  top: 0px;
+}
 
 /*
 .button-collapse {

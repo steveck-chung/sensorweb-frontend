@@ -54,42 +54,39 @@
   <div class="container projects">
     <div class="section">
       <div class="row">
-        <div class="col s12 m3">
+        <div class="col s12 m3" id="user-card">
           <div class="card">
             <div class="card-image">
               <img src="https://avatars3.githubusercontent.com/u/3013038?v=3&s=460">
             </div>
-            <div class="card-action">
-              <p class="card-title">evanxd</p>
-              <p class="card-title">evanxd@mozilla</p>
-              <p class="card-title">Taipei</p>
-            </div>
           </div>
+          <p class="user-name">Evan Tseng</p>
+          <p class="user-info">evanxd@mozilla.com</p>
+          <p class="user-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do</p>
         </div>
         <div class="col s12 m9">
           <div id="sensor-list" class="collection">
-            <li class="collection-item title teal white-text">My Sensors
-              <a class="waves-effect waves-light btn right" href="sensor-setup.html?userId=evanxd">
-                <i class="material-icons left">add</i>Add sensor</a>
+            <li class="collection-item title"><b>My Sensors</b>
+              <button id="add-device" class="waves-effect waves-light btn-large btn-control right" href="sensor-setup.html?userId=evanxd">
+                <i class="material-icons left">add</i>
+                <span>Add Device</span>
+                </button>
             </li>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <hr>
-  <div class="container projects">
-    <div class="section">
-      <div id="user-projects" class="row">
-        <h3 class="center-align">Projects</h3>
-        <div class="col s12 m2 center">
-          <a href="project-detail.html">
-            <div class="card">
-              <div class="card-image">
-              <span class="card-title">PM2.5</span>
+          <div class="section">
+            <h3>Projects</h3>
+            <div class="row" id="user-projects">
+              <div class="col s6 m3">
+                <a href="project-detail.html">
+                  <div class="card">
+                    <div class="card-image">
+                    </div>
+                  </div>
+                  <p class="center-align">Project PM2.5</p>
+                </a>
               </div>
             </div>
-          </a>
+          </div>
         </div>
       </div>
     </div>
