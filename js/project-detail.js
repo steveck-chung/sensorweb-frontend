@@ -27,7 +27,12 @@
     dataChart && dataChart.destroy();
   });
 
+  function onSignIn(googleUser) {
+    var profile = googleUser.getBasicProfile();
+    var auth = googleUser.getAuthResponse();
+    //TODO: create user in DB and get user profile
 
+  }
 
   function dataConvertion(dataArray) {
     var config = {
@@ -202,5 +207,6 @@
   });
 
   exports.initMap = initMap;
+  exports.onSignIn = onSignIn;
 
 })(window);
