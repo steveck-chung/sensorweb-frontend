@@ -38,6 +38,7 @@
         </ul>
 
         <!-- Mobile Navigation -->
+
         <ul id="nav-mobile" class="side-nav">
           <li><a href="about.html">About</a></li>
           <li><a href="pilot-project.html">Projects</a></li>
@@ -54,39 +55,37 @@
   <div class="container projects" id="sensor-setup">
     <div class="section">
       <div class="row">
-        <h3 class="center-align">Sensor Setup</h3>
-        <div class="row">
-          <div class="input-field col s12">
+        <div class="col s8">
+          <div class="input-field">
             <input id="sensor-name" placeholder="PM2.5 at home" id="first_name" type="text" class="validate projects-input">
             <label for="first_name">Sensor Name</label>
           </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s12">
+          <div class="input-field">
             <input id="sensor-location" placeholder="No. 106, Section 5, Xinyi Rd, Xinyi District, Taipei City, 110" id="first_name" type="text" class="validate projects-input">
             <label for="first_name">Location</label>
           </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s12">
+          <button id="check-addr-btn" class="btn waves-effect waves-light btn-large" type="submit">Check on the map
+            <i class="material-icons right">search</i>
+          </button>
+          <div class="input-field">
             <textarea id="sensor-description" placeholder="Sensor that detect PM2.5." class="materialize-textarea projects-textarea"></textarea>
             <label for="sensor-description">Description</label>
           </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s12">
+          <div class="input-field">
             <select id="sensor-project">
               <option value="" disabled>Choose Project</option>
               <option value="pm25" selected>PM2.5</option>
               <option value="">+ Add a New Project</option>
             </select>
-            <label>Project</label>
+            <label class="active">Project</label>
+          </div>
+          <div class="row center">
+            <button id="setup-sensor" class="btn waves-effect waves-light btn-large" type="submit">Setup
+              <i class="material-icons right">send</i>
+            </button>
           </div>
         </div>
-        <div class="row center">
-          <button id="setup-sensor" class="btn waves-effect waves-light btn-large" type="submit">Setup
-            <i class="material-icons right">send</i>
-          </button>
+        <div id="location-map" class="col s4">
         </div>
       </div>
     </div>
@@ -134,6 +133,9 @@
 
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="js/lib/purl.js"></script>
+  <script async defer
+       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWlJoUn2DS8XUYilLXZE8dxYEXbo6dnaE&signed_in=true&callback=initMap">
+  </script>
   <script src="js/materialize.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/sensor-setup.js"></script>
