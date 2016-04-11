@@ -8,6 +8,10 @@
   color: #333;
 }
 
+#sensor-setup label {
+  left: 0;
+}
+
 .projects-input:focus:not([readonly]),
 .projects-textarea:focus:not([readonly]) {
   border-bottom: 2px;
@@ -17,21 +21,32 @@
 #sensor-setup .projects-input,
 #sensor-setup .projects-textarea,
 #sensor-setup .select-dropdown {
-
+  margin-left: 0px;
 }
 
 #sensor-setup .dropdown-content {
   padding: 0;
   z-index: 2000;
   margin-left: 0rem;
+  margin-top: 82px !important;
 }
 
 #sensor-setup .projects-textarea{
   padding-top: .75rem;
 }
 
+#sensor-setup .select-dropdown {
+  margin-top: 33px;
+}
+
+#sensor-project-label {
+  margin-top: -15px;
+}
+
+
 .input-field {
 	margin-top: 0px;
+  margin-bottom: 20px;
 }
 
 #sensor-setup .caret {
@@ -39,16 +54,30 @@
 }
 
 #sensor-setup input,
-#sensor-setup textarea
-{
+#sensor-setup textarea,
+#sensor-setup select{
   margin: 15px 0 20px 0;
 }
 
 #location-map {
   height: 350px;
+  width: 90%;
+  float: right;
+  margin-bottom: 30px;
+  /*margin-left: 5px;*/
 }
+@media only screen and (max-width: 1150px) {
+  #location-map {
+    width: 100%;
+  }
+}
+
 
 #check-addr-btn {
   margin-bottom: 1rem;
   width: auto;
+}
+
+#sensor-project {
+  margin-top: 15px;
 }
