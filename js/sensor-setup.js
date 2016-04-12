@@ -17,27 +17,26 @@
 
   $('select').material_select();
 
-  function handleClientLoad() {
-    gapi.auth2.GoogleAuth.then(function onInit() {
-      var loginAccountBtn = $('login-account-btn');
+  $(window).load(function handleClientLoad() {
+    var auth = gapi.auth2.init({
+      client_id: '463509681101-3mv6658rkbcq52dst0t3h17desmq6e8l.apps.googleusercontent.com'
+    });
+    var loginAccountBtn = $('login-account-btn');
 
-      function btnState(isSignedIn) {
-        if (isSignedIn) {
-          loginAccountBtn.text('My account');
-          //TODO: Fetch user ID and set correct url
-          loginAccountBtn.attr('href', 'user-detail.html');
-        } else {
-          loginAccountBtn.text('Log In');
-          loginAccountBtn.attr('href', '#google-sign-in-modal');
-        }
+    function btnState(isSignedIn) {
+      if (isSignedIn) {
+        loginAccountBtn.text('My account');
+        //TODO: Fetch user ID and set correct url
+        loginAccountBtn.attr('href', 'user-detail.html');
+      } else {
+        loginAccountBtn.text('Log In');
+        loginAccountBtn.attr('href', '#google-sign-in-modal');
       }
+    }
 
-      btnState(gapi.auth2.GoogleAuth.isSignedIn.get());
-      gapi.auth2.GoogleAuth.isSignedIn.listen(btnState);
-    }, function onError(e) {
-      console.error('gapi.auth2.GoogleAuth error: ' + e);
-    })
-  }
+    btnState(auth.isSignedIn.get());
+    auth.isSignedIn.listen(btnState);
+  });
 
   function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
@@ -124,6 +123,5 @@
 
   exports.initMap = initMap;
   exports.onSignIn = onSignIn;
-  exports.handleClientLoad = handleClientLoad;
 
 })(window);
