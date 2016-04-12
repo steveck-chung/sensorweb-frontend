@@ -60,7 +60,8 @@
       name: name,
       description: sensorDescription.val(),
       address: sensorLocation.val(),
-      coords: sensorCoords,
+      // XXX: Need String type here.
+      coords: JSON.stringify(sensorCoords),
       // TOOD: Please add the google token here.
       token: 'Google token'
     })
