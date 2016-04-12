@@ -53,9 +53,9 @@
     }
 
     var name = sensorName.val();
-    $.post('sensors', {
+    var projectKey = sensorProject.val();
+    $.post('projects/' + projectKey + '/sensors', {
       userId: userId,
-      projectId: sensorProject.val(),
       name: name,
       description: sensorDescription.val(),
       address: sensorLocation.val(),
