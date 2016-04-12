@@ -28,7 +28,7 @@
   });
 
   $(window).load(function handleClientLoad() {
-    var auth = gapi.auth2.init({
+    var auth = gapi.auth2.getAuthInstance() || gapi.auth2.init({
       client_id: '463509681101-3mv6658rkbcq52dst0t3h17desmq6e8l.apps.googleusercontent.com'
     });
     var loginAccountBtn = $('login-account-btn');
