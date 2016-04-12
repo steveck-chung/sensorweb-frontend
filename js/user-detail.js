@@ -1,4 +1,7 @@
 (function(exports){
+  $(document).ready(function(){
+    $('.modal-trigger').leanModal();
+  });
 
   const SENSOR_LIST_MARKUP = '<a href=${url} class="collection-item">${name}<button id="edit-device" class="waves-effect waves-light btn-large btn-control right" href="sensor-setup.html?userId=evanxd"><i class="material-icons left">mode_edit</i><span>Edit</span></button></a>';
   var fakeDataMode = true;
@@ -22,6 +25,36 @@
         url: 'sensor-detail.html?id=3'
       }
     ]);
+  }
+
+  function handleClientLoad() {
+    gapi.auth2.GoogleAuth.then(function onInit() {
+      var loginAccountBtn = $('login-account-btn');
+
+      function btnState(isSignedIn) {
+        if (isSignedIn) {
+          loginAccountBtn.text('My account');
+          //TODO: Fetch user ID and set correct url
+          loginAccountBtn.attr('href', 'user-detail.html');
+        } else {
+          loginAccountBtn.text('Log In');
+          loginAccountBtn.attr('href', '#google-sign-in-modal');
+        }
+      }
+
+      btnState(gapi.auth2.GoogleAuth.isSignedIn.get());
+      gapi.auth2.GoogleAuth.isSignedIn.listen(btnState);
+    }, function onError(e) {
+      console.error('gapi.auth2.GoogleAuth error: ' + e);
+    })
+  }
+
+  function onSignIn(googleUser) {
+    var profile = googleUser.getBasicProfile();
+    var auth = googleUser.getAuthResponse();
+    //TODO: create user in DB and get user profile
+
+    $('#google-sign-in-modal').closeModal();
   }
 
   // Fetch sensor list
@@ -55,5 +88,8 @@
   .fail(function(error) {
     console.error(error);
   });
+
+  exports.onSignIn = onSignIn;
+  exports.handleClientLoad = handleClientLoad;
 
 })(window);

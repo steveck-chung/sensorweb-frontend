@@ -3,6 +3,24 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="google-signin-client_id" content="463509681101-3mv6658rkbcq52dst0t3h17desmq6e8l.apps.googleusercontent.com">
+  <meta property="og:url" content="http://sensorweb.io">
+  <meta property="og:site_name" content="SensorWeb">
+  <meta property="og:title" content="User detail">
+  <meta property="og:description" content="User detail">
+  <meta property="og:image" content="http://sensorweb.io/images/promotion_01.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="1200">
+  <meta property="og:image" content="http://sensorweb.io/images/promotion_02.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="1200">
+  <meta property="twitter:title" content="SensorWeb">
+  <meta property="twitter:description" content="User detail">
+  <meta property="twitter:image:src" content="http://sensorweb.io/images/promotion_01.png">
+  <meta property="twitter:image:width" content="1200">
+  <meta property="twitter:image:height" content="1200">
   <title>User detail</title>
   <link rel="icon" type="image/x-icon" href="images/favicon.ico">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -29,7 +47,7 @@
           <li><a href="documentation.html">Documentation</a></li>
           <li><a href="blog.html">Blog</a></li>
           <!-- Dropdown Trigger -->
-          <li><a class="dropdown-button" href="#!" data-activates="dropdown">EN<i id="arrow" class="material-icons right">arrow_drop_down</i></a></li>
+          <!-- <li><a class="dropdown-button" href="#!" data-activates="dropdown">EN<i id="arrow" class="material-icons right">arrow_drop_down</i></a></li> -->
           <li class="login"><a href="user-detail.html">Log In</a></li>
           <!-- <li>
             <div id="tabzilla">
@@ -93,6 +111,19 @@
     </div>
   </div>
 
+  <!-- Modal structure -->
+  <div id="google-sign-in-modal" class="modal">
+    <div class="modal-content">
+      <h4>Login to your account</h4>
+      <p>Please give us your preferred ID and sign in with google account</p>
+      <div class="input-field">
+        <input id="user-id" type="text" class="validate">
+        <label for="user-id">User ID</label>
+      </div>
+      <div class="g-signin2 center" data-onsuccess="onSignIn"></div>
+    </div>
+  </div>
+
   <!-- Footer -->
   <footer class="page-footer teal">
     <div class="container">
@@ -135,6 +166,8 @@
 
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
   <script src="js/lib/purl.js"></script>
   <script src="js/materialize.min.js"></script>
   <script src="js/init.js"></script>
