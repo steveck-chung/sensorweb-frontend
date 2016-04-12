@@ -45,7 +45,7 @@
     var auth = gapi.auth2.getAuthInstance() || gapi.auth2.init({
       client_id: '463509681101-3mv6658rkbcq52dst0t3h17desmq6e8l.apps.googleusercontent.com'
     });
-    var loginAccountBtn = $('login-account-btn');
+    var loginAccountBtn = $('#login-account-btn');
 
     function btnState(isSignedIn) {
       if (isSignedIn) {
@@ -58,7 +58,7 @@
       }
     }
 
-    btnState(auth.isSignedIn.get());
+    btnState(auth.isSignedIn.get() || auth.currentUser.get().isSignedIn());
     auth.isSignedIn.listen(btnState);
   });
 
