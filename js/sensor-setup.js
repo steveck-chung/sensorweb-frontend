@@ -26,10 +26,16 @@
       name: name,
       description: sensorDescription.val(),
       address: sensorLocation.val(),
-      coords: sensorCoords
+      coords: sensorCoords,
+      // TOOD: Please add the google token here.
+      token: 'Google token'
     })
     .done(function(result) {
-      window.location = './sensor-management.html';
+      if (result.result === 'success') {
+        window.location = './sensor-management.html';
+      } else {
+        alert(result.message);
+      }
     })
     .fail(function(err) {
       console.error(err)
