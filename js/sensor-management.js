@@ -1,6 +1,6 @@
 (function(){
   $.ajax({
-    url: 'evanxd/sensors',
+    url: 'users/evanxd/sensors',
   })
   .done(function(sensors) {
     var sensorList = $('#sensor-list ul');
