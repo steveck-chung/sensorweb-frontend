@@ -1,4 +1,8 @@
 (function(exports){
+  $(document).ready(function(){
+    $('.modal-trigger').leanModal();
+  });
+
   const GEOCODE_URL = 'https://maps.googleapis.com/maps/api/geocode/json?address=';
   const API_KEY = '&key=AIzaSyAWlJoUn2DS8XUYilLXZE8dxYEXbo6dnaE';
   const TOAST_DUR = 4000;
@@ -12,6 +16,36 @@
   var gMap;
 
   $('select').material_select();
+
+  function handleClientLoad() {
+    gapi.auth2.GoogleAuth.then(function onInit() {
+      var loginAccountBtn = $('login-account-btn');
+
+      function btnState(isSignedIn) {
+        if (isSignedIn) {
+          loginAccountBtn.text('My account');
+          //TODO: Fetch user ID and set correct url
+          loginAccountBtn.attr('href', 'user-detail.html');
+        } else {
+          loginAccountBtn.text('Log In');
+          loginAccountBtn.attr('href', '#google-sign-in-modal');
+        }
+      }
+
+      btnState(gapi.auth2.GoogleAuth.isSignedIn.get());
+      gapi.auth2.GoogleAuth.isSignedIn.listen(btnState);
+    }, function onError(e) {
+      console.error('gapi.auth2.GoogleAuth error: ' + e);
+    })
+  }
+
+  function onSignIn(googleUser) {
+    var profile = googleUser.getBasicProfile();
+    var auth = googleUser.getAuthResponse();
+    //TODO: create user in DB and get user profile
+
+    $('#google-sign-in-modal').closeModal();
+  }
 
   $('#setup-sensor').click(function() {
     if (!sensorCoords) {
@@ -87,6 +121,8 @@
     });
   }
 
-
   exports.initMap = initMap;
+  exports.onSignIn = onSignIn;
+  exports.handleClientLoad = handleClientLoad;
+
 })(window);
