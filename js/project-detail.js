@@ -3,9 +3,10 @@
     $('.modal-trigger').leanModal();
   });
 
+  const fakeDataMode = false;
+  const CHART_FORMAT = '';
+  const CONTRIBUTOR_MARKUP ='<div class="col s6 m3 l2"><div class="card"><div class="card-image"><img src="https://avatars3.githubusercontent.com/u/3013038?v=3&s=460"><span class="card-title">${name}</span></div></div></div>';
 
-
-  var fakeDataMode = true;
   var projectId = $.url().param('id');
   var latestSensors;
 
@@ -70,7 +71,7 @@
     			 pointBorderWidth: .2,
           fill: false,
           data: dataArray.slice(dataArray.length-30,dataArray.length).map(function(d) {
-            return { x: moment(d.datetime).format('LLL'), y: d.pm25Index };
+            return { x: moment(d.datetime).format(CHART_FORMAT), y: d.pm25Index };
           })
         }]
       },
@@ -104,12 +105,13 @@
     }
 
     sensors.forEach(function(sensor, index) {
-      if (markerMap.has(sensor.id)) {
+      if (markerMap.has(sensor._id)) {
         return;
       }
 
+      var coords = sensor.coords;
       var gMapMarker = new google.maps.Marker({
-        position: sensor.location,
+        position: { lat: Number(coords.lat), lng: Number(coords.lng) },
         map: gMap,
         title: sensor.name,
         zIndex: index +1
@@ -136,7 +138,7 @@
         }
 
         $.ajax({
-          url: 'sensors/' + sensor.id + '/data',
+          url: 'sensors/' + sensor._id + '/data',
         })
         .done(function(dataArray) {
           dataChart = new Chart(ctx, dataConvertion(dataArray));
@@ -146,8 +148,12 @@
         });
       });
 
-      markerMap.set(sensor.id, gMapMarker);
+      markerMap.set(sensor._id, gMapMarker);
     });
+  }
+
+  function renderContributorList(contributors) {
+    $.tmpl(CONTRIBUTOR_MARKUP, contributors).appendTo("#contributor-list");
   }
 
   function initMap() {
@@ -197,11 +203,23 @@
     updateMap(latestSensors);
   }
 
-
+  // Fetch project detail, should set project ID as parameter
+  $.ajax({
+    url: 'projects/sensorweb/pm25',
+  })
+  .done(function(project) {
+    $('#pm25 .description').text(project.description);
+    $('#pm25 .creator').text(project.creator.name);
+    // $('#pm25 .last-update').text(project.detail);
+    $('#pm25 .created-date').text(project.createDate);
+  })
+  .fail(function(error) {
+    console.error(error);
+  });
 
   // Fetch sensor list
   $.ajax({
-    url: 'sensors',
+    url: 'projects/sensorweb/pm25/sensors',
   })
   .done(function(sensors) {
     latestSensors = sensors;
@@ -211,23 +229,13 @@
     console.error(error);
   });
 
-  // Fetch project detail, should set project ID as parameter
-  $.ajax({
-    url: 'projects',
-  })
-  .done(function(projects) {
-
-  })
-  .fail(function(error) {
-    console.error(error);
-  });
-
   // Fetch user list, should set project ID as parameter
   $.ajax({
-    url: 'users',
+    url: 'projects/sensorweb/pm25/contributors',
   })
-  .done(function(users) {
-
+  .done(function(contributors) {
+    $('#pm25 .contributors').text(contributors.length);
+    renderContributorList(contributors);
   })
   .fail(function(error) {
     console.error(error);

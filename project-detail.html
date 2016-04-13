@@ -76,17 +76,15 @@
       <div class="row">
           <h3 class="center-align">Project PM2.5</h3>
           <div class="col l6 s12">
-            <p class="contents">
+            <p class="contents description">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed.
             </p>
           </div>
           <div class="col l6 s12">
-            <p class="project-info contents">
-              Project creator: Evan Tseng</br>
-              Contributors: 10 people</br>
-              Last updated: 1hrs ago</br>
-              Project created: 28 Mar. 2016</br>
-            </p>
+            <p class="project-info contents">Project creator: <span class="creator"></span></p>
+            <p class="project-info contents">Contributors: <span class="contributors"></span></p>
+            <p class="project-info contents hide">Last updated: <span class="last-update"></span></p>
+            <p class="project-info contents">Project created: <span class="created-date"></span></p>
           </div>
         </div>
     </div>
@@ -116,48 +114,8 @@
   <div id="contributor" class="container projects">
     <div class="section">
       <div class="row">
-          <div class="col s12">
+          <div id="contributor-list" class="col s12">
             <h3 class="center-align">Contributors</h3>
-            <div class="col s6 m3 l2">
-              <div class="card">
-                <div class="card-image">
-                  <img src="https://avatars3.githubusercontent.com/u/3013038?v=3&s=460">
-                  <span class="card-title">evanxd</span>
-                </div>
-              </div>
-            </div>
-            <div class="col s6 m3 l2">
-              <div class="card">
-                <div class="card-image">
-                  <img src="https://avatars2.githubusercontent.com/u/12151568?v=3&s=460">
-                  <span class="card-title">chsiang</span>
-                </div>
-              </div>
-            </div>
-            <div class="col s6 m3 l2">
-              <div class="card">
-                <div class="card-image">
-                  <img src="https://avatars0.githubusercontent.com/u/8919308?v=3&s=400">
-                  <span class="card-title">youwenliang</span>
-                </div>
-              </div>
-            </div>
-            <div class="col s6 m3 l2">
-              <div class="card">
-                <div class="card-image">
-                  <img src="https://avatars3.githubusercontent.com/u/1704452?v=3&s=460">
-                  <span class="card-title">steveck-chung</span>
-                </div>
-              </div>
-            </div>
-            <div class="col s6 m3 l2">
-              <div class="card">
-                <div class="card-image">
-                  <img src="https://avatars1.githubusercontent.com/u/936571?v=3&s=460">
-                  <span class="card-title">yshlin</span>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
     </div>
@@ -234,6 +192,7 @@
   </footer>
 
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
   <script src="https://apis.google.com/js/platform.js" async defer></script>
   <script src="https://apis.google.com/js/client.js"></script>
   <script src="js/lib/purl.js"></script>
