@@ -5,6 +5,10 @@
     $('.modal-trigger').leanModal();
     $('select').material_select();
   });
+  // XXX: A trick to enable the login feature.
+  new Konami(function() {
+    $('#nav').append('<li class="login modal-trigger"><a id="login-btn" href="#google-sign-in-modal">Log In</a></li>');
+  });
 })();
 
 
