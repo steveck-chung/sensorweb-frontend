@@ -71,7 +71,7 @@
     })
     .done(function(result) {
       if (result.result === 'success') {
-        window.location = './sensor-management.html';
+        window.location = './user-detail.html?userId=' + userId;
       } else {
         alert(result.message);
       }

@@ -3,11 +3,22 @@
     $('.modal-trigger').leanModal();
   });
 
-  const SENSOR_LIST_MARKUP = '<a href=${url} class="collection-item">${name}<button id="edit-device" class="waves-effect waves-light btn-large btn-control right" href="sensor-setup.html?userId=evanxd"><i class="material-icons left">mode_edit</i><span>Edit</span></button></a>';
-  var fakeDataMode = true;
+  const SENSOR_LIST_MARKUP = '<a href="sensor-detail.html?id=${_id}" class="collection-item">${name}<button id="edit-device" class="waves-effect waves-light btn-large btn-control right" href="sensor-setup.html?userId=evanxd"><i class="material-icons left">mode_edit</i><span>Edit</span></button></a>';
+  const PROJECT_LIST_MARKUP = '<div class="col s6 m3"><a href="project-detail.html?id=${id}"><div class="card"><div class="card-image"></div></div><p class="center-align">${name}</p></a></div>';
+  const fakeDataMode = false;
+  var userId;
+
+  function init() {
+    userId = $.url().param('userId');
+    $('#add-device').attr('href', 'sensor-setup.html?userId=' + userId);
+  }
 
   function renderSensorList(sensors) {
     $.tmpl(SENSOR_LIST_MARKUP, sensors).appendTo("#sensor-list");
+  }
+
+  function renderProjectList(projects) {
+    $.tmpl(PROJECT_LIST_MARKUP, projects).appendTo("#user-projects");
   }
 
   if (fakeDataMode) {
@@ -61,37 +72,42 @@
     $('#google-sign-in-modal').closeModal();
   }
 
-  // Fetch sensor list
-  $.ajax({
-    url: 'sensors',
-  })
-  .done(function(sensors) {
-    latestSensors = sensors;
-    updateMap(latestSensors);
-  })
-  .fail(function(error) {
-    console.error(error);
-  });
+  function fetchData() {
+    // Fetch user detail
+    $.ajax({
+      url: 'users/' + userId
+    })
+    .done(function(user) {
+      $('#user-card .user-id').text(user.id);
+      $('#user-card .user-name').text(user.name);
+      $('#user-card .user-info').text(user.email);
+      $('#user-card img').attr('src', user.picture);
+    })
+    .fail(function(error) {
+      console.error(error);
+    });
 
-  // Fetch sensors for specific user
-  $.ajax({
-    url: 'projects/' + userId +  '/sensors',
-  })
-  .done(renderSensorList)
-  .fail(function(error) {
-    console.error(error);
-  });
+    // Fetch sensors for specific user
+    $.ajax({
+      url: 'users/' + userId + '/sensors'
+    })
+    .done(renderSensorList)
+    .fail(function(error) {
+      console.error(error);
+    });
 
-  // Fetch projects for the user
-  $.ajax({
-    url: 'projects',
-  })
-  .done(function(projects) {
+    // Fetch projects for specific user
+    $.ajax({
+      url: 'users/' + userId + '/projects'
+    })
+    .done(renderProjectList)
+    .fail(function(error) {
+      console.error(error);
+    });
+  }
 
-  })
-  .fail(function(error) {
-    console.error(error);
-  });
+  init();
+  fetchData();
 
   exports.onSignIn = onSignIn;
 

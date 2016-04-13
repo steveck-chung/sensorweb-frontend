@@ -3,7 +3,7 @@
     $('.modal-trigger').leanModal();
   });
 
-  var fakeDataMode = true;
+  var fakeDataMode = false;
 
   var latestUpdateElm = $('#latest-update');
   var pm25Elm = $('#pm25');
@@ -94,8 +94,10 @@
     if (!latestSensorData) {
       return;
     }
-    // TODO: var location = latestSensorData.location;
-    var location = {lat: 25.032506, lng: 121.5674536};
+    var coords = latestSensorData.coords;
+    var location = coords ?
+      {lat: Number(coords.lat), lng: Number(coords.lng)} :
+      {lat: 25.032506, lng: 121.5674536};
 
     gMap = new google.maps.Map(document.getElementById('sensor-location-map'), {
       zoom: 16,
