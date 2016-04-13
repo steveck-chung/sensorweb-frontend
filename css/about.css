@@ -9,6 +9,19 @@
   background-color: #f1f1f1;
 }
 
+#our-team img {
+  border-radius: 150px;
+}
+
+#our-team .card {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+#our-team .card-name,  #our-team .card-name-title{
+  text-align: center;
+}
+
 h5 {
 	font-weight: 500;
 	color: #535454;
