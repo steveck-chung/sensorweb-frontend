@@ -29,18 +29,23 @@
 
   $(window).load(function handleClientLoad() {
     var auth = gapi.auth2.getAuthInstance();
-    var loginAccountBtn = $('#login-account-btn');
+
+    if (!auth) {
+      return;
+    }
+
+    var loginBtn = $('#login-btn');
+    var accountBtn = $('#account-btn');
 
     function btnState(isSignedIn) {
       if (isSignedIn) {
-        loginAccountBtn.text('My account');
         //TODO: Fetch user ID and set correct url
-        loginAccountBtn.removeClass('modal-trigger');
-        loginAccountBtn.attr('href', 'user-detail.html');
+        loginBtn.addClass('hide');
+        accountBtn.removeClass('hide');
+        accountBtn.attr('href', 'user-detail.html');
       } else {
-        loginAccountBtn.text('Log In');
-        loginAccountBtn.addClass('modal-trigger');
-        loginAccountBtn.attr('href', '#google-sign-in-modal');
+        accountBtn.addClass('hide');
+        loginBtn.removeClass('hide');
       }
     }
 
