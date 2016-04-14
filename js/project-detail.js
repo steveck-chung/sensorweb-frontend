@@ -3,6 +3,7 @@
     $('.modal-trigger').leanModal();
   });
 
+  const API_URL = '/';
   const fakeDataMode = false;
   const CHART_FORMAT = '';
   const CONTRIBUTOR_MARKUP ='<div class="col s6 m3 l2"><div class="card"><div class="card-image"><img src="https://avatars3.githubusercontent.com/u/3013038?v=3&s=460"><span class="card-title">${name}</span></div></div></div>';
@@ -40,10 +41,19 @@
 
     function btnState(isSignedIn) {
       if (isSignedIn) {
-        //TODO: Fetch user ID and set correct url
-        loginBtn.addClass('hide');
-        accountBtn.removeClass('hide');
-        accountBtn.attr('href', 'user-detail.html');
+        var email = auth.currentUser.get().getBasicProfile().getEmail();
+        $.ajax({
+          url: API_URL + 'users?email=' + email,
+          dataType: 'jsonp'
+        })
+        .done(function(result) {
+          loginBtn.addClass('hide');
+          accountBtn.removeClass('hide');
+          accountBtn.attr('href', 'user-detail.html?userId=' + result.id);
+        })
+        .fail(function(err) {
+          console.error(err)
+        });
       } else {
         accountBtn.addClass('hide');
         loginBtn.removeClass('hide');
@@ -55,11 +65,38 @@
   });
 
   function onSignIn(googleUser) {
-    var profile = googleUser.getBasicProfile();
+    var userId = $('#user-id').val();
+
+    if (!userId) {
+      return;
+    }
+
     var auth = googleUser.getAuthResponse();
+    var profile = googleUser.getBasicProfile();
+    var userData = {
+      // token: auth.access_token, Do we really need this?
+      id: userId,
+      name: profile.getName(),
+      email: profile.getEmail(),
+      picture: profile.getImageUrl()
+    };
     //TODO: create user in DB and get user profile
 
+    $('#user-id').text();
     $('#google-sign-in-modal').closeModal();
+
+    $.ajax({
+      type: 'POST',
+      url: API_URL + 'users',
+      data: userData,
+      dataType: 'jsonp'
+    })
+    .done(function() {
+      window.location = 'user-detail.html?userId=' + userId;
+    })
+    .fail(function(err) {
+      console.error(err)
+    });
   }
 
   function dataConvertion(dataArray) {
