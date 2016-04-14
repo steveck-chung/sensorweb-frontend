@@ -3,6 +3,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta name="google-signin-client_id" content="463509681101-3mv6658rkbcq52dst0t3h17desmq6e8l.apps.googleusercontent.com">
   <meta property="og:url" content="http://sensorweb.io">
   <meta property="og:site_name" content="SensorWeb">
   <meta property="og:title" content="Sharing IoT data to solve real world problems">
@@ -355,6 +356,17 @@
       <p>We'll contact you as soon as possible!</p>
     </div>
   </div>
+  <div id="google-sign-in-modal" class="modal">
+    <div class="modal-content">
+      <h4>Login to your account</h4>
+      <p>Please give us your preferred ID and sign in with google account</p>
+      <div class="input-field">
+        <input id="user-id" type="text" class="validate" aria-required="true" required="">
+        <label for="user-id">User ID</label>
+      </div>
+      <div class="g-signin2 center" data-onsuccess="onSignIn"></div>
+    </div>
+  </div>
 
   <!-- Footer -->
   <footer class="page-footer teal">
@@ -392,6 +404,8 @@
   </footer>
 
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script src="https://apis.google.com/js/client.js"></script>
   <script src="js/materialize.min.js"></script>
   <script src="js/lib/konami.js"></script>
   <script src="js/init.js"></script>
