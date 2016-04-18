@@ -95,15 +95,20 @@
 
     var name = sensorName.val();
     var projectKey = sensorProject.val();
-    $.post(API_URL + 'projects/' + projectKey + '/sensors', {
-      userId: userId,
-      name: name,
-      description: sensorDescription.val(),
-      address: sensorLocation.val(),
-      // XXX: Need String type here.
-      coords: JSON.stringify(sensorCoords),
-      // TOOD: Please add the google token here.
-      token: 'Google token'
+    $.ajax({
+      type: 'POST',
+      url: API_URL + 'projects/' + projectKey + '/sensors',
+      data: {
+        userId: userId,
+        name: name,
+        description: sensorDescription.val(),
+        address: sensorLocation.val(),
+        // XXX: Need String type here.
+        coords: JSON.stringify(sensorCoords),
+        // TOOD: Please add the google token here.
+        token: 'Google token'
+      },
+      dataType: 'jsonp'
     })
     .done(function(result) {
       if (result.result === 'success') {
