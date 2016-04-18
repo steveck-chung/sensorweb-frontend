@@ -3,7 +3,6 @@
     $('.modal-trigger').leanModal();
   });
 
-  const API_URL = '/';
   const fakeDataMode = false;
   const CHART_FORMAT = '';
   const CONTRIBUTOR_MARKUP ='<div class="col s6 m3 l2"><div class="card"><div class="card-image"><img src="https://avatars3.githubusercontent.com/u/3013038?v=3&s=460"><span class="card-title">${name}</span></div></div></div>';

@@ -1,7 +1,4 @@
 (function(exports){
-
-  const API_URL = '/';
-
   $(document).ready(function(){
     $('.modal-trigger').leanModal();
   });

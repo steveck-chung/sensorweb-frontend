@@ -1,6 +1,4 @@
 (function(exports){
-  const API_URL = '/';
-
   $('.button-collapse').sideNav();
   $('.modal-trigger').leanModal();
   $('select').material_select();
