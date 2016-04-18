@@ -59,7 +59,7 @@
         .done(function(result) {
           loginBtn.addClass('hide');
           accountBtn.removeClass('hide');
-          accountBtn.attr('href', 'user-detail.html?userId=' + result.id);
+          accountBtn.attr('href', 'user-detail.html?userId=' + result.userId);
         })
         .fail(function(err) {
           console.error(err)
@@ -116,7 +116,7 @@
       dataType: 'jsonp'
     })
     .done(function(user) {
-      $('#user-card .user-id').text(user.id);
+      $('#user-card .user-id').text(user.userId);
       $('#user-card .user-name').text(user.name);
       $('#user-card .user-info').text(user.email);
       $('#user-card img').attr('src', user.picture);

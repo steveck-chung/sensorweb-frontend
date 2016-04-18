@@ -113,7 +113,7 @@
       .done(function(result) {
         $('#login-btn').addClass('hide');
         $('#account-btn').removeClass('hide');
-        $('#account-btn').attr('href', 'user-detail.html?userId=' + result.id);
+        $('#account-btn').attr('href', 'user-detail.html?userId=' + result.userId);
       })
       .fail(function(err) {
         console.error(err)
