@@ -195,7 +195,8 @@
   }
 
   $.ajax({
-    url: 'sensors/' + sensorId,
+    url: API_URL + 'sensors/' + sensorId,
+    dataType: 'jsonp'
   })
   .done(function(sensors) {
     var sensor = sensors[0];
@@ -219,7 +220,8 @@
   });
 
   $.ajax({
-    url: 'sensors/' + sensorId + '/data',
+    url: API_URL + 'sensors/' + sensorId + '/data',
+    dataType: 'jsonp'
   })
   .done(function(dataArray) {
     if (dataArray.length === 0) {
@@ -238,7 +240,8 @@
   // XXX: Hack to sync the latest data.
   setInterval(function() {
     $.ajax({
-      url: 'sensors/' + sensorId,
+      url: API_URL + 'sensors/' + sensorId,
+      dataType: 'jsonp'
     })
     .done(function(sensors) {
       var sensor = sensors[0];
