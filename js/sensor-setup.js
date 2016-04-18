@@ -95,7 +95,7 @@
 
     var name = sensorName.val();
     var projectKey = sensorProject.val();
-    $.post('projects/' + projectKey + '/sensors', {
+    $.post(API_URL + 'projects/' + projectKey + '/sensors', {
       userId: userId,
       name: name,
       description: sensorDescription.val(),
