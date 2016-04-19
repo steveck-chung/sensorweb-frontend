@@ -174,7 +174,8 @@
         }
 
         $.ajax({
-          url: 'sensors/' + sensor._id + '/data',
+          url: API_URL + 'sensors/' + sensor._id + '/data',
+          dataType: 'jsonp'
         })
         .done(function(dataArray) {
           dataChart = new Chart(ctx, dataConvertion(dataArray));
@@ -241,7 +242,8 @@
 
   // Fetch project detail, should set project ID as parameter
   $.ajax({
-    url: 'projects/sensorweb/pm25',
+    url: API_URL + 'projects/sensorweb/pm25',
+    dataType: 'jsonp'
   })
   .done(function(project) {
     $('#pm25 .description').text(project.description);
@@ -255,7 +257,8 @@
 
   // Fetch sensor list
   $.ajax({
-    url: 'projects/sensorweb/pm25/sensors',
+    url: API_URL + 'projects/sensorweb/pm25/sensors',
+    dataType: 'jsonp'
   })
   .done(function(sensors) {
     latestSensors = sensors;
@@ -267,7 +270,8 @@
 
   // Fetch user list, should set project ID as parameter
   $.ajax({
-    url: 'projects/sensorweb/pm25/contributors',
+    url: API_URL + 'projects/sensorweb/pm25/contributors',
+    dataType: 'jsonp'
   })
   .done(function(contributors) {
     $('#pm25 .contributors').text(contributors.length);
