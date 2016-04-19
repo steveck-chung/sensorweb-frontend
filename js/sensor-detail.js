@@ -201,10 +201,10 @@
   .done(function(sensors) {
     var sensor = sensors[0];
     var sensorNameElm = $('#sensor-name');
-    var sensorKeyElm = $('#sensor-key')
+    var sensorIdElm = $('#sensor-id')
     var sensorDescriptionElm = $('#sensor-description');
     sensorNameElm.text(sensor.name);
-    sensorKeyElm.text(sensor._id);
+    sensorIdElm.text(sensor._id);
     sensorDescriptionElm.text(sensor.description);
     latestUpdateElm.text(sensor.latestUpdate);
     pm25Elm.text(sensor.pm25Index);
