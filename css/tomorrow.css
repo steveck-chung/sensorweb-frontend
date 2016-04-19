@@ -74,7 +74,11 @@ code {
   background: #F8F8F8;
 }
 
-ul li {
+.docs {
+  padding: 3rem 0;
+}
+
+.docs ul li {
   list-style-type: disc;
   margin-left: 1em;
 }
@@ -97,4 +101,8 @@ h2:before, h3:before {
 
 hr {
   width: 100%;
+  border-top: 1px solid #ddd; 
+  border-left: 1px solid #ddd; 
+  border-bottom: 1px solid #eee; 
+  border-right: 1px solid #eee; 
 }

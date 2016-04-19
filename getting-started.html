@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
-  <title>Documentation</title>
+  <title>Getting Started Guide - Project SensorWeb</title>
   <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32" />
   <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -13,12 +13,6 @@
 </head>
 <body>
 
-  <!-- Navigation -->
-  <ul id="dropdown" class="dropdown-content">
-    <li><a href="about.html">English Version</a></li>
-    <li class="divider"></li>
-    <li><a href="tw/about.html">中文版</a></li>
-  </ul>
   <div class="navbar-fixed">
     <nav class="teal" role="navigation">
       <div class="nav-wrapper container">
@@ -26,11 +20,9 @@
 
         <ul class="right hide-on-med-and-down">
           <li><a href="about.html">About</a></li>
-          <li><a href="projects.html">Projects</a></li>
-          <li><a href="documentation.html">Documentation</a></li>
-          <li><a href="blog.html">Blog</a></li>
+          <li class="active"><a href="getting-started.html">Getting Started</a></li>
+          <li><a href="http://blog.sensorweb.io">Blog</a></li>
           <!-- Dropdown Trigger -->
-          <li><a class="dropdown-button" href="#!" data-activates="dropdown">EN<i id="arrow" class="material-icons right">arrow_drop_down</i></a></li>
           <li class="login"><a href="user-detail.html">Log In</a></li>
           <!-- <li>
             <div id="tabzilla">
@@ -42,8 +34,7 @@
         <!-- Mobile Navigation -->
         <ul id="nav-mobile" class="side-nav">
           <li><a href="about.html">About</a></li>
-          <li><a href="pilot-project.html">Projects</a></li>
-          <li><a href="documentation.html">Documentation</a></li>
+          <li class="active"><a href="getting-started.html">Getting Started</a></li>
           <li><a href="blog.html">Blog</a></li>
           <li><a href="user-detail.html">Log In</a></li>
         </ul>
@@ -53,16 +44,18 @@
     </nav>
   </div>
 
-  <div class="container projects">
+  <div class="container docs">
     <div class="section">
       <div class="row">
         <div class="col s12 m3 toc">
           <div class="collection">
-            <a href="#getting-started" class="collection-item active">Getting Started</a>
+            <a href="#getting-started" class="collection-item active"><b>Getting Started</b></a>
             <a href="#step-1" class="collection-item">1. Create Account</a>
             <a href="#step-2" class="collection-item">2. Create API Key</a>
             <a href="#step-3" class="collection-item">3. Setup Sensor Station</a>
             <a href="#step-4" class="collection-item">4. See Live Data</a>
+            <a href="#api-reference" class="collection-item"><b>API Reference</b></a>
+            <a href="#post-sensor-data" class="collection-item">POST /sensors/{sensor_id}/data</a>
           </div>
         </div>
         <div class="col s12 m9 col-right">
@@ -73,7 +66,7 @@
 <p>Not everyone need to be a contributor. But if your do, tons of people would benifit from it. </p>
 <p>Excited? Below are 4 steps to get you started.</p>
 <h3 id="step-1">Step 1: Create Your SensorWeb Account</h3>
-<p>Fill in the <a href="http://sensorweb.io/#signup">sign up form</a> or just <a href="http://sensorweb.io/#login">login</a> with exsiting account. After logged in, a popup will tell you that you just joined PM2.5 initiative, since it's our only first initiative for now. Click <strong>OK</strong> will bring you to your dashboard.</p>
+<p>Fill in the <a href="/#signup">sign up form</a> or just <a href="/#login">login</a> with exsiting account. After logged in, a popup will tell you that you just joined PM2.5 initiative, since it's our only first initiative for now. Click <strong>OK</strong> will bring you to your dashboard.</p>
 <h3 id="step-2">Step 2: Create a Sensor ID and API Key</h3>
 <p>Click <strong>Add Device</strong>, fill in necessary information about your sensor and submit. You will see your <code>sensor_id</code> and <code>api_key</code> in the sensor detail page.</p>
 <h3 id="step-3">Step 3: Setup Your Sensor Station</h3>
@@ -107,9 +100,48 @@
 <li>Instructions: <a href="https://github.com/sensor-web/pi-station">See instructions on github</a> </li>
 </ul>
 <h4>Using Other Hardware You Prefer</h4>
-<p>If you have other preferred hardware boards, you can build your own and have it send data to our service by calling our <a href="http://sensorweb.io/api-reference.html">REST API</a>.</p>
+<p>If you have other preferred hardware boards, you can build your own and have it send data to our service by calling our <a href="/api-reference.html">REST API</a>.</p>
 <h3 id="step-4">Step 4: See Your Live Data</h3>
-<p>After setting up your sensor station properly, it should begin to send data to SensorWeb. Go back to the sensor detail page you just created in <a href="#step2">step 2</a>, you'll see your data being visualized and updated in realtime.</p>
+<p>After setting up your sensor station properly, it should begin to send data to SensorWeb. Go back to the sensor detail page you just created in <a href="#step-2">step 2</a>, you'll see your data being visualized and updated in realtime.</p>
+
+<br><br><br><br><br><br>
+
+<hr>
+
+<h2 id="api-reference">REST API Reference</h2>
+<p>Currently we only expose API for sensor devices to push data to SensorWeb. </p>
+<p>Stay tuned for query APIs.</p>
+<hr />
+<h3 id="post-sensor-data">POST /sensors/<code>sensor_id</code>/data</h3>
+<p>After you <a href="/#login">logged in</a> and created a sensor device, you can start to send data to SensorWeb with your <code>api_key</code> and <code>sensor_id</code>.</p>
+<h4>Request</h4>
+<p><strong>POST</strong> <code>http://api.sensorweb.io/sensors/{sensor_id}/data/</code></p>
+<pre><code>?api_key={api_key}&amp;pm2_5={pm2.5_value}
+</code></pre>
+<h5>Parameters</h5>
+<ul>
+<li><code>sensor_id</code>: Your sensor id, you can find it in <a href="/user-detail.html">your dashboard</a></li>
+<li><code>api_key</code>: Your API key to access SensorWeb, you can find it in <a href="/user-detail.html">your dashboard</a></li>
+<li><code>pm2_5</code>: PM sensor reading in µg/m³</li>
+</ul>
+<h5>Headers</h5>
+<pre><code>Content-Type: application/x-www-form-urlencoded
+Accept: application/json
+</code></pre>
+<h4>Response</h4>
+<pre><code>{
+    "name": "My First PM2.5 Sensor",
+    "description": "It's in my work place'",
+    "address": "No. 106, Section 5, Xinyi Rd, Taipei City, Taiwan 110",
+    "coordinates": "120.982025, 23.973875",
+    "latest_update": {
+      "datetime": "2013-08-25T17:10:00+00:00",
+      "pm2_5": 11
+    }
+}
+</code></pre>
+<hr />
+
 
         </div>
       </div>
