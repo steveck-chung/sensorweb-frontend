@@ -10,7 +10,7 @@
 }
 
 #our-team img {
-  border-radius: 150px;
+  border-radius: 10px;
 }
 
 #our-team .card {
@@ -47,7 +47,7 @@ font-weight: 500;
 }
 .card-name-title{
 margin-top: 0 !important;
-margin-bottom: 50px;
+height: 80px;
 font-weight: 300;
 color: #757575;
 line-height: 1.5;

@@ -341,3 +341,7 @@ footer.page-footer {
 .no-margin {
   margin: 0;
 }
+
+#google-sign-in-modal {
+  width: 35% !important;
+}
