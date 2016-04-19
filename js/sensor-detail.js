@@ -266,7 +266,7 @@
         }
       }
     });
-  }, 5000);
+  }, 60000);
 
   exports.initMap = initMap;
   exports.onSignIn = onSignIn;
