@@ -117,7 +117,7 @@
         console.error(err)
       });
     } else {
-      $('#nav').append('<li><a href="getting-started.html">Getting Started</a></li><<li class="login"><a id="login-btn" href="#google-sign-in-modal" class="modal-trigger">Log In</a></li><li class="login"><a id="account-btn" class="hide">My account</a></li>');
+      $('#nav').append('<li><a href="getting-started.html">Getting Started</a></li><li class="login"><a id="login-btn" href="#google-sign-in-modal" class="modal-trigger">Log In</a></li><li class="login"><a id="account-btn" class="hide">My account</a></li>');
     }
     $('#login-btn').leanModal();
   });
