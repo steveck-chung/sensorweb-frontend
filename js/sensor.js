@@ -112,15 +112,15 @@
   }
 
   function updateInfo(sensor) {
-    var newContent = '<div id="map-infowindow">'+
-      '<h5 id="info-title">' + sensor.name + '</h5>'+
-      '<div id="bodyContent">'+
-      '<p id="info-description">' + sensor.description + '</p>'+
-      '<p>pm2.5 index: <span id="info-pm25-index">' + sensor.pm25Index + '</span></p>'+
-      '<p>Last update: <span id="info-last-update">' + sensor.latestUpdate + '</span></p>'+
-      '</div>'+
+    var newContent =
+      '<div id="map-infowindow">'+
+        '<h5 id="info-title">' + sensor.name + '</h5>'+
+        '<div id="bodyContent">'+
+          '<p id="info-description">' + sensor.description + '</p>'+
+          '<p>PM2.5: <span id="info-pm25-index">' + sensor.pm25Index + '</span></p>'+
+          '<p>Last Update: <span id="info-last-update">' + new Date(sensor.latestUpdate).toString() + '</span></p>'+
+        '</div>'+
       '</div>';
-
     infowindow.setContent(newContent);
   }
 
@@ -185,7 +185,7 @@
             display: true,
             scaleLabel: {
               display: true,
-              labelString: 'PM2.5 index(μg/m)'
+              labelString: 'PM2.5 (μg/m)'
             }
           }]
         }
