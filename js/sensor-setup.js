@@ -37,7 +37,7 @@
         .done(function(result) {
           loginBtn.addClass('hide');
           accountBtn.removeClass('hide');
-          accountBtn.attr('href', 'user-detail.html?userId=' + result.id);
+          accountBtn.attr('href', 'user.html?userId=' + result.id);
         })
         .fail(function(err) {
           console.error(err)
@@ -80,7 +80,7 @@
       dataType: 'jsonp'
     })
     .done(function() {
-      window.location = 'user-detail.html?userId=' + userId;
+      window.location = 'user.html?userId=' + userId;
     })
     .fail(function(err) {
       console.error(err)
@@ -112,7 +112,7 @@
     })
     .done(function(result) {
       if (result.result === 'success') {
-        window.location = './user-detail.html?userId=' + userId;
+        window.location = './user.html?userId=' + userId;
       } else {
         alert(result.message);
       }
