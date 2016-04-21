@@ -24,6 +24,15 @@
   /*background-color: #fff;*/
 }
 
+#sensor-information a {
+  color: #87D9D1;
+}
+
+#sensor-information a:hover {
+  color: #1CBCAD;
+}
+
+
 #sensor-chart {
   padding: 2em;
 }

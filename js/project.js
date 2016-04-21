@@ -150,14 +150,14 @@
         position: { lat: Number(coords.lat), lng: Number(coords.lng) },
         map: gMap,
         title: sensor.name,
-        zIndex: index +1
+        zIndex: index + 1
       });
 
       gMapMarker.addListener('click', function() {
-        chartName.text(sensor.name);
+        chartName.html('<a href="./sensor.html?id=' + sensor._id + '">' + sensor.name + '</a>');
         chartDescription.text(sensor.description);
         chartValue.text(sensor.pm25Index);
-        chartLatestUpdate.text(sensor.latestUpdate);
+        chartLatestUpdate.text(new Date(sensor.latestUpdate).toString());
         dataChartContainer.classList.remove('hide');
 
         if (fakeDataMode) {
