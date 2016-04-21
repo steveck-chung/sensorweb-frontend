@@ -4,7 +4,7 @@
   });
 
   const SENSOR_LIST_MARKUP = '<a href="sensor.html?id=${_id}" class="collection-item">${name}<button id="edit-device" class="waves-effect waves-light btn-large btn-control right" href="sensor-setup.html?userId=evanxd"><i class="material-icons left">mode_edit</i><span>Edit</span></button></a>';
-  const PROJECT_LIST_MARKUP = '<div class="col s6 m3"><a href="project-detail.html?id=${id}"><div class="card"><div class="card-image"></div></div><p class="center-align">${name}</p></a></div>';
+  const PROJECT_LIST_MARKUP = '<div class="col s6 m3"><a href="project.html?id=${id}"><div class="card"><div class="card-image"></div></div><p class="center-align">${name}</p></a></div>';
   const fakeDataMode = false;
   var userId;
 
