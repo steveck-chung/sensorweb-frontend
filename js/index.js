@@ -88,7 +88,7 @@
       dataType: 'jsonp'
     })
     .done(function() {
-      window.location = 'user-detail.html?userId=' + userId;
+      window.location = 'user.html?userId=' + userId;
     })
     .fail(function(err) {
       console.error(err)
