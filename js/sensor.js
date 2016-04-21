@@ -1,4 +1,6 @@
 (function(exports){
+  const CHART_FORMAT = 'LLL';
+
   $(document).ready(function(){
     $('.modal-trigger').leanModal();
   });
@@ -25,7 +27,7 @@
     latestSensorData = {
       name: "Mozilla Taiwan",
       description: "Mozilla Taiwan Taipei office",
-      latestUpdate: moment().format(),
+      latestUpdate: moment().format(CHART_FORMAT),
       pm25Index: Math.random() * 100
     }
 
@@ -118,7 +120,7 @@
         '<div id="bodyContent">'+
           '<p id="info-description">' + sensor.description + '</p>'+
           '<p>PM2.5: <span id="info-pm25-index">' + sensor.pm25Index + '</span></p>'+
-          '<p>Last Update: <span id="info-last-update">' + new Date(sensor.latestUpdate).toString() + '</span></p>'+
+          '<p>Last Update: <span id="info-last-update">' + moment(sensor.latestUpdate).format(CHART_FORMAT) + '</span></p>'+
         '</div>'+
       '</div>';
     infowindow.setContent(newContent);
@@ -166,7 +168,7 @@
     			 pointBorderWidth: 1,
           fill: false,
           data: dataArray.map(function(d) {
-            return { x: moment(d.datetime).format(), y: d.pm25Index };
+            return { x: moment(d.datetime).format(CHART_FORMAT), y: d.pm25Index };
           })
         }]
       },
@@ -206,7 +208,7 @@
     sensorNameElm.text(sensor.name);
     sensorIdElm.text(sensor._id);
     sensorDescriptionElm.text(sensor.description);
-    latestUpdateElm.text(sensor.latestUpdate);
+    latestUpdateElm.text(moment(sensor.latestUpdate).fromNow());
     pm25Elm.text(sensor.pm25Index);
     latestSensorData = sensor;
 
@@ -247,19 +249,19 @@
       var sensor = sensors[0];
       if (sensor.latestUpdate !== undefined &&
           sensor.pm25Index !== undefined) {
-        latestUpdateElm.text(sensor.latestUpdate);
+        latestUpdateElm.text(moment(sensor.latestUpdate).fromNow());
         pm25Elm.text(sensor.pm25Index);
 
         latestSensorData = sensor;
         updateInfo(sensor);
 
-        var formattedDate = moment(sensor.latestUpdate).format();
+        var formattedDate = moment(sensor.latestUpdate).format(CHART_FORMAT);
         if (!dataChart) {
           var ctx = $("#sensor-data-chart").get(0).getContext("2d");
           dataChart = new Chart(ctx, dataConvertion([sensor]));
         } else if (formattedDate > dataChart.data.datasets[0].data[0].x) {
           dataChart.data.datasets[0].data.unshift({
-            x: moment(sensor.latestUpdate).format(),
+            x: moment(sensor.latestUpdate).format(CHART_FORMAT),
             y: sensor.pm25Index
           });
           dataChart.update();
