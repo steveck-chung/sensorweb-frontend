@@ -4,8 +4,8 @@
   });
 
   const fakeDataMode = false;
-  const CHART_FORMAT = '';
-  const CONTRIBUTOR_MARKUP ='<div class="col s6 m3 l2"><div class="card"><div class="card-image"><img src="https://avatars3.githubusercontent.com/u/3013038?v=3&s=460"><span class="card-title">${name}</span></div></div></div>';
+  const CHART_FORMAT = 'LLL';
+  const CONTRIBUTOR_MARKUP ='<div class="col s6 m3 l2"><div class="card"><a href="user-detail.html?userId=${id}"><div class="card-image"><img src="https://avatars3.githubusercontent.com/u/3013038?v=3&s=460"><span class="card-title">${name}</span></div></a></div></div>';
 
   var projectId = $.url().param('id');
   var latestSensors;
@@ -106,7 +106,7 @@
           label: "PM2.5 value",
     			 pointBorderWidth: .2,
           fill: false,
-          data: dataArray.slice(dataArray.length-30,dataArray.length).map(function(d) {
+          data: dataArray.map(function(d) {
             return { x: moment(d.datetime).format(CHART_FORMAT), y: d.pm25Index };
           })
         }]
@@ -157,7 +157,7 @@
         chartName.html('<a href="./sensor.html?id=' + sensor._id + '">' + sensor.name + '</a>');
         chartDescription.text(sensor.description);
         chartValue.text(sensor.pm25Index);
-        chartLatestUpdate.text(new Date(sensor.latestUpdate).toString());
+        chartLatestUpdate.text(moment(sensor.latestUpdate).fromNow());
         dataChartContainer.classList.remove('hide');
 
         if (fakeDataMode) {
@@ -249,7 +249,7 @@
     $('#pm25 .description').text(project.description);
     $('#pm25 .creator').text(project.creator.name);
     // $('#pm25 .last-update').text(project.detail);
-    $('#pm25 .created-date').text(project.createDate);
+    $('#pm25 .created-date').text(moment(project.createDate).format('LL'));
   })
   .fail(function(error) {
     console.error(error);
