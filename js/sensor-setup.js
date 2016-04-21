@@ -108,7 +108,7 @@
         // TOOD: Please add the google token here.
         token: 'Google token'
       },
-      dataType: 'jsonp'
+      dataType: 'json'
     })
     .done(function(result) {
       if (result.result === 'success') {
