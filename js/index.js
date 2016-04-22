@@ -3,13 +3,20 @@
   $('.modal-trigger').leanModal();
   $('select').material_select();
 
-  $('#learn').click(function(e){
+  $('#apply-btn').click(function(e){
     e.preventDefault();
     $('html, body').animate({
-          scrollTop: $("#what").offset().top - 64,
-          easing: "easeout"
-      }, 700);
-      return false;
+         scrollTop: $("#apply").offset().top,
+         easing: "easeout"
+     }, 700);
+     return false;
+  });
+
+  $('#learn').click(function(e){
+    // e.preventDefault();
+    var ytplayer = document.getElementById('ytplayer');
+    ytplayer.src = 'http://www.youtube.com/embed/AnktUkZOIPQ?autoplay=1';
+    // return false;
   });
 
   $('#subscribe').click(function(e){

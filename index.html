@@ -47,6 +47,7 @@
           <li><a href="about.html">About</a></li>
           <!-- Dropdown Trigger -->
           <!-- <li><a class="dropdown-button" href="#!" data-activates="dropdown">EN<i id="arrow" class="material-icons right">arrow_drop_down</i></a></li> -->
+          <li class="login"><a id="apply-btn">Apply account</a></li>
         </ul>
 
         <ul id="nav-mobile" class="side-nav">
@@ -66,8 +67,11 @@
       <div class="container">
         <div class="row center valign">
           <h2 class="light">Open Data Platform for IoT</h2>
-          <h5 id="tagline">Sharing IoT data to solve real world problems</br></br></h5>
-          <!-- <a href="#what" id="learn" class="waves-effect waves-light btn-large">Learn More</a> -->
+          <h5 id="tagline" class="light">Sharing IoT data to solve real world problems</br></br></h5>
+          <a href="#play-video-modal" id="learn" class="waves-effect waves-light btn-large modal-trigger">
+            <i class="material-icons" style="vertical-align: middle; margin-right: 0.5rem">play_circle_outline</i>Learn More
+          </a>
+          <!-- <a href="#apply-modal" id="apply-btn" class="waves-effect waves-light btn-large modal-trigger">Apply for an account!</a> -->
         </div>
       </div>
     </div>
@@ -218,17 +222,40 @@
       </div>
     </div>
 
-    <div class="fullscreen">
+    <div class="fullscreen" id="apply">
       <div class="container projects">
         <div class="section">
           <div class="row">
             <div class="col s12 l8 offset-l2">
-              <h3 class="center-align">Other Project Ideas</h3>
+              <h3 class="center-align">Apply For New Account</h3>
               <p class="contents">
-                The Mozilla team believes SensorWeb is a model that can be used to solve diverse problems worldwide. Please let us know if you have  ideas or are experiencing a problem that you believe can be solved by using sensors to monitor an environment and publishing that data for public access.</br></br>
+                Apply for the new account for contributing SensorWeb project!</br></br>
               </p>
-              <div class="center">
-                <a href="#new-idea-fb-modal" class="waves-effect waves-light btn-large modal-trigger" style="width: auto;">I have an idea</a>
+              <div>
+                <form action="https://docs.google.com/forms/d/1jSbdyoRDw-jDPpsBalhSa_XnFCFDfawVREPCLnGe1hU/formResponse" method="POST" target="temp_iframe" onsubmit="accountSubmitted=true;">
+                <div class="col s12 l8 errorbox-good" role="listitem">
+                <div dir="auto" class="ss-item ss-item-required ss-text"><div class="ss-form-entry">
+                <label class="ss-q-item-label" for="entry_2006062248"><div class="ss-q-title">Email
+                <label for="itemView.getDomIdToLabel()" aria-label="(Required field)"></label></div>
+                <div class="ss-q-help ss-secondary-text" dir="auto"></div></label>
+                <input name="entry.2006062248" value="" class="projects-input" id="entry_2006062248" dir="auto" aria-label="Email  Must be a valid email address" aria-required="true" required="" title="Must be a valid email address" type="email">
+                </div></div></div>
+                <div class="col s12 l8 errorbox-good" role="listitem">
+                <div dir="auto" class="ss-item ss-item-required ss-text"><div class="ss-form-entry">
+                <label class="ss-q-item-label" for="entry_810691646"><div class="ss-q-title">Preferred ID
+                <label for="itemView.getDomIdToLabel()" aria-label="(Required field)"></label></div>
+                <div class="ss-q-help ss-secondary-text" dir="auto"></div></label>
+                <input name="entry.810691646" value="" class="projects-input" id="entry_810691646" dir="auto" aria-label="Preferred ID  Must match pattern" aria-required="true" required="" pattern="^[a-zA-Z][a-zA-Z0-9\-]{2,}" title="Must match pattern" type="text">
+                </div></div></div>
+                <input name="draftResponse" value="[,,&quot;129847443024416&quot;]
+                " type="hidden">
+                <input name="pageHistory" value="0" type="hidden">
+
+                <input name="fbzx" value="129847443024416" type="hidden">
+
+                <div class="form-submit center">
+                <input name="submit" value="Submit" id="accout-submit" class="waves-effect waves-light btn-large" type="submit">
+                </div></form>
               </div>
             </div>
           </div>
@@ -330,9 +357,39 @@
       </div>
     </div>
 
+    <div id="apply-modal" class="modal">
+      <div class="modal-content">
+        <form action="https://docs.google.com/forms/d/1jSbdyoRDw-jDPpsBalhSa_XnFCFDfawVREPCLnGe1hU/formResponse" method="POST" target="temp_iframe" onsubmit="accountSubmitted=true;">
+        <div class="ss-form-question errorbox-good" role="listitem">
+        <div dir="auto" class="ss-item ss-item-required ss-text"><div class="ss-form-entry">
+        <label class="ss-q-item-label" for="entry_2006062248"><div class="ss-q-title">Email
+        <label for="itemView.getDomIdToLabel()" aria-label="(Required field)"></label></div>
+        <div class="ss-q-help ss-secondary-text" dir="auto"></div></label>
+        <input name="entry.2006062248" value="" class="projects-input" id="entry_2006062248" dir="auto" aria-label="Email  Must be a valid email address" aria-required="true" required="" title="Must be a valid email address" type="email">
+        </div></div></div>
+        <div class="ss-form-question errorbox-good" role="listitem">
+        <div dir="auto" class="ss-item ss-item-required ss-text"><div class="ss-form-entry">
+        <label class="ss-q-item-label" for="entry_810691646"><div class="ss-q-title">Preferred ID
+        <label for="itemView.getDomIdToLabel()" aria-label="(Required field)"></label></div>
+        <div class="ss-q-help ss-secondary-text" dir="auto"></div></label>
+        <input name="entry.810691646" value="" class="projects-input" id="entry_810691646" dir="auto" aria-label="Preferred ID  Must match pattern" aria-required="true" required="" pattern="^[a-zA-Z][a-zA-Z0-9\-]{2,}" title="Must match pattern" type="text">
+        </div></div></div>
+        <input name="draftResponse" value="[,,&quot;129847443024416&quot;]
+        " type="hidden">
+        <input name="pageHistory" value="0" type="hidden">
+
+        <input name="fbzx" value="129847443024416" type="hidden">
+
+        <div class="form-submit center">
+        <input name="submit" value="Submit" id="accout-submit" class="waves-effect waves-light btn-large" type="submit">
+        </div></form>
+      </div>
+    </div>
+
     <script type="text/javascript">
       var pm25Submitted=false;
       var otherSubmitted=false;
+      var accountSubmitted=false;
     </script>
     <iframe name="temp_iframe" id="temp_iframe"
     style="display:none;" onload=
@@ -342,6 +399,9 @@
     if (otherSubmitted) {
       $('#new-idea-fb-modal').closeModal();
     }
+    if (accountSubmitted) {
+      $('#apply-modal').closeModal();
+    }
     ">
     </iframe>
 
@@ -350,6 +410,13 @@
 
 
   <!-- Modal Structure -->
+  <div id="play-video-modal" class="modal" style="width: 1024; height: 768; overflow: hidden">
+    <div class="modal-content">
+      <iframe id="ytplayer" width="1024" height="768" type="text/html" frameborder="0">
+      </iframe>
+    </div>
+  </div>
+
   <div id="index-thx-modal" class="modal">
     <div class="modal-content">
       <h4>Thank You For Subscribing</h4>

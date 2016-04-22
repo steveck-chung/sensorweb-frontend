@@ -42,3 +42,7 @@
   height: 100%;
   width:100%;
 }
+
+#apply-btn {
+  margin-top: 2rem;
+}

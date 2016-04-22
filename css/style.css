@@ -47,7 +47,7 @@ nav li a{
   font-size: 1.5em !important;
   font-weight: 500;
   font-style: italic;
-  letter-spacing: 1.2px; 
+  letter-spacing: 1.2px;
   overflow: hidden;
   width: 220px;
   margin-top: 18px;
@@ -178,7 +178,7 @@ a.white-text:hover {
 
 .btn-large {
   height: 55px;
-  width: 160px;
+  min-width: 160px;
   text-align: center;
   border-radius: 55px !important;
   text-transform: capitalize;
