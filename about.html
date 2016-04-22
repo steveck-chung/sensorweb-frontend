@@ -182,6 +182,19 @@
     </div>
   </div> -->
 
+  <!-- Modal Structure -->
+  <div id="google-sign-in-modal" class="modal">
+    <div class="modal-content">
+      <h4>Login to your account</h4>
+      <p>Please give us your preferred ID and sign in with google account</p>
+      <div class="input-field">
+        <input id="user-id" type="text" class="validate" aria-required="true" required="">
+        <label for="user-id">User ID</label>
+      </div>
+      <div class="g-signin2 center" data-onsuccess="onSignIn"></div>
+    </div>
+  </div>
+
   <!-- Footer -->
   <footer class="page-footer teal">
     <div class="container">
@@ -219,9 +232,12 @@
   </footer>
 
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script src="https://apis.google.com/js/client.js"></script>
   <script src="js/materialize.min.js"></script>
   <script src="js/init.js"></script>
-  <script src="js/index.js"></script>
+  <script src="js/auth-utils.js"></script>
+  <script src="js/about.js"></script>
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
