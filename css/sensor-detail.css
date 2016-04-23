@@ -11,3 +11,19 @@
 	font-size: 1.4em;
 	margin-bottom: 0px;
 }
+
+#info-pm25-index[data-status="low"] {
+  color: green;
+}
+
+#info-pm25-index[data-status="moderate"] {
+  color: yellow;
+}
+
+#info-pm25-index[data-status="high"] {
+  color: red;
+}
+
+#info-pm25-index[data-status="extreme"] {
+  color: purple;
+}

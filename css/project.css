@@ -32,6 +32,22 @@
   color: #1CBCAD;
 }
 
+#sensor-information [data-status="low"] {
+  color: green;
+}
+
+#sensor-information [data-status="moderate"] {
+  color: yellow;
+}
+
+#sensor-information [data-status="high"] {
+  color: red;
+}
+
+#sensor-information [data-status="extreme"] {
+  color: purple;
+}
+
 
 #sensor-chart {
   padding: 2em;

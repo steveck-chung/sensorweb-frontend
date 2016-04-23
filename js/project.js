@@ -6,6 +6,24 @@
   const fakeDataMode = false;
   const CHART_FORMAT = 'LLL';
   const CONTRIBUTOR_MARKUP ='<div class="col s6 m3 l2"><div class="card"><a href="user.html?userId=${id}"><div class="card-image"><img src="https://avatars3.githubusercontent.com/u/3013038?v=3&s=460"><span class="card-title">${name}</span></div></a></div></div>';
+  const DQAI = {
+    low: {
+      iconURL: 'images/green_flag.png',
+      banding: 'Low'
+    },
+    moderate: {
+      iconURL: 'images/yellow_flag.png',
+      banding: 'Moderate'
+    },
+    high: {
+      iconURL: 'images/red_flag.png',
+      banding: 'High'
+    },
+    extreme: {
+      iconURL: 'images/purple_flag.png',
+      banding: 'Very High'
+    }
+  };
 
   var projectId = $.url().param('id');
   var latestSensors;
@@ -28,14 +46,28 @@
     dataChart && dataChart.destroy();
   });
 
+  function DQAIStatus(index) {
+    if (index <= 35) {
+      return 'low';
+    } else if (index <= 53) {
+      return 'moderate';
+    } else if (index <= 70) {
+      return 'high';
+    } else {
+      return 'extreme';
+    }
+  }
+
   function dataConvertion(dataArray) {
     var config = {
       type: 'line',
       data: {
         datasets: [{
           label: "PM2.5 value",
-    			 pointBorderWidth: .2,
-          fill: false,
+          pointBorderWidth: 0,
+          pointHoverRadius: 4,
+          pointHoverBackgroundColor: 'grey',
+          fill: true,
           data: dataArray.map(function(d) {
             return { x: moment(d.datetime).format(CHART_FORMAT), y: d.pm25Index };
           })
@@ -43,6 +75,18 @@
       },
       options: {
         responsive: true,
+        hover: {
+          animationDuration: 0
+        },
+        elements: {
+          line: {
+            borderWidth: 2
+          },
+          point: {
+            radius: 2,
+            borderWidth: 2
+          }
+        },
         scales: {
           xAxes: [{
             type: "time",
@@ -80,13 +124,15 @@
         position: { lat: Number(coords.lat), lng: Number(coords.lng) },
         map: gMap,
         title: sensor.name,
-        zIndex: index + 1
+        zIndex: index + 1,
+        icon: DQAI[DQAIStatus(index)].iconURL
       });
 
       gMapMarker.addListener('click', function() {
         chartName.html('<a href="./sensor.html?id=' + sensor._id + '">' + sensor.name + '</a>');
         chartDescription.text(sensor.description);
         chartValue.text(sensor.pm25Index);
+        chartValue.attr('data-status', DQAIStatus(sensor.pm25Index));
         chartLatestUpdate.text(moment(sensor.latestUpdate).fromNow());
         dataChartContainer.classList.remove('hide');
 
