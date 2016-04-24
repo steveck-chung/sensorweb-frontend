@@ -251,11 +251,14 @@
   .done(function(sensors) {
     var sensor = sensors[0];
     var sensorNameElm = $('#sensor-name');
-    var sensorIdElm = $('#sensor-id')
+    var sensorIdElm = $('#sensor-id');
+    var sensorOwner = $('#sensor-owner');
     var sensorDescriptionElm = $('#sensor-description');
     sensorNameElm.text(sensor.name);
     sensorIdElm.text(sensor._id);
     sensorDescriptionElm.text(sensor.description);
+    sensorOwner.html('<a href="user.html?userId=' + sensor.userId +
+      '">' + sensor.userId + '</a>');
     latestUpdateElm.text(moment(sensor.latestUpdate).fromNow());
     pm25Elm.text(sensor.pm25Index);
     latestSensorData = sensor;
