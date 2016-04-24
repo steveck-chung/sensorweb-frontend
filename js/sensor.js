@@ -257,7 +257,7 @@
     sensorNameElm.text(sensor.name);
     sensorIdElm.text(sensor._id);
     sensorDescriptionElm.text(sensor.description);
-    sensorOwner.html('<a href="user.html?userId=' + sensor.userId +
+    sensorOwner.html('<a href="user.html?id=' + sensor.userId +
       '">' + sensor.userId + '</a>');
     latestUpdateElm.text(moment(sensor.latestUpdate).fromNow());
     pm25Elm.text(sensor.pm25Index);

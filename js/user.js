@@ -9,8 +9,8 @@
   var userId;
 
   function init() {
-    userId = $.url().param('userId');
-    $('#add-device').attr('href', 'sensor-setup.html?userId=' + userId);
+    userId = $.url().param('id');
+    $('#add-device').attr('href', 'sensor-setup.html?id=' + userId);
   }
 
   function renderSensorList(sensors) {

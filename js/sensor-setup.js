@@ -7,7 +7,7 @@
   const API_KEY = '&key=AIzaSyAWlJoUn2DS8XUYilLXZE8dxYEXbo6dnaE';
   const TOAST_DUR = 4000;
 
-  var userId = $.url().param('userId');
+  var userId = $.url().param('id');
   var sensorName = $('#sensor-name');
   var sensorLocation = $('#sensor-location');
   var sensorDescription = $('#sensor-description');
@@ -42,7 +42,7 @@
     })
     .done(function(result) {
       if (result.result === 'success') {
-        window.location = './user.html?userId=' + userId;
+        window.location = './user.html?id=' + userId;
       } else {
         alert(result.message);
       }
