@@ -1,0 +1,108 @@
+
+#app-navbar {
+  height: 75px;
+}
+
+#sensors-location-map {
+  width: 100%;
+}
+
+#sensor-data-chart-container {
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+#sensor-information {
+  padding: 2em 0;
+}
+
+#sensor-information a {
+  color: #87D9D1;
+}
+
+#sensor-information a:hover {
+  color: #1CBCAD;
+}
+
+#sensor-information [data-status="low"] {
+  color: green;
+}
+
+#sensor-information [data-status="moderate"] {
+  color: yellow;
+}
+
+#sensor-information [data-status="high"] {
+  color: red;
+}
+
+#sensor-information [data-status="extreme"] {
+  color: purple;
+}
+
+
+#sensor-chart {
+  padding: 2em;
+}
+
+#map-container {
+  position: relative;
+}
+
+#chart-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 35px;
+  padding: 0px;
+  box-shadow: none;
+}
+
+#sensor-data-chart-container,
+#sensors-location-map,
+#map-container {
+  height: 100%;
+}
+
+.fullscreen {
+  height: calc(100% - 75px);
+}
+
+#chart-close-btn:hover{
+  background-color: #20BBAD !important;
+}
+
+.pm25-value {
+  margin-bottom: 1rem;
+}
+
+.pm25-value > * {
+  display: inline;
+}
+
+.description-container {
+  background-color: lightgrey;
+  padding: 0.5rem 2rem;
+}
+
+.description-container .info-icon,
+.description-container .update-time-icon {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.description-container .info-icon {
+  background-image: url("../images/info.png");
+}
+
+.description-container .update-time-icon {
+  background-image: url("../images/update-time.png");
+}
