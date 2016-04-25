@@ -5215,8 +5215,9 @@ a.waves-effect .waves-ripple {
   right: 0;
   background-color: #fafafa;
   padding: 0;
-  max-height: 70%;
+  max-height: 300px;
   width: 55%;
+  min-width: 400px;
   margin: auto;
   overflow-y: auto;
   border-radius: 2px;

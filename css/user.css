@@ -64,4 +64,5 @@ a.collection-item:hover {
 
 .collection-item.title{
 	color: #979797 !important;
+	list-style: none;
 }
