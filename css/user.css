@@ -47,13 +47,6 @@
 	background-color: #3990B2;
 }
 
-#edit-device.btn-control i{
-	left: 30px !important;
-}
-#edit-device.btn-control span{
-	left: 55px !important;
-}
-
 .collection-item {
 	line-height: 36px !important;
 	color: #333 !important;
