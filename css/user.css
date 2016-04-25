@@ -5,6 +5,11 @@
   background-position: center;
 }
 
+#user-projects .card {
+	border-radius: 4px;
+	overflow: hidden;
+}
+
 #sensor-list .title {
   line-height: 36px;
 }
