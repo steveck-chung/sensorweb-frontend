@@ -39,6 +39,7 @@
 }
 
 #add-device {
+	display: none;
 	background-color: #5BA4C7;
 }
 
