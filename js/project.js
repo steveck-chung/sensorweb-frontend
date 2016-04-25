@@ -69,7 +69,9 @@
           pointHoverBackgroundColor: 'grey',
           fill: true,
           data: dataArray.map(function(d) {
-            return { x: moment(d.datetime).format(CHART_FORMAT), y: d.pm25Index };
+            return { x: moment(d.datetime).format(CHART_FORMAT),
+                     // FIXME: Remove `pm25Index`.
+                     y: d.pm25Index || d.data.pm25 };
           })
         }]
       },
