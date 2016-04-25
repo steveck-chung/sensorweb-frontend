@@ -82,7 +82,7 @@
           '<p id="info-description">' + sensor.description + '</p>'+
           '<p>PM2.5: <span id="info-pm25-index" data-status="' +
           status +'">' + sensor.pm25Index + '</span>' +
-          '<span> ( <a href="https://uk-air.defra.gov.uk/air-pollution/daqi" target="_blank">' +
+          '<span> ( <a href="https://uk-air.defra.gov.uk/air-pollution/daqi?view=more-info&pollutant=pm25#pollutant" target="_blank">' +
           DQAI[status].banding + '</a> )</span></p>' +
           '<p>Last Update: <span id="info-last-update">' + moment(sensor.latestUpdate).format(CHART_FORMAT) + '</span></p>'+
         '</div>'+
