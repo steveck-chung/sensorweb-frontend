@@ -5,7 +5,7 @@
 
   const fakeDataMode = false;
   const CHART_FORMAT = 'LLL';
-  const CONTRIBUTOR_MARKUP ='<div class="col s6 m3 l2"><div class="card"><a href="user.html?id=${id}"><div class="card-image"><img src="https://avatars3.githubusercontent.com/u/3013038?v=3&s=460"></div></div></a><p class="center-align">${name}</p></div>';
+  const CONTRIBUTOR_MARKUP ='<div class="col s6 m3 l2"><div class="card"><a href="user.html?id=${userId}"><div class="card-image"><img src="${picture}"></div></div></a><p class="center-align">${name}</p></div>';
   const DQAI = {
     low: {
       iconURL: 'images/green_flag.png',
