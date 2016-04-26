@@ -11,7 +11,7 @@ Welcome to file bugs and fix them. The bug list is [here](https://bugzilla.mozil
 
 ## Visual Designer
 * [Peko Chen](mailto:pchen@mozilla.com)
-* 
+
 ## Website Photo Sources:
 * City photo: http://finda.photo/image/11877
 * Air Pollution photo: http://www.channelpartner.de/a/einmal-giftcocktail-bitte-geschuettelt-oder-geruehrt%2C289499
