@@ -3,7 +3,6 @@
     $('.modal-trigger').leanModal();
   });
 
-  const fakeDataMode = false;
   const CHART_FORMAT = 'LLL';
   const DQAI = {
     low: {
@@ -137,19 +136,6 @@
         chartLatestUpdate.text(moment(sensor.latestUpdate).fromNow());
         dataChartContainer.classList.remove('hide');
 
-        if (fakeDataMode) {
-          var fakeArray = [];
-          for (var i=100; i>0; i--) {
-            fakeArray.push({
-              datetime: Date.now() - i * 60000,
-              pm25Index: Math.random() * 100
-            })
-          }
-          dataChart = new Chart(ctx, dataConvertion(fakeArray));
-          // $('#sensor-information').height($('#sensor-chart').height());
-          return;
-        }
-
         $.ajax({
           url: API_URL + 'sensors/' + sensor._id + '/data',
           dataType: 'jsonp'
@@ -172,12 +158,8 @@
   }
 
   function initMap() {
-    // mapAPIReady = true;
-    //
-    // if (!latestSensorData) {
-    //   return;
-    // }
-    // TODO: var location = latestSensorData.location;
+    console.log('Initialize google map...');
+
     var location = {lat: 25.032506, lng: 121.5674536};
 
     gMap = new google.maps.Map(document.getElementById('sensors-location-map'), {
@@ -185,35 +167,6 @@
       center: location,
       scrollwheel: false
     });
-
-    if (fakeDataMode) {
-      latestSensors = [
-        {
-          id: 1,
-          name: 'Test 1',
-          description: 'Test 1\'s data',
-          location: {lat: 25.032506, lng: 121.5674536},
-          pm25Index: Math.random()*100,
-          latestUpdate: Date.now()
-        },
-        {
-          id: 2,
-          name: 'Test 2',
-          description: 'Test 2\'s data',
-          location: {lat: 25.0, lng: 121.6674536},
-          pm25Index: Math.random()*100,
-          latestUpdate: Date.now()
-        },
-        {
-          id: 3,
-          name: 'Test 3',
-          description: 'Test 3\'s data',
-          location: {lat: 25.05, lng: 121.5},
-          pm25Index: Math.random()*100,
-          latestUpdate: Date.now()
-        }
-      ];
-    }
 
     updateMap(latestSensors);
   }
@@ -233,10 +186,10 @@
       });
       gMap.setCenter(pos);
     }, function() {
-      handleLocationError(true, infoWindow, map.getCenter());
+      console.error('Browser unable to get current location');
     });
   } else {
-    console.log('Browser doesn\'t support Geolocation');
+    console.error('Browser doesn\'t support Geolocation');
   }
 
   // Fetch project detail, should set project ID as parameter
