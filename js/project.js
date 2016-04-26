@@ -116,6 +116,8 @@
       return;
     }
 
+    var bound = new google.maps.LatLngBounds();
+
     sensors.forEach(function(sensor, index) {
       if (markerMap.has(sensor._id)) {
         return;
@@ -127,8 +129,10 @@
         map: gMap,
         title: sensor.name,
         zIndex: index + 1,
-        icon: DQAI[DQAIStatus(index)].iconURL
+        icon: DQAI[DQAIStatus(sensor.pm25Index)].iconURL
       });
+
+      bound.extend( new google.maps.LatLng(Number(coords.lat), Number(coords.lng)) );
 
       gMapMarker.addListener('click', function() {
         chartName.html('<a href="./sensor.html?id=' + sensor._id + '">' + sensor.name + '</a>');
@@ -166,6 +170,8 @@
 
       markerMap.set(sensor._id, gMapMarker);
     });
+
+    gMap.setCenter(bound.getCenter());
   }
 
   function renderContributorList(contributors) {
@@ -182,7 +188,7 @@
     var location = {lat: 25.032506, lng: 121.5674536};
 
     gMap = new google.maps.Map(document.getElementById('sensors-location-map'), {
-      zoom: 14,
+      zoom: 11,  // TODO: Find a better way to define the zoom scale
       center: location,
       scrollwheel: false
     });
