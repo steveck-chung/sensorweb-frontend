@@ -68,7 +68,9 @@
           pointHoverBackgroundColor: 'grey',
           fill: true,
           data: dataArray.map(function(d) {
-            return { x: moment(d.datetime).format(CHART_FORMAT), y: d.pm25Index };
+            return { x: moment(d.datetime).format(CHART_FORMAT),
+                     // FIXME: Remove `pm25Index`.
+                     y: d.pm25Index || d.data.pm25 };
           })
         }]
       },
@@ -124,7 +126,7 @@
         map: gMap,
         title: sensor.name,
         zIndex: index + 1,
-        icon: DQAI[DQAIStatus(index)].iconURL
+        icon: DQAI[DQAIStatus(sensor.pm25Index)].iconURL
       });
 
       gMapMarker.addListener('click', function() {
@@ -154,7 +156,11 @@
         })
         .done(function(dataArray) {
           //Only render 60 sensor data for mobile view
-          dataChart = new Chart(ctx, dataConvertion(dataArray.slice(0, 60)));
+          dataChart = new Chart(ctx, dataConvertion(
+            dataArray.filter(function(data, index) {
+              return index % 60 === 0;
+            })
+          ));
         })
         .fail(function(error) {
           console.error(error);
