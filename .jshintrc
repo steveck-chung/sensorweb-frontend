@@ -1,5 +1,17 @@
 {
-  "globalstrict": true,
   "browser": true,
-  "maxlen": 80
+  "devel": true,
+  "esnext": true,
+  "globalstrict": true,
+  "maxlen": 80,
+
+  "globals": {
+      "$": false,
+      "API_URL": false,
+      "Chart": false,
+      "gapi": false,
+      "google": false,
+      "Materialize": false,
+      "moment": false
+  }
 }

@@ -1,11 +1,16 @@
+'use strict';
+
 (function(exports){
   $(document).ready(function(){
     $('.modal-trigger').leanModal();
   });
 
-  const SENSOR_LIST_MARKUP = '<a href="sensor.html?id=${_id}" class="collection-item">${name}</a>';
-  const PROJECT_LIST_MARKUP = '<div class="col s6 m3"><a href="project.html?id=${id}"><div class="card"><div class="card-image"></div></div><p class="center-align">${name}</p></a></div>';
-  const fakeDataMode = false;
+  const SENSOR_LIST_MARKUP =
+    '<a href="sensor.html?id=${_id}" class="collection-item">${name}</a>';
+  const PROJECT_LIST_MARKUP =
+    '<div class="col s6 m3"><a href="project.html?id=${id}">' +
+    '<div class="card"><div class="card-image"></div></div>' +
+    '<p class="center-align">${name}</p></a></div>';
   var userId;
 
   function init() {
@@ -19,23 +24,6 @@
 
   function renderProjectList(projects) {
     $.tmpl(PROJECT_LIST_MARKUP, projects).appendTo("#user-projects");
-  }
-
-  if (fakeDataMode) {
-    renderSensorList([
-      {
-        name: 'sensor1',
-        url: 'sensor-detail.html?id=1'
-      },
-      {
-        name: 'sensor2',
-        url: 'sensor-detail.html?id=2'
-      },
-      {
-        name: 'sensor3',
-        url: 'sensor-detail.html?id=3'
-      }
-    ]);
   }
 
   function fetchData() {

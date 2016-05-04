@@ -1,11 +1,15 @@
+'use strict';
+
 (function(exports){
   $(document).ready(function(){
     $('.modal-trigger').leanModal();
   });
 
-  const fakeDataMode = false;
   const CHART_FORMAT = 'LLL';
-  const CONTRIBUTOR_MARKUP ='<div class="col s6 m3 l2"><div class="card"><a href="user.html?id=${userId}"><div class="card-image"><img src="${picture}"></div></div></a><p class="center-align">${name}</p></div>';
+  const CONTRIBUTOR_MARKUP ='<div class="col s6 m3 l2"><div class="card">' +
+    '<a href="user.html?id=${userId}"><div class="card-image">' +
+    '<img src="${picture}"></div></div></a>' +
+    '<p class="center-align">${name}</p></div>';
   const DQAI = {
     low: {
       iconURL: 'images/green_flag.png',
@@ -33,7 +37,8 @@
 
   var ctx = $("#sensor-data-chart").get(0).getContext("2d");
 
-  var dataChartContainer = document.getElementById("sensor-data-chart-container");
+  var dataChartContainer =
+    document.getElementById("sensor-data-chart-container");
   var dataChart;
   var chartName = $('#sensor-information .name');
   var chartDescription = $('#sensor-information .description');
@@ -43,10 +48,12 @@
 
   chartCloseBtn.click(function () {
     dataChartContainer.classList.add('hide');
-    dataChart && dataChart.destroy();
+    if (dataChart) {
+      dataChart.destroy();
+    }
   });
 
-  function DQAIStatus(index) {
+  function getDQAIStatus(index) {
     if (index <= 35) {
       return 'low';
     } else if (index <= 53) {
@@ -129,32 +136,24 @@
         map: gMap,
         title: sensor.name,
         zIndex: index + 1,
-        icon: DQAI[DQAIStatus(sensor.pm25Index)].iconURL
+        icon: DQAI[getDQAIStatus(sensor.pm25Index)].iconURL
       });
 
-      bound.extend( new google.maps.LatLng(Number(coords.lat), Number(coords.lng)) );
+      bound.extend(
+        new google.maps.LatLng(Number(coords.lat), Number(coords.lng))
+      );
 
       gMapMarker.addListener('click', function() {
-        chartName.html('<a href="./sensor.html?id=' + sensor._id + '">' + sensor.name + '</a>');
+        chartName.html(
+          '<a href="./sensor.html?id=' + sensor._id + '">' +
+          sensor.name + '</a>'
+        );
         chartDescription.text(sensor.description);
         chartValue.text(sensor.pm25Index);
-        chartValue.attr('data-status', DQAIStatus(sensor.pm25Index));
+        chartValue.attr('data-status', getDQAIStatus(sensor.pm25Index));
         chartLatestUpdate.text(moment(sensor.latestUpdate).fromNow());
         dataChartContainer.classList.remove('hide');
         $('#sensor-details').attr('href',"./sensor.html?id=" + sensor._id);
-
-        if (fakeDataMode) {
-          var fakeArray = [];
-          for (var i=100; i>0; i--) {
-            fakeArray.push({
-              datetime: Date.now() - i * 60000,
-              pm25Index: Math.random() * 100
-            })
-          }
-          dataChart = new Chart(ctx, dataConvertion(fakeArray));
-          // $('#sensor-information').height($('#sensor-chart').height());
-          return;
-        }
 
         $.ajax({
           url: API_URL + 'sensors/' + sensor._id + '/data',
@@ -179,48 +178,13 @@
   }
 
   function initMap() {
-    // mapAPIReady = true;
-    //
-    // if (!latestSensorData) {
-    //   return;
-    // }
-    // TODO: var location = latestSensorData.location;
-    var location = {lat: 25.032506, lng: 121.5674536};
+    var mapElement = document.getElementById('sensors-location-map');
 
-    gMap = new google.maps.Map(document.getElementById('sensors-location-map'), {
+    gMap = new google.maps.Map(mapElement, {
       zoom: 11,  // TODO: Find a better way to define the zoom scale
-      center: location,
+      streetViewControl: false,
       scrollwheel: false
     });
-
-    if (fakeDataMode) {
-      latestSensors = [
-        {
-          id: 1,
-          name: 'Test 1',
-          description: 'Test 1\'s data',
-          location: {lat: 25.032506, lng: 121.5674536},
-          pm25Index: Math.random()*100,
-          latestUpdate: Date.now()
-        },
-        {
-          id: 2,
-          name: 'Test 2',
-          description: 'Test 2\'s data',
-          location: {lat: 25.0, lng: 121.6674536},
-          pm25Index: Math.random()*100,
-          latestUpdate: Date.now()
-        },
-        {
-          id: 3,
-          name: 'Test 3',
-          description: 'Test 3\'s data',
-          location: {lat: 25.05, lng: 121.5},
-          pm25Index: Math.random()*100,
-          latestUpdate: Date.now()
-        }
-      ];
-    }
 
     updateMap(latestSensors);
   }

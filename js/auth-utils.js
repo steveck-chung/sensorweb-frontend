@@ -1,3 +1,5 @@
+'use strict';
+
 (function(exports){
   const USER_URL = 'user.html?id=';
 
@@ -24,7 +26,7 @@
           accountBtn.attr('href', USER_URL + result.id);
         })
         .fail(function(err) {
-          console.error(err)
+          console.error(err);
         });
       } else {
         accountBtn.addClass('hide');
@@ -67,7 +69,7 @@
       window.location = USER_URL + userId;
     })
     .fail(function(err) {
-      console.error(err)
+      console.error(err);
     });
   }
 
