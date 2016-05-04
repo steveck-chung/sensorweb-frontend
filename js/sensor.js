@@ -1,3 +1,5 @@
+'use strict';
+
 (function(exports){
   const CHART_FORMAT = 'LLL';
   const DQAI = {
@@ -23,8 +25,6 @@
     $('.modal-trigger').leanModal();
   });
 
-  var fakeDataMode = false;
-
   var latestUpdateElm = $('#latest-update');
   var pm25Elm = $('#pm25');
   var sensorDataElm = $('#sensor-data');
@@ -41,27 +41,7 @@
   // Chart related
   var dataChart;
 
-  if (fakeDataMode) {
-    latestSensorData = {
-      name: "Mozilla Taiwan",
-      description: "Mozilla Taiwan Taipei office",
-      latestUpdate: moment().format(CHART_FORMAT),
-      pm25Index: Math.random() * 100
-    }
-
-    var ctx = $("#sensor-data-chart").get(0).getContext("2d");
-    var fakeArray = [];
-
-    for (var i=300; i>0; i--) {
-      fakeArray.push({
-        datetime: Date.now() - i * 60000,
-        pm25Index: Math.random() * 100
-      })
-    }
-    dataChart = new Chart(ctx, dataConvertion(fakeArray));
-  }
-
-  function DQAIStatus(index) {
+  function getDQAIStatus(index) {
     if (index <= 35) {
       return 'low';
     } else if (index <= 53) {
@@ -74,8 +54,9 @@
   }
 
   function updateInfo(sensor) {
-    var status = DQAIStatus(sensor.pm25Index);
+    var status = getDQAIStatus(sensor.pm25Index);
     var newContent =
+    /* jshint ignore:start */
       '<div id="map-infowindow">'+
         '<h5 id="info-title">' + sensor.name + '</h5>'+
         '<div id="bodyContent">'+
@@ -87,6 +68,7 @@
           '<p>Last Update: <span id="info-last-update">' + moment(sensor.latestUpdate).format(CHART_FORMAT) + '</span></p>'+
         '</div>'+
       '</div>';
+    /* jshint ignore:end */
     infowindow.setContent(newContent);
   }
 
@@ -104,6 +86,7 @@
 
     gMap = new google.maps.Map(document.getElementById('sensor-location-map'), {
       zoom: 16,
+      streetViewControl: false,
       center: location
     });
 
@@ -113,7 +96,7 @@
       position: location,
       map: gMap,
       title: latestSensorData.name,
-      icon: DQAI[DQAIStatus(index)].iconURL
+      icon: DQAI[getDQAIStatus(index)].iconURL
     });
 
     updateInfo(latestSensorData);
@@ -193,8 +176,15 @@
             // Set Text
             if (tooltip.body) {
               var innerHtml = [
-                (tooltip.beforeTitle || []).join('\n'), (tooltip.title || []).join('\n'), (tooltip.afterTitle || []).join('\n'), (tooltip.beforeBody || []).join('\n'), (tooltip.body || []).join('\n'), (tooltip.afterBody || []).join('\n'), (tooltip.beforeFooter || [])
-                .join('\n'), (tooltip.footer || []).join('\n'), (tooltip.afterFooter || []).join('\n')
+                (tooltip.beforeTitle || []).join('\n'),
+                (tooltip.title || []).join('\n'),
+                (tooltip.afterTitle || []).join('\n'),
+                (tooltip.beforeBody || []).join('\n'),
+                (tooltip.body || []).join('\n'),
+                (tooltip.afterBody || []).join('\n'),
+                (tooltip.beforeFooter || []).join('\n'),
+                (tooltip.footer || []).join('\n'),
+                (tooltip.afterFooter || []).join('\n')
               ];
               tooltipEl.html(innerHtml.join('\n'));
             }
@@ -283,7 +273,9 @@
       return;
     }
 
-    dataChart && dataChart.destroy();
+    if (dataChart) {
+      dataChart.destroy();
+    }
 
     var ctx = $("#sensor-data-chart").get(0).getContext("2d");
     dataChart = new Chart(ctx, dataConvertion(dataArray));
@@ -300,7 +292,7 @@
     })
     .done(function(sensors) {
       var sensor = sensors[0];
-      var status = DQAIStatus(sensor.pm25Index);
+      var status = getDQAIStatus(sensor.pm25Index);
       if (sensor.latestUpdate !== undefined &&
           sensor.pm25Index !== undefined) {
         latestUpdateElm.text(moment(sensor.latestUpdate).fromNow());

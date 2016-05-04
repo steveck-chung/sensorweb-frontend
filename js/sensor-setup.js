@@ -1,9 +1,12 @@
+'use strict';
+
 (function(exports){
   $(document).ready(function(){
     $('.modal-trigger').leanModal();
   });
 
-  const GEOCODE_URL = 'https://maps.googleapis.com/maps/api/geocode/json?address=';
+  const GEOCODE_URL =
+    'https://maps.googleapis.com/maps/api/geocode/json?address=';
   const API_KEY = '&key=AIzaSyAWlJoUn2DS8XUYilLXZE8dxYEXbo6dnaE';
   const TOAST_DUR = 4000;
 
@@ -48,7 +51,7 @@
       }
     })
     .fail(function(err) {
-      console.error(err)
+      console.error(err);
     });
   });
 

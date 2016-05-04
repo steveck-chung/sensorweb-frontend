@@ -1,3 +1,5 @@
+'use strict';
+
 (function(exports){
   $(document).ready(function(){
     $('.modal-trigger').leanModal();
@@ -31,7 +33,8 @@
 
   var ctx = $("#sensor-data-chart").get(0).getContext("2d");
 
-  var dataChartContainer = document.getElementById("sensor-data-chart-container");
+  var dataChartContainer =
+    document.getElementById("sensor-data-chart-container");
   var dataChart;
   var chartName = $('#sensor-information .name');
   var chartDescription = $('#sensor-information .description');
@@ -41,10 +44,12 @@
 
   chartCloseBtn.click(function () {
     dataChartContainer.classList.add('hide');
-    dataChart && dataChart.destroy();
+    if (dataChart) {
+      dataChart.destroy();
+    }
   });
 
-  function DQAIStatus(index) {
+  function getDQAIStatus(index) {
     if (index <= 35) {
       return 'low';
     } else if (index <= 53) {
@@ -125,14 +130,14 @@
         map: gMap,
         title: sensor.name,
         zIndex: index + 1,
-        icon: DQAI[DQAIStatus(sensor.pm25Index)].iconURL
+        icon: DQAI[getDQAIStatus(sensor.pm25Index)].iconURL
       });
 
       gMapMarker.addListener('click', function() {
         chartName.text(sensor.name);
         chartDescription.text(sensor.description);
         chartValue.text(sensor.pm25Index);
-        chartValue.attr('data-status', DQAIStatus(sensor.pm25Index));
+        chartValue.attr('data-status', getDQAIStatus(sensor.pm25Index));
         chartLatestUpdate.text(moment(sensor.latestUpdate).fromNow());
         dataChartContainer.classList.remove('hide');
 
@@ -162,9 +167,11 @@
 
     var location = {lat: 25.032506, lng: 121.5674536};
 
-    gMap = new google.maps.Map(document.getElementById('sensors-location-map'), {
+    gMap = new google.maps.Map(document.getElementById('sensors-location-map'),
+    {
       zoom: 14,
       center: location,
+      streetViewControl: false,
       scrollwheel: false
     });
 
@@ -178,7 +185,7 @@
         lng: position.coords.longitude
       };
 
-      gMapMarker = new google.maps.Marker({
+      var gMapMarker = new google.maps.Marker({
         position: pos,
         map: gMap,
         zIndex: -1,

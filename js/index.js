@@ -1,3 +1,5 @@
+'use strict';
+
 (function(exports){
   $('.button-collapse').sideNav();
   $('.modal-trigger').leanModal();
@@ -26,6 +28,7 @@
   });
 
   // XXX: A trick to enable the login feature.
+  /* jshint ignore:start */
   new Konami(function() {
     var auth = gapi.auth2.getAuthInstance();
 
@@ -42,11 +45,12 @@
         $('#account-btn').attr('href', 'user.html?id=' + result.userId);
       })
       .fail(function(err) {
-        console.error(err)
+        console.error(err);
       });
     } else {
       $('#nav').append('<li><a href="getting-started.html">Getting Started</a></li><li class="login"><a id="login-btn" href="#google-sign-in-modal" class="modal-trigger">Log In</a></li><li class="login"><a id="account-btn" class="hide">My account</a></li>');
     }
     $('#login-btn').leanModal();
   });
+  /* jshint ignore:end */
 })(window);
