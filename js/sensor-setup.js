@@ -64,7 +64,7 @@
 
     var formattedAddr = address.split(' ').join('+');
     $.ajax({
-      url: GEOCODE_URL + formattedAddr + API_KEY,
+      url: GEOCODE_URL + formattedAddr + API_KEY
     })
     .done(function(data) {
       if (!data.results[0]) {

@@ -1,6 +1,6 @@
 'use strict';
 
-(function(exports){
+(function(){
   $(document).ready(function(){
     $('.modal-trigger').leanModal();
   });
@@ -19,11 +19,11 @@
   }
 
   function renderSensorList(sensors) {
-    $.tmpl(SENSOR_LIST_MARKUP, sensors).appendTo("#sensor-list");
+    $.tmpl(SENSOR_LIST_MARKUP, sensors).appendTo('#sensor-list');
   }
 
   function renderProjectList(projects) {
-    $.tmpl(PROJECT_LIST_MARKUP, projects).appendTo("#user-projects");
+    $.tmpl(PROJECT_LIST_MARKUP, projects).appendTo('#user-projects');
   }
 
   function fetchData() {

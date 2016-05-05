@@ -6,35 +6,16 @@
   });
 
   const CHART_FORMAT = 'LLL';
-  const DQAI = {
-    low: {
-      iconURL: 'images/green_flag.png',
-      banding: 'Low'
-    },
-    moderate: {
-      iconURL: 'images/yellow_flag.png',
-      banding: 'Moderate'
-    },
-    high: {
-      iconURL: 'images/red_flag.png',
-      banding: 'High'
-    },
-    extreme: {
-      iconURL: 'images/purple_flag.png',
-      banding: 'Very High'
-    }
-  };
 
-  var projectId = $.url().param('id');
   var latestSensors;
 
   var gMap;
   var markerMap = new Map();
 
-  var ctx = $("#sensor-data-chart").get(0).getContext("2d");
+  var ctx = $('#sensor-data-chart').get(0).getContext('2d');
 
   var dataChartContainer =
-    document.getElementById("sensor-data-chart-container");
+    document.getElementById('sensor-data-chart-container');
   var dataChart;
   var chartName = $('#sensor-information .name');
   var chartDescription = $('#sensor-information .description');
@@ -49,24 +30,12 @@
     }
   });
 
-  function getDQAIStatus(index) {
-    if (index <= 35) {
-      return 'low';
-    } else if (index <= 53) {
-      return 'moderate';
-    } else if (index <= 70) {
-      return 'high';
-    } else {
-      return 'extreme';
-    }
-  }
-
   function dataConvertion(dataArray) {
     var config = {
       type: 'line',
       data: {
         datasets: [{
-          label: "PM2.5 value",
+          label: 'PM2.5 value',
           pointBorderWidth: 0,
           pointHoverRadius: 4,
           pointHoverBackgroundColor: 'grey',
@@ -94,13 +63,13 @@
         },
         scales: {
           xAxes: [{
-            type: "time",
+            type: 'time',
             display: true,
             scaleLabel: {
-              display: true,
+              display: true
               // labelString: 'Time'
             }
-          }, ],
+          }],
           yAxes: [{
             display: true,
             scaleLabel: {
@@ -130,14 +99,14 @@
         map: gMap,
         title: sensor.name,
         zIndex: index + 1,
-        icon: DQAI[getDQAIStatus(sensor.pm25Index)].iconURL
+        icon: DAQI[getDAQIStatus(sensor.pm25Index)].iconURL
       });
 
       gMapMarker.addListener('click', function() {
         chartName.text(sensor.name);
         chartDescription.text(sensor.description);
         chartValue.text(sensor.pm25Index);
-        chartValue.attr('data-status', getDQAIStatus(sensor.pm25Index));
+        chartValue.attr('data-status', getDAQIStatus(sensor.pm25Index));
         chartLatestUpdate.text(moment(sensor.latestUpdate).fromNow());
         dataChartContainer.classList.remove('hide');
 
@@ -168,12 +137,13 @@
     var location = {lat: 25.032506, lng: 121.5674536};
 
     gMap = new google.maps.Map(document.getElementById('sensors-location-map'),
-    {
-      zoom: 14,
-      center: location,
-      streetViewControl: false,
-      scrollwheel: false
-    });
+      {
+        zoom: 14,
+        center: location,
+        streetViewControl: false,
+        scrollwheel: false
+      }
+    );
 
     updateMap(latestSensors);
   }
@@ -188,10 +158,10 @@
       var gMapMarker = new google.maps.Marker({
         position: pos,
         map: gMap,
-        zIndex: -1,
-        icon: 'images/location.png'
+        zIndex: -1
       });
       gMap.setCenter(pos);
+      gMapMarker.setIcon('images/location.png');
     }, function() {
       console.error('Browser unable to get current location');
     });

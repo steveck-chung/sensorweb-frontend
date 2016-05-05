@@ -10,35 +10,19 @@
     '<a href="user.html?id=${userId}"><div class="card-image">' +
     '<img src="${picture}"></div></div></a>' +
     '<p class="center-align">${name}</p></div>';
-  const DQAI = {
-    low: {
-      iconURL: 'images/green_flag.png',
-      banding: 'Low'
-    },
-    moderate: {
-      iconURL: 'images/yellow_flag.png',
-      banding: 'Moderate'
-    },
-    high: {
-      iconURL: 'images/red_flag.png',
-      banding: 'High'
-    },
-    extreme: {
-      iconURL: 'images/purple_flag.png',
-      banding: 'Very High'
-    }
-  };
 
-  var projectId = $.url().param('id');
+
+  // TODO: Maybe we should remove it once server-side rendering is ready?
+  // var projectId = $.url().param('id');
   var latestSensors;
 
   var gMap;
   var markerMap = new Map();
 
-  var ctx = $("#sensor-data-chart").get(0).getContext("2d");
+  var ctx = $('#sensor-data-chart').get(0).getContext('2d');
 
   var dataChartContainer =
-    document.getElementById("sensor-data-chart-container");
+    document.getElementById('sensor-data-chart-container');
   var dataChart;
   var chartName = $('#sensor-information .name');
   var chartDescription = $('#sensor-information .description');
@@ -53,24 +37,12 @@
     }
   });
 
-  function getDQAIStatus(index) {
-    if (index <= 35) {
-      return 'low';
-    } else if (index <= 53) {
-      return 'moderate';
-    } else if (index <= 70) {
-      return 'high';
-    } else {
-      return 'extreme';
-    }
-  }
-
   function dataConvertion(dataArray) {
     var config = {
       type: 'line',
       data: {
         datasets: [{
-          label: "PM2.5 value",
+          label: 'PM2.5 value',
           pointBorderWidth: 0,
           pointHoverRadius: 4,
           pointHoverBackgroundColor: 'grey',
@@ -98,13 +70,12 @@
         },
         scales: {
           xAxes: [{
-            type: "time",
+            type: 'time',
             display: true,
             scaleLabel: {
-              display: true,
-              // labelString: 'Time'
+              display: true
             }
-          }, ],
+          } ],
           yAxes: [{
             display: true,
             scaleLabel: {
@@ -136,7 +107,7 @@
         map: gMap,
         title: sensor.name,
         zIndex: index + 1,
-        icon: DQAI[getDQAIStatus(sensor.pm25Index)].iconURL
+        icon: DAQI[getDAQIStatus(sensor.pm25Index)].iconURL
       });
 
       bound.extend(
@@ -150,10 +121,10 @@
         );
         chartDescription.text(sensor.description);
         chartValue.text(sensor.pm25Index);
-        chartValue.attr('data-status', getDQAIStatus(sensor.pm25Index));
+        chartValue.attr('data-status', getDAQIStatus(sensor.pm25Index));
         chartLatestUpdate.text(moment(sensor.latestUpdate).fromNow());
         dataChartContainer.classList.remove('hide');
-        $('#sensor-details').attr('href',"./sensor.html?id=" + sensor._id);
+        $('#sensor-details').attr('href','./sensor.html?id=' + sensor._id);
 
         $.ajax({
           url: API_URL + 'sensors/' + sensor._id + '/data',
@@ -174,7 +145,7 @@
   }
 
   function renderContributorList(contributors) {
-    $.tmpl(CONTRIBUTOR_MARKUP, contributors).appendTo("#contributor-list");
+    $.tmpl(CONTRIBUTOR_MARKUP, contributors).appendTo('#contributor-list');
   }
 
   function initMap() {
