@@ -45,12 +45,26 @@
   var chartValue = $('#sensor-information .value');
   var chartLatestUpdate = $('#sensor-information .latest-update');
   var chartCloseBtn = $('#chart-close-btn');
+  var fxAccountBtn = $('#fx-account-btn');
+  var fxaRelierClient = new FxaRelierClient('9614e8c4fafa29b0');
 
   chartCloseBtn.click(function () {
     dataChartContainer.classList.add('hide');
     if (dataChart) {
       dataChart.destroy();
     }
+  });
+
+  fxAccountBtn.click(function() {
+    fxaRelierClient.auth.signIn({
+      ui: 'lightbox',
+      state: "9565fe9796e7e8a0d4cb78b85c68ca3f6021db7f98460ad279ca1bf9c2495745",
+      redirect_uri: "http://sensorweb.io/project.html",
+      scope: 'profile'
+    }).then(function(result) {
+    }, function(e) {
+      console.error(e);
+    });
   });
 
   function getDQAIStatus(index) {
