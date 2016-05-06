@@ -2,24 +2,6 @@
 
 (function(exports){
   const CHART_FORMAT = 'LLL';
-  const DQAI = {
-    low: {
-      iconURL: 'images/green_flag.png',
-      banding: 'Low'
-    },
-    moderate: {
-      iconURL: 'images/yellow_flag.png',
-      banding: 'Moderate'
-    },
-    high: {
-      iconURL: 'images/red_flag.png',
-      banding: 'High'
-    },
-    extreme: {
-      iconURL: 'images/purple_flag.png',
-      banding: 'Very High'
-    }
-  };
 
   $(document).ready(function(){
     $('.modal-trigger').leanModal();
@@ -27,7 +9,6 @@
 
   var latestUpdateElm = $('#latest-update');
   var pm25Elm = $('#pm25');
-  var sensorDataElm = $('#sensor-data');
   var sensorId = $.url().param('id');
 
   var mapAPIReady = false;
@@ -41,20 +22,8 @@
   // Chart related
   var dataChart;
 
-  function getDQAIStatus(index) {
-    if (index <= 35) {
-      return 'low';
-    } else if (index <= 53) {
-      return 'moderate';
-    } else if (index <= 70) {
-      return 'high';
-    } else {
-      return 'extreme';
-    }
-  }
-
   function updateInfo(sensor) {
-    var status = getDQAIStatus(sensor.pm25Index);
+    var status = getDAQIStatus(sensor.pm25Index);
     var newContent =
     /* jshint ignore:start */
       '<div id="map-infowindow">'+
@@ -64,7 +33,7 @@
           '<p>PM2.5: <span id="info-pm25-index" data-status="' +
           status +'">' + sensor.pm25Index + '</span>' +
           '<span> ( <a href="https://uk-air.defra.gov.uk/air-pollution/daqi?view=more-info&pollutant=pm25#pollutant" target="_blank">' +
-          '<b>' + DQAI[status].banding + '</b></a></span>, <a href="http://taqm.epa.gov.tw/taqm/tw/fpmi.htm" target="_blank">Taiwan\'s Practice</a> )</p>' +
+          '<b>' + DAQI[status].banding + '</b></a></span>, <a href="http://taqm.epa.gov.tw/taqm/tw/fpmi.htm" target="_blank">Taiwan\'s Practice</a> )</p>' +
           '<p>Last Update: <span id="info-last-update">' + moment(sensor.latestUpdate).format(CHART_FORMAT) + '</span></p>'+
         '</div>'+
       '</div>';
@@ -96,7 +65,7 @@
       position: location,
       map: gMap,
       title: latestSensorData.name,
-      icon: DQAI[getDQAIStatus(index)].iconURL
+      icon: DAQI[getDAQIStatus(index)].iconURL
     });
 
     updateInfo(latestSensorData);
@@ -113,8 +82,8 @@
       type: 'line',
       data: {
         datasets: [{
-          label: "PM2.5 value",
-    			pointBorderWidth: 0,
+          label: 'PM2.5 value',
+          pointBorderWidth: 0,
           pointHoverRadius: 4,
           pointHoverBackgroundColor: 'grey',
           fill: true,
@@ -210,7 +179,7 @@
               fontFamily: tooltip._fontFamily,
               fontSize: tooltip.fontSize,
               fontStyle: tooltip._fontStyle,
-              padding: tooltip.yPadding + 'px ' + tooltip.xPadding + 'px',
+              padding: tooltip.yPadding + 'px ' + tooltip.xPadding + 'px'
             });
           }
         },
@@ -222,7 +191,7 @@
               display: true,
               labelString: 'Time'
             }
-          }, ],
+          } ],
           yAxes: [{
             display: true,
             scaleLabel: {
@@ -277,7 +246,7 @@
       dataChart.destroy();
     }
 
-    var ctx = $("#sensor-data-chart").get(0).getContext("2d");
+    var ctx = $('#sensor-data-chart').get(0).getContext('2d');
     dataChart = new Chart(ctx, dataConvertion(dataArray));
   })
   .fail(function(error) {
@@ -292,19 +261,19 @@
     })
     .done(function(sensors) {
       var sensor = sensors[0];
-      var status = getDQAIStatus(sensor.pm25Index);
+      var status = getDAQIStatus(sensor.pm25Index);
       if (sensor.latestUpdate !== undefined &&
           sensor.pm25Index !== undefined) {
         latestUpdateElm.text(moment(sensor.latestUpdate).fromNow());
         pm25Elm.text(sensor.pm25Index);
 
         latestSensorData = sensor;
-        gMapMarker.setIcon(DQAI[status].iconURL);
+        gMapMarker.setIcon(DAQI[status].iconURL);
         updateInfo(sensor);
 
         var formattedDate = moment(sensor.latestUpdate).format(CHART_FORMAT);
         if (!dataChart) {
-          var ctx = $("#sensor-data-chart").get(0).getContext("2d");
+          var ctx = $('#sensor-data-chart').get(0).getContext('2d');
           dataChart = new Chart(ctx, dataConvertion([sensor]));
         } else if (formattedDate > dataChart.data.datasets[0].data[0].x) {
           dataChart.data.datasets[0].data.unshift({
