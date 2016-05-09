@@ -75,6 +75,10 @@
             scaleLabel: {
               display: true,
               labelString: 'PM2.5 index(μg/m)'
+            },
+            ticks: {
+              beginAtZero: true,
+              suggestedMax: 100
             }
           }]
         }
