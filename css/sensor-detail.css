@@ -17,7 +17,7 @@
 }
 
 #info-pm25-index[data-status="moderate"] {
-  color: yellow;
+  color: gold;
 }
 
 #info-pm25-index[data-status="high"] {
