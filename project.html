@@ -24,6 +24,7 @@
   <title>Project</title>
   <link rel="icon" type="image/x-icon" href="images/favicon.ico">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/project.css" type="text/css" rel="stylesheet" media="screen,projection"/>
@@ -101,9 +102,10 @@
             <h3 class="name"></h3>
             <p class="description"></p>
             <p><span>PM2.5: </span><span class="value"></span></p>
-            <p><span>Latest Update: </span><span class="latest-update"></span></p>
+            <p class="info"><span>Air quality is </span><span class="status"></span>.</p>
+            <p class="info"><span>Updated </span><span class="latest-update"></span>.</p>
             </br>
-            <a id="sensor-details" class="waves-effect waves-light btn-large" style="width: auto;">Sensor Details</a>
+            <a id="sensor-details" class="waves-effect waves-light btn-large" style="width: auto; margin-top: 12px">Sensor Details</a>
           </div>
           <div id="sensor-chart" class="col s12 l9">
             <canvas id="sensor-data-chart"></canvas>

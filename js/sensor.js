@@ -5,7 +5,7 @@
   const DQAI = {
     low: {
       iconURL: 'images/green_flag.png',
-      banding: 'Low'
+      banding: 'Good'
     },
     moderate: {
       iconURL: 'images/yellow_flag.png',
@@ -13,11 +13,11 @@
     },
     high: {
       iconURL: 'images/red_flag.png',
-      banding: 'High'
+      banding: 'Unhealthy'
     },
     extreme: {
       iconURL: 'images/purple_flag.png',
-      banding: 'Very High'
+      banding: 'Very Unhealthy'
     }
   };
 
@@ -61,11 +61,11 @@
         '<h5 id="info-title">' + sensor.name + '</h5>'+
         '<div id="bodyContent">'+
           '<p id="info-description">' + sensor.description + '</p>'+
-          '<p>PM2.5: <span id="info-pm25-index" data-status="' +
+          '<p>PM2.5: <span class="value" id="info-pm25-index" data-status="' +
           status +'">' + sensor.pm25Index + '</span>' +
-          '<span> ( <a href="https://uk-air.defra.gov.uk/air-pollution/daqi?view=more-info&pollutant=pm25#pollutant" target="_blank">' +
-          '<b>' + DQAI[status].banding + '</b></a></span>, <a href="http://taqm.epa.gov.tw/taqm/tw/fpmi.htm" target="_blank">Taiwan\'s Practice</a> )</p>' +
-          '<p>Last Update: <span id="info-last-update">' + moment(sensor.latestUpdate).format(CHART_FORMAT) + '</span></p>'+
+          '<p class="info">Air quality is '+ '<span class="status" data-status="'+status+'">'+DQAI[status].banding+'</span>'+'<span> ( <a href="https://uk-air.defra.gov.uk/air-pollution/daqi?view=more-info&pollutant=pm25#pollutant" target="_blank">' +
+          '<a href="http://taqm.epa.gov.tw/taqm/tw/fpmi.htm" target="_blank">Taiwan\'s Practice</a> )</p>' +
+          '<p class="info">Last Update: <span id="info-last-update">' + moment(sensor.latestUpdate).format(CHART_FORMAT) + '</span></p>'+
         '</div>'+
       '</div>';
     /* jshint ignore:end */
@@ -90,6 +90,7 @@
       center: location,
       scrollwheel: false
     });
+    gMap.panBy(0,-100);
 
     infowindow = new google.maps.InfoWindow();
 

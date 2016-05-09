@@ -13,7 +13,7 @@
   const DQAI = {
     low: {
       iconURL: 'images/green_flag.png',
-      banding: 'Low'
+      banding: 'Good'
     },
     moderate: {
       iconURL: 'images/yellow_flag.png',
@@ -21,11 +21,11 @@
     },
     high: {
       iconURL: 'images/red_flag.png',
-      banding: 'High'
+      banding: 'Unhealthy'
     },
     extreme: {
       iconURL: 'images/purple_flag.png',
-      banding: 'Very High'
+      banding: 'Very Unhealthy'
     }
   };
 
@@ -43,6 +43,7 @@
   var chartName = $('#sensor-information .name');
   var chartDescription = $('#sensor-information .description');
   var chartValue = $('#sensor-information .value');
+  var chartStatus = $('#sensor-information .status');
   var chartLatestUpdate = $('#sensor-information .latest-update');
   var chartCloseBtn = $('#chart-close-btn');
 
@@ -145,12 +146,15 @@
 
       gMapMarker.addListener('click', function() {
         chartName.html(
-          '<a href="./sensor.html?id=' + sensor._id + '">' +
-          sensor.name + '</a>'
+          // '<a href="./sensor.html?id=' + sensor._id + '">' +
+          // sensor.name + '</a>'
+          sensor.name
         );
         chartDescription.text(sensor.description);
         chartValue.text(sensor.pm25Index);
         chartValue.attr('data-status', getDQAIStatus(sensor.pm25Index));
+        chartStatus.text(DQAI[getDQAIStatus(sensor.pm25Index)].banding);
+        chartStatus.attr('data-status', getDQAIStatus(sensor.pm25Index));
         chartLatestUpdate.text(moment(sensor.latestUpdate).fromNow());
         dataChartContainer.classList.remove('hide');
         $('#sensor-details').attr('href',"./sensor.html?id=" + sensor._id);
