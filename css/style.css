@@ -11,14 +11,19 @@ html, body{
   font-size: 12pt;
 }
 
+#page-container {
+  min-height: 100%;
+  position: relative;
+}
+
 nav{
-  border-top: 2px #FFF solid;
+  /*border-top: 2px #FFF solid;*/
   z-index: 1000 !important;
   -webkit-box-shadow: 0 1px 0 0 rgba(0,0,0,.15);
   -moz-box-shadow: 0 1px 0 0 rgba(0,0,0,.15);
   box-shadow: 0 1px 0 0 rgba(0,0,0,.15);
   height: 75px !important;
-  line-height: 73px !important;
+  /*line-height: 75px !important;*/
 }
 
 nav ul a,
@@ -26,10 +31,14 @@ nav .brand-logo {
   color: #FFF;
 }
 
+nav .button-collapse i {
+  line-height: 75px !important;
+}
+
 nav li a{
   font-size: .95em;
   padding: 0 16px 0 16px;
-  line-height: 73px;
+  line-height: 75px;
 }
 
 .dropdown-button a {
@@ -134,25 +143,16 @@ h3, h4 {
 .text-white {
   color: #FFF;
 }
+
 /*Footer*/
 
 .page-footer a{
-  /*font-weight: 300;*/
-}
-.page-footer li a:hover{
-  opacity: 0.6;
-}
-
-
-a.white-text {
-  color: #FFF !important;
-  opacity: 0.7;
+  color: #d2d2d2 !important;
   line-height: 1.8em;
   font-size: .95em;
 }
-
-a.white-text:hover {
-  opacity: 1 !important;
+.page-footer li a:hover{
+  color: #fff !important;
 }
 
 .white-text.head {
@@ -160,14 +160,28 @@ a.white-text:hover {
   font-weight: 700;
   font-size: 1.1em;
   letter-spacing: 1px;
+  margin: 0px !important;
+  line-height: 1.5em;
 }
 
 .page-footer {
+  height: 265px;
   background-color: #222 !important;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+@media only screen and (max-width: 992px) {
+  .page-footer {
+    height: auto;
+    position: relative;
+  }
 }
 
 .page-footer .container {
-  padding: 40px 0 40px 0;
+  /*padding: 40px 0 40px 0;*/
+  padding-top: 40px;
 }
 
 .container {
@@ -341,6 +355,12 @@ h3.subtitle {
 
 .no-margin {
   margin: 0;
+}
+
+@media only screen and (min-width: 993px) {
+#sensorweb-projects {
+  padding-bottom: 265px;
+}
 }
 
 #sensorweb-projects .col {

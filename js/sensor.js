@@ -87,7 +87,8 @@
     gMap = new google.maps.Map(document.getElementById('sensor-location-map'), {
       zoom: 16,
       streetViewControl: false,
-      center: location
+      center: location,
+      scrollwheel: false
     });
 
     infowindow = new google.maps.InfoWindow();

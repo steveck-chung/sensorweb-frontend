@@ -1,5 +1,6 @@
 #sensor-location-map {
   height: 550px;
+  margin-bottom: 40px;
 }
 
 #sensor-data-chart {
@@ -26,4 +27,10 @@
 
 #info-pm25-index[data-status="extreme"] {
   color: purple;
+}
+
+@media only screen and (min-width: 993px) {
+	#sensor-data {
+		padding-bottom: 265px;
+	}
 }

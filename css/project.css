@@ -80,7 +80,12 @@
 }
 
 #join-project {
-  background-color: #f7f7f7;
+    background-color: #f7f7f7;
+}
+@media only screen and (min-width: 993px) {
+  #join-project {
+    padding-bottom: 265px;
+  }
 }
 
 .project-info {
@@ -90,4 +95,10 @@
   font-size: 1em;
   line-height: 1.8;
   /*font-weight: 500;*/
+}
+
+@media only screen and (max-width: 992px) {
+  .project-info {
+    text-align: left;
+  }
 }
