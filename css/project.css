@@ -134,3 +134,8 @@
 #sensor-information .status{
   font-weight: 700;
 }
+
+#contributor-name {
+  font-size: 1.2em;
+  color: #454545;
+}
