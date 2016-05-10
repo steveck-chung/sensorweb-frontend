@@ -40,6 +40,7 @@
 
   // Chart related
   var dataChart;
+  var gradient;
 
   function getDQAIStatus(index) {
     if (index <= 35) {
@@ -117,8 +118,12 @@
         datasets: [{
           label: "PM2.5 value",
     			pointBorderWidth: 0,
-          pointHoverRadius: 4,
-          pointHoverBackgroundColor: 'grey',
+          pointBorderColor: "#fff",
+          pointHoverRadius: 5,
+          pointHoverBorderWidth: 0,
+          pointBackgroundColor: "#5cc7B9",
+          pointHoverBackgroundColor: "#1cbcad",
+          backgroundColor: gradient,//"rgba(136,216,205,0.5)",
           fill: true,
           data: dataArray.map(function(d) {
             return { x: moment(d.datetime).format(CHART_FORMAT),
@@ -129,16 +134,20 @@
       },
       options: {
         responsive: true,
+        maintainAspectRatio: false,
         hover: {
-          animationDuration: 0
+          mode: "single",
+          animationDuration: 0,
         },
         elements: {
           line: {
-            borderWidth: 2
+            borderWidth: .1,
+            borderColor: "#88d8cd"
           },
           point: {
-            radius: 2,
-            borderWidth: 2
+            radius: 0,
+            borderWidth: 0,
+            hitRadius: 10
           }
         },
         tooltips: {
@@ -223,15 +232,19 @@
             scaleLabel: {
               display: true,
               labelString: 'Time'
-            }
+            },
           }, ],
           yAxes: [{
             display: true,
             scaleLabel: {
               display: true,
               labelString: 'PM2.5 (μg/m)'
+            },
+            ticks: {
+              suggestedMin: 0,
+              suggestedMax: 100
             }
-          }]
+          }],
         }
       }
     };
@@ -280,7 +293,12 @@
     }
 
     var ctx = $("#sensor-data-chart").get(0).getContext("2d");
+    gradient = ctx.createLinearGradient(0,600,0,0);
+    gradient.addColorStop(1,"#60CC4A");
+    gradient.addColorStop(0,"#5BCEA0");
+    ctx.canvas.height = 400;
     dataChart = new Chart(ctx, dataConvertion(dataArray));
+    console.log(dataChart);
   })
   .fail(function(error) {
     console.error(error);
