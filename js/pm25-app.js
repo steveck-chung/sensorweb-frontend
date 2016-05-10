@@ -153,7 +153,11 @@
   }
 
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
+    var opts = {
+      enableHighAccuracy: true
+    };
+
+    function onSuccess(position) {
       var pos = {
         lat: position.coords.latitude,
         lng: position.coords.longitude
@@ -166,9 +170,9 @@
       });
       gMap.setCenter(pos);
       gMapMarker.setIcon('images/location.png');
-    }, function() {
-      console.error('Browser unable to get current location');
-    });
+    }
+
+    navigator.geolocation.getCurrentPosition(onSuccess, null, opts);
   } else {
     console.error('Browser doesn\'t support Geolocation');
   }
