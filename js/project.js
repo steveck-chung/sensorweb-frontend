@@ -29,16 +29,17 @@
     }
   };
 
-  var projectId = $.url().param('id');
+  // TODO: Maybe we should remove it once server-side rendering is ready?
+  // var projectId = $.url().param('id');
   var latestSensors;
 
   var gMap;
   var markerMap = new Map();
 
-  var ctx = $("#sensor-data-chart").get(0).getContext("2d");
+  var ctx = $('#sensor-data-chart').get(0).getContext('2d');
 
   var dataChartContainer =
-    document.getElementById("sensor-data-chart-container");
+    document.getElementById('sensor-data-chart-container');
   var dataChart;
   var chartName = $('#sensor-information .name');
   var chartDescription = $('#sensor-information .description');
@@ -71,7 +72,7 @@
       type: 'line',
       data: {
         datasets: [{
-          label: "PM2.5 value",
+          label: 'PM2.5 value',
           pointBorderWidth: 0,
           pointHoverRadius: 4,
           pointHoverBackgroundColor: 'grey',
@@ -99,18 +100,21 @@
         },
         scales: {
           xAxes: [{
-            type: "time",
+            type: 'time',
             display: true,
             scaleLabel: {
-              display: true,
-              // labelString: 'Time'
+              display: true
             }
-          }, ],
+          } ],
           yAxes: [{
             display: true,
             scaleLabel: {
               display: true,
               labelString: 'PM2.5 index(μg/m)'
+            },
+            ticks: {
+              beginAtZero: true,
+              suggestedMax: 100
             }
           }]
         }
@@ -137,7 +141,7 @@
         map: gMap,
         title: sensor.name,
         zIndex: index + 1,
-        icon: DQAI[getDQAIStatus(sensor.pm25Index)].iconURL
+        icon: DAQI[getDAQIStatus(sensor.pm25Index)].iconURL
       });
 
       bound.extend(
@@ -157,7 +161,7 @@
         chartStatus.attr('data-status', getDQAIStatus(sensor.pm25Index));
         chartLatestUpdate.text(moment(sensor.latestUpdate).fromNow());
         dataChartContainer.classList.remove('hide');
-        $('#sensor-details').attr('href',"./sensor.html?id=" + sensor._id);
+        $('#sensor-details').attr('href','./sensor.html?id=' + sensor._id);
 
         $.ajax({
           url: API_URL + 'sensors/' + sensor._id + '/data',
@@ -178,7 +182,7 @@
   }
 
   function renderContributorList(contributors) {
-    $.tmpl(CONTRIBUTOR_MARKUP, contributors).appendTo("#contributor-list");
+    $.tmpl(CONTRIBUTOR_MARKUP, contributors).appendTo('#contributor-list');
   }
 
   function initMap() {

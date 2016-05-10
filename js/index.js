@@ -1,6 +1,6 @@
 'use strict';
 
-(function(exports){
+(function(){
   $('.button-collapse').sideNav();
   $('.modal-trigger').leanModal();
   $('select').material_select();
@@ -8,27 +8,27 @@
   $('#learn').click(function(e){
     e.preventDefault();
     $('html, body').animate({
-          scrollTop: $("#what").offset().top - 64,
-          easing: "easeout"
-      }, 700);
-      return false;
+      scrollTop: $('#what').offset().top - 64,
+      easing: 'easeout'
+    }, 700);
+    return false;
   });
 
   $('#subscribe').click(function(e){
     e.preventDefault();
     $('html, body').animate({
-          scrollTop: $("#index-contact-banner").offset().top - 64,
-          easing: "easeout"
-      }, 700);
-      return false;
+      scrollTop: $('#index-contact-banner').offset().top - 64,
+      easing: 'easeout'
+    }, 700);
+    return false;
   });
 
-  $('.modal-trigger').click(function(e){
+  $('.modal-trigger').click(function(){
     $('input.select-dropdown').attr('placeholder','Pick any that applies');
   });
 
   // XXX: A trick to enable the login feature.
-  /* jshint ignore:start */
+  /* global Konami */
   new Konami(function() {
     var auth = gapi.auth2.getAuthInstance();
 
@@ -52,5 +52,4 @@
     }
     $('#login-btn').leanModal();
   });
-  /* jshint ignore:end */
 })(window);

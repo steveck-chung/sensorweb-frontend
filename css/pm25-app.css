@@ -31,7 +31,7 @@
 }
 
 #sensor-information [data-status="moderate"] {
-  color: yellow;
+  color: gold;
 }
 
 #sensor-information [data-status="high"] {

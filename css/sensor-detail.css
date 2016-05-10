@@ -14,8 +14,6 @@
 	margin-top: 48px;
 }
 
-.infowindow
-
 #info-pm25-index[data-status="low"] {
   color: #60CC4A;
 }

@@ -27,7 +27,6 @@
 
   var latestUpdateElm = $('#latest-update');
   var pm25Elm = $('#pm25');
-  var sensorDataElm = $('#sensor-data');
   var sensorId = $.url().param('id');
 
   var mapAPIReady = false;
@@ -42,20 +41,8 @@
   var dataChart;
   var gradient;
 
-  function getDQAIStatus(index) {
-    if (index <= 35) {
-      return 'low';
-    } else if (index <= 53) {
-      return 'moderate';
-    } else if (index <= 70) {
-      return 'high';
-    } else {
-      return 'extreme';
-    }
-  }
-
   function updateInfo(sensor) {
-    var status = getDQAIStatus(sensor.pm25Index);
+    var status = getDAQIStatus(sensor.pm25Index);
     var newContent =
     /* jshint ignore:start */
       '<div id="map-infowindow">'+
@@ -99,7 +86,7 @@
       position: location,
       map: gMap,
       title: latestSensorData.name,
-      icon: DQAI[getDQAIStatus(index)].iconURL
+      icon: DAQI[getDAQIStatus(index)].iconURL
     });
 
     updateInfo(latestSensorData);
@@ -150,81 +137,6 @@
             hitRadius: 10
           }
         },
-        tooltips: {
-          enabled: true,
-          custom: function(tooltip) {
-            // debugger
-            // Tooltip Element
-            var tooltipEl = $('#chartjs-tooltip');
-
-            if (!tooltipEl[0]) {
-              $('body').append('<div id="chartjs-tooltip"></div>');
-              tooltipEl = $('#chartjs-tooltip');
-            }
-
-            // Hide if no tooltip
-            if (!tooltip.opacity) {
-              tooltipEl.css({
-                opacity: 0
-              });
-              $('.chartjs-wrap canvas')
-                .each(function(index, el) {
-                  $(el).css('cursor', 'default');
-                });
-              return;
-            }
-
-            $(this._chart.canvas).css('cursor', 'pointer');
-
-            // Set caret Position
-            tooltipEl.removeClass('above below no-transform');
-            if (tooltip.yAlign) {
-              tooltipEl.addClass(tooltip.yAlign);
-            } else {
-              tooltipEl.addClass('no-transform');
-            }
-
-            // Set Text
-            if (tooltip.body) {
-              var innerHtml = [
-                (tooltip.beforeTitle || []).join('\n'),
-                (tooltip.title || []).join('\n'),
-                (tooltip.afterTitle || []).join('\n'),
-                (tooltip.beforeBody || []).join('\n'),
-                (tooltip.body || []).join('\n'),
-                (tooltip.afterBody || []).join('\n'),
-                (tooltip.beforeFooter || []).join('\n'),
-                (tooltip.footer || []).join('\n'),
-                (tooltip.afterFooter || []).join('\n')
-              ];
-              tooltipEl.html(innerHtml.join('\n'));
-            }
-
-            // Find Y Location on page
-            var top = 0;
-            if (tooltip.yAlign) {
-              if (tooltip.yAlign == 'above') {
-                top = tooltip.y - tooltip.caretHeight - tooltip.caretPadding;
-              } else {
-                top = tooltip.y + tooltip.caretHeight + tooltip.caretPadding;
-              }
-            }
-
-            var offset = $(this._chart.canvas).offset();
-
-            // Display, position, and set styles for font
-            tooltipEl.css({
-              opacity: 1,
-              width: tooltip.width ? (tooltip.width + 'px') : 'auto',
-              left: offset.left + tooltip.x + 'px',
-              top: offset.top + top + 'px',
-              fontFamily: tooltip._fontFamily,
-              fontSize: tooltip.fontSize,
-              fontStyle: tooltip._fontStyle,
-              padding: tooltip.yPadding + 'px ' + tooltip.xPadding + 'px',
-            });
-          }
-        },
         scales: {
           xAxes: [{
             type: 'time',
@@ -232,8 +144,8 @@
             scaleLabel: {
               display: true,
               labelString: 'Time'
-            },
-          }, ],
+            }
+          } ],
           yAxes: [{
             display: true,
             scaleLabel: {
@@ -241,7 +153,7 @@
               labelString: 'PM2.5 (μg/m)'
             },
             ticks: {
-              suggestedMin: 0,
+              beginAtZero: true,
               suggestedMax: 100
             }
           }],
@@ -312,19 +224,19 @@
     })
     .done(function(sensors) {
       var sensor = sensors[0];
-      var status = getDQAIStatus(sensor.pm25Index);
+      var status = getDAQIStatus(sensor.pm25Index);
       if (sensor.latestUpdate !== undefined &&
           sensor.pm25Index !== undefined) {
         latestUpdateElm.text(moment(sensor.latestUpdate).fromNow());
         pm25Elm.text(sensor.pm25Index);
 
         latestSensorData = sensor;
-        gMapMarker.setIcon(DQAI[status].iconURL);
+        gMapMarker.setIcon(DAQI[status].iconURL);
         updateInfo(sensor);
 
         var formattedDate = moment(sensor.latestUpdate).format(CHART_FORMAT);
         if (!dataChart) {
-          var ctx = $("#sensor-data-chart").get(0).getContext("2d");
+          var ctx = $('#sensor-data-chart').get(0).getContext('2d');
           dataChart = new Chart(ctx, dataConvertion([sensor]));
         } else if (formattedDate > dataChart.data.datasets[0].data[0].x) {
           dataChart.data.datasets[0].data.unshift({
