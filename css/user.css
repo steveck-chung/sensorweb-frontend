@@ -15,8 +15,20 @@
 }
 
 .user-name {
-	font-size: 1.6em;
-	line-height: 1em;
+	font-size: 1.5em;
+	color: #454545;
+	margin-top: 24px;
+	margin-bottom: 6px;
+	/*line-height: 1.0;*/
+	font-weight: 400;
+}
+
+.user-id {
+	font-size: 1.2em;
+	color: #757575;
+	/*line-height: 1.0;*/
+	font-weight: 300;
+	margin-top: 0px !important;
 }
 
 .user-info {
@@ -59,4 +71,15 @@ a.collection-item:hover {
 .collection-item.title{
 	color: #979797 !important;
 	list-style: none;
+	font-weight: 700;
+}
+@media only screen and (min-width: 993px) {
+	#user-details {
+		padding-bottom: 265px;
+	}
+
+
+#project-names {
+	font-size: 1.2em;
+	color: #454545;
 }

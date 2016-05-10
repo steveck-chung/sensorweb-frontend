@@ -24,12 +24,13 @@
   <title>User</title>
   <link rel="icon" type="image/x-icon" href="images/favicon.ico">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/user.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 <body>
-
+  <div id="page-container">
   <!-- Navigation -->
   <ul id="dropdown" class="dropdown-content">
     <li><a href="about.html">English Version</a></li>
@@ -70,7 +71,7 @@
     </nav>
   </div>
 
-  <div class="container projects">
+  <div class="container projects" id="user-details">
     <div class="section">
       <div class="row">
         <div class="col s12 m3" id="user-card">
@@ -93,6 +94,7 @@
             </li>
           </div>
           <div class="section">
+            <h3 class="center-align">Projects</h3>
             <div class="row" id="user-projects"></div>
           </div>
         </div>
@@ -123,16 +125,12 @@
         <div class="col l3 s12">
           <h5 class="white-text head">SensorWeb</h5>
           <ul>
-            <li><a class="white-text" href="about.html">About</a></li>
-            <li><a class="white-text" href="projects.html">Projects</a></li>
-            <li><a class="white-text" href="documentation.html">Documentation</a></li>
-            <li><a class="white-text" href="http://blog.sensorweb.io">Blog</a></li>
+            <li><a class="white-text" href="https://github.com/sensor-web" target="_blank">GitHub</a></li>
           </ul>
         </div>
         <div class="col l3 s12">
           <h5 class="white-text head">Connect</h5>
           <ul>
-            <li><a class="white-text" href="https://github.com/sensor-web" target="_blank">GitHub</a></li>
             <li><a class="white-text" href="https://wiki.mozilla.org/SensorWeb" target="_blank">Wiki</a></li>
             <li><a class="white-text" href="https://wiki.mozilla.org/Connected_Devices/Participation" target="_blank">Participation</a></li>
           </ul>
@@ -152,6 +150,7 @@
       </div>
     </div>
   </footer>
+  </div>
 
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>

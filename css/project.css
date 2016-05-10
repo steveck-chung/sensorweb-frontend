@@ -33,19 +33,19 @@
 }
 
 #sensor-information [data-status="low"] {
-  color: green;
+  color: #60CC4A;
 }
 
 #sensor-information [data-status="moderate"] {
-  color: gold;
+  color: #F1BE4A;
 }
 
 #sensor-information [data-status="high"] {
-  color: red;
+  color: #FF6360;
 }
 
 #sensor-information [data-status="extreme"] {
-  color: purple;
+  color: #D95AF9;
 }
 
 
@@ -80,7 +80,12 @@
 }
 
 #join-project {
-  background-color: #f7f7f7;
+    background-color: #f7f7f7;
+}
+@media only screen and (min-width: 993px) {
+  #join-project {
+    padding-bottom: 265px;
+  }
 }
 
 .project-info {
@@ -90,4 +95,47 @@
   font-size: 1em;
   line-height: 1.8;
   /*font-weight: 500;*/
+}
+
+@media only screen and (max-width: 992px) {
+  .project-info {
+    text-align: left;
+  }
+}
+
+/* Sensor Info*/
+
+.name {
+  font-weight: 700;
+  color: #454545;
+  font-size: 1.8em;
+  margin-bottom: 0px;
+}
+
+#sensor-information .description {
+  font-size: 1.1em;
+  color: #222;
+  margin-bottom: 36px;
+}
+
+#sensor-information p{
+  font-size: 1em;
+  color: #757575;
+}
+
+#sensor-information .info {
+  margin: 0px;
+}
+
+#sensor-information .value{
+  font-size: 4em;
+  font-weight: 700;
+}
+#sensor-information .status{
+  font-weight: 700;
+}
+
+#contributor-name {
+  font-size: 1.2em;
+  color: #454545;
 }

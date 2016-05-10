@@ -24,12 +24,13 @@
   <title>Sensor</title>
   <link rel="icon" type="image/x-icon" href="images/favicon.ico">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/sensor-detail.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 <body>
-
+  <div id="page-container">
   <!-- Navigation -->
   <ul id="dropdown" class="dropdown-content">
     <li><a href="about.html">English Version</a></li>
@@ -71,12 +72,14 @@
     </nav>
   </div>
 
-  <div class="container projects">
+  <div class="container projects" id="sensor-data">
     <div class="section">
       <div class="row">
         <div class="col s12">
           <div id="sensor-location-map"></div>
-          <canvas id="sensor-data-chart"></canvas>
+          <div style="height: 600px">
+            <canvas id="sensor-data-chart"></canvas>
+          </div>
           <h3 class="sensor-info">Sensor ID</h3>
           <p id="sensor-id" class="contents"></p>
           <!-- TOOD: Re-enable the API Key -->
@@ -144,7 +147,7 @@
       </div>
     </div>
   </footer>
-
+  </div>
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="https://apis.google.com/js/platform.js" async defer></script>
   <script src="https://apis.google.com/js/client.js"></script>

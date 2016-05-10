@@ -1,5 +1,6 @@
 #sensor-location-map {
   height: 550px;
+  margin-bottom: 40px;
 }
 
 #sensor-data-chart {
@@ -10,20 +11,73 @@
 .sensor-info {
 	font-size: 1.4em;
 	margin-bottom: 0px;
+	margin-top: 48px;
 }
 
 #info-pm25-index[data-status="low"] {
-  color: green;
+  color: #60CC4A;
 }
 
 #info-pm25-index[data-status="moderate"] {
-  color: gold;
+  color: #F1BE4A;
 }
 
 #info-pm25-index[data-status="high"] {
-  color: red;
+  color: #FF6360;
 }
 
 #info-pm25-index[data-status="extreme"] {
-  color: purple;
+  color: #D95AF9;
+}
+
+#map-infowindow .status[data-status="low"] {
+  color: #60CC4A;
+}
+
+#map-infowindow .status[data-status="moderate"] {
+  color: #F1BE4A;
+}
+
+#map-infowindow .status[data-status="high"] {
+  color: #FF6360;
+}
+
+#map-infowindow .status[data-status="extreme"] {
+  color: #D95AF9;
+}
+
+@media only screen and (min-width: 993px) {
+	#sensor-data {
+		padding-bottom: 365px;
+	}
+}
+
+#info-title {
+  font-weight: 700;
+  color: #454545;
+  font-size: 1.8em;
+  margin-bottom: 0px;
+}
+
+#info-description {
+  font-size: 1.1em;
+  color: #222 !important;
+  margin-bottom: 36px;
+}
+
+#map-infowindow p {
+  font-size: 1em;
+  color: #757575;
+}
+
+#map-infowindow .info {
+  margin: 0px;
+}
+
+#map-infowindow .value{
+  font-size: 4em;
+  font-weight: 700;
+}
+#map-infowindow .status{
+  font-weight: 700;
 }

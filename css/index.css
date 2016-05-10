@@ -1,5 +1,5 @@
 #tagline {
-	font-weight: 200;
+	font-weight: 300;
 	line-height: 1.2;
 	letter-spacing: 1px;
 }
@@ -41,4 +41,10 @@
 #index-form .waves-button-input {
   height: 100%;
   width:100%;
+}
+
+@media only screen and (min-width: 993px) {
+  #other-projects {
+    padding-bottom: 265px;
+  }
 }

@@ -9,8 +9,25 @@
   const CONTRIBUTOR_MARKUP ='<div class="col s6 m3 l2"><div class="card">' +
     '<a href="user.html?id=${userId}"><div class="card-image">' +
     '<img src="${picture}"></div></div></a>' +
-    '<p class="center-align">${name}</p></div>';
-
+    '<p id="contributor-name" class="center-align">${name}</p></div>';
+  const DQAI = {
+    low: {
+      iconURL: 'images/green_flag.png',
+      banding: 'Good'
+    },
+    moderate: {
+      iconURL: 'images/yellow_flag.png',
+      banding: 'Moderate'
+    },
+    high: {
+      iconURL: 'images/red_flag.png',
+      banding: 'Unhealthy'
+    },
+    extreme: {
+      iconURL: 'images/purple_flag.png',
+      banding: 'Very Unhealthy'
+    }
+  };
 
   // TODO: Maybe we should remove it once server-side rendering is ready?
   // var projectId = $.url().param('id');
@@ -27,6 +44,7 @@
   var chartName = $('#sensor-information .name');
   var chartDescription = $('#sensor-information .description');
   var chartValue = $('#sensor-information .value');
+  var chartStatus = $('#sensor-information .status');
   var chartLatestUpdate = $('#sensor-information .latest-update');
   var chartCloseBtn = $('#chart-close-btn');
 
@@ -36,6 +54,18 @@
       dataChart.destroy();
     }
   });
+
+  function getDQAIStatus(index) {
+    if (index <= 35) {
+      return 'low';
+    } else if (index <= 53) {
+      return 'moderate';
+    } else if (index <= 70) {
+      return 'high';
+    } else {
+      return 'extreme';
+    }
+  }
 
   function dataConvertion(dataArray) {
     var config = {
@@ -120,12 +150,15 @@
 
       gMapMarker.addListener('click', function() {
         chartName.html(
-          '<a href="./sensor.html?id=' + sensor._id + '">' +
-          sensor.name + '</a>'
+          // '<a href="./sensor.html?id=' + sensor._id + '">' +
+          // sensor.name + '</a>'
+          sensor.name
         );
         chartDescription.text(sensor.description);
         chartValue.text(sensor.pm25Index);
-        chartValue.attr('data-status', getDAQIStatus(sensor.pm25Index));
+        chartValue.attr('data-status', getDQAIStatus(sensor.pm25Index));
+        chartStatus.text(DQAI[getDQAIStatus(sensor.pm25Index)].banding);
+        chartStatus.attr('data-status', getDQAIStatus(sensor.pm25Index));
         chartLatestUpdate.text(moment(sensor.latestUpdate).fromNow());
         dataChartContainer.classList.remove('hide');
         $('#sensor-details').attr('href','./sensor.html?id=' + sensor._id);
