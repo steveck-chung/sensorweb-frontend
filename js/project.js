@@ -37,10 +37,19 @@
   var markerMap = new Map();
 
   var ctx = $('#sensor-data-chart').get(0).getContext('2d');
+  gradient = ctx.createLinearGradient(0,350,0,0);
+  gradient.addColorStop(.70,"#c3b3e4");
+  gradient.addColorStop(.54,"#faafce");
+  gradient.addColorStop(.36,"#ffde9b");
+  gradient.addColorStop(0,"#94dbbb");
+  ctx.canvas.height = 400;
 
   var dataChartContainer =
     document.getElementById('sensor-data-chart-container');
+  
   var dataChart;
+  var gradient;
+
   var chartName = $('#sensor-information .name');
   var chartDescription = $('#sensor-information .description');
   var chartValue = $('#sensor-information .value');
@@ -74,8 +83,12 @@
         datasets: [{
           label: 'PM2.5 value',
           pointBorderWidth: 0,
-          pointHoverRadius: 4,
-          pointHoverBackgroundColor: 'grey',
+          pointBorderColor: "#fff",
+          pointHoverRadius: 5,
+          pointHoverBorderWidth: 0,
+          pointBackgroundColor: "#5cc7B9",
+          pointHoverBackgroundColor: "#1cbcad",
+          backgroundColor: gradient,//"rgba(136,216,205,0.5)",
           fill: true,
           data: dataArray.map(function(d) {
             return { x: moment(d.datetime).format(CHART_FORMAT),
@@ -86,17 +99,23 @@
       },
       options: {
         responsive: true,
+        maintainAspectRatio: false,
         hover: {
           animationDuration: 0
         },
         elements: {
           line: {
-            borderWidth: 2
+            borderWidth: .1,
+            borderColor: "#88d8cd"
           },
           point: {
-            radius: 2,
-            borderWidth: 2
+            radius: 0,
+            borderWidth: 0,
+            hitRadius: 10
           }
+        },
+        scaleLabel: {
+          fontColor: "#7d7d7d"
         },
         scales: {
           xAxes: [{
@@ -169,6 +188,7 @@
         })
         .done(function(dataArray) {
           dataChart = new Chart(ctx, dataConvertion(dataArray));
+
         })
         .fail(function(error) {
           console.error(error);

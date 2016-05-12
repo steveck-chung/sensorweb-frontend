@@ -137,6 +137,9 @@
             hitRadius: 10
           }
         },
+        scaleLabel: {
+          fontColor: "#7d7d7d"
+        },
         scales: {
           xAxes: [{
             type: 'time',
@@ -205,9 +208,11 @@
     }
 
     var ctx = $("#sensor-data-chart").get(0).getContext("2d");
-    gradient = ctx.createLinearGradient(0,600,0,0);
-    gradient.addColorStop(1,"#60CC4A");
-    gradient.addColorStop(0,"#5BCEA0");
+    gradient = ctx.createLinearGradient(0,520,0,0);
+    gradient.addColorStop(.70,"#c3b3e4");
+    gradient.addColorStop(.54,"#faafce");
+    gradient.addColorStop(.36,"#ffde9b");
+    gradient.addColorStop(0,"#94dbbb");
     ctx.canvas.height = 400;
     dataChart = new Chart(ctx, dataConvertion(dataArray));
     console.log(dataChart);

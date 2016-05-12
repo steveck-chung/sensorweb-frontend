@@ -14,37 +14,26 @@
 	margin-top: 48px;
 }
 
-#info-pm25-index[data-status="low"] {
-  color: #60CC4A;
-}
-
-#info-pm25-index[data-status="moderate"] {
-  color: #F1BE4A;
-}
-
-#info-pm25-index[data-status="high"] {
-  color: #FF6360;
-}
-
-#info-pm25-index[data-status="extreme"] {
-  color: #D95AF9;
-}
-
+#info-pm25-index[data-status="low"],
 #map-infowindow .status[data-status="low"] {
   color: #60CC4A;
 }
 
+#info-pm25-index[data-status="moderate"],
 #map-infowindow .status[data-status="moderate"] {
   color: #F1BE4A;
 }
 
+#info-pm25-index[data-status="high"],
 #map-infowindow .status[data-status="high"] {
   color: #FF6360;
 }
 
+#info-pm25-index[data-status="extreme"],
 #map-infowindow .status[data-status="extreme"] {
   color: #D95AF9;
 }
+
 
 @media only screen and (min-width: 993px) {
 	#sensor-data {

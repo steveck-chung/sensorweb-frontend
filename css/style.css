@@ -210,6 +210,23 @@ h3, h4 {
   box-shadow: 0 3px 5px 0 rgba(0,0,0,.15);
 }
 
+.btn-ghost {
+  background-color: rgba(0,0,0,0);
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  border: 2px #FFF solid;
+  color: #FFF !important;
+}
+
+#sensorweb-projects .card:hover .btn-ghost{
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  background-color: #fff;
+  color: #454545 !important;
+}
+
 .btn-control {
   margin-top: 2.5px;
   height: 30px;
@@ -358,9 +375,18 @@ h3.subtitle {
 }
 
 @media only screen and (min-width: 993px) {
-#sensorweb-projects {
+#other-projects {
   padding-bottom: 265px;
 }
+}
+
+#other-projects {
+  background-color: #f7f7f7;
+}
+
+
+#sensorweb-projects {
+  padding-bottom: 0;
 }
 
 #sensorweb-projects .col {
@@ -371,9 +397,30 @@ h3.subtitle {
 #sensorweb-projects .card {
   margin-bottom: 40px;
 }
+
+#sensorweb-projects .subtitle {
+  position: absolute;
+  top: 38%;
+  z-index: 10;
+  color: #fff;
+  font-weight: 400;
+  left:0;
+  right:0;
+  margin: auto;
+  font-size: 1.8em;
+}
+
+#sensorweb-projects .card-image {
+  background: url(../images/02_cover.png) no-repeat center center;
+  background-size: cover;
+  height:400px;
+}
+
+
+
 #sensorweb-projects .bottom {
   position: absolute;
-  bottom: 0;
+  bottom: 32%;
   left:0;
   right: 0;
   margin: auto;
