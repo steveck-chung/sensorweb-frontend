@@ -46,7 +46,7 @@
 
   var dataChartContainer =
     document.getElementById('sensor-data-chart-container');
-  
+
   var dataChart;
   var gradient;
 
@@ -120,9 +120,18 @@
         scales: {
           xAxes: [{
             type: 'time',
-            display: true,
+            gridLines: {
+              display: false
+            },
             scaleLabel: {
               display: true
+            },
+            time: {
+              round: true,
+              unitStepSize: 100,
+              displayFormats: {
+                'hour': 'MMM D, H'
+              },
             }
           } ],
           yAxes: [{
@@ -199,6 +208,7 @@
     });
 
     gMap.setCenter(bound.getCenter());
+    gMap.fitBounds(bound);
   }
 
   function renderContributorList(contributors) {
@@ -209,7 +219,6 @@
     var mapElement = document.getElementById('sensors-location-map');
 
     gMap = new google.maps.Map(mapElement, {
-      zoom: 11,  // TODO: Find a better way to define the zoom scale
       streetViewControl: false,
       scrollwheel: false
     });

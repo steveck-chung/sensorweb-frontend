@@ -1,6 +1,9 @@
 'use strict';
 
 (function() {
+  // TODO: Enable after visual agree
+  return;
+
   var draw = Chart.controllers.line.prototype.draw;
   Chart.controllers.line = Chart.controllers.line.extend({
     draw: function() {

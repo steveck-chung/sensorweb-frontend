@@ -143,10 +143,18 @@
         scales: {
           xAxes: [{
             type: 'time',
-            display: true,
+            gridLines: {
+              display: false
+            },
             scaleLabel: {
-              display: true,
-              labelString: 'Time'
+              display: true
+            },
+            time: {
+              round: true,
+              unitStepSize: 100,
+              displayFormats: {
+                'hour': 'MMM D, H'
+              },
             }
           } ],
           yAxes: [{
