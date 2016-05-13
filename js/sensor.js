@@ -211,6 +211,12 @@
     console.error(error);
   });
 
+  var widget = document.querySelector('#widget');
+  widget.setAttribute('src', SENSORWEB_URL + 'widget.html?id=' + sensorId);
+  var widgetInput = document.querySelector('#widget-input');
+  widgetInput.setAttribute('value', '<iframe width="125" height="125" src="' + SENSORWEB_URL +
+    'widget.html?id=' + sensorId + '" frameborder="0" scrolling="no"></iframe>');
+
   // XXX: Hack to sync the latest data.
   setInterval(function() {
     $.ajax({
