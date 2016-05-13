@@ -2,6 +2,7 @@
 
 (function(exports) {
   exports.DEBUG = false;
+  exports.DRAW_DAQI_LINE = false;
 
   if (exports.DEBUG) {
     exports.API_URL = 'http://localhost:8081/';

@@ -2,24 +2,6 @@
 
 (function(exports){
   const CHART_FORMAT = 'LLL';
-  const DQAI = {
-    low: {
-      iconURL: 'images/green_flag.png',
-      banding: 'Good'
-    },
-    moderate: {
-      iconURL: 'images/yellow_flag.png',
-      banding: 'Moderate'
-    },
-    high: {
-      iconURL: 'images/red_flag.png',
-      banding: 'Unhealthy'
-    },
-    extreme: {
-      iconURL: 'images/purple_flag.png',
-      banding: 'Very Unhealthy'
-    }
-  };
 
   $(document).ready(function(){
     $('.modal-trigger').leanModal();
@@ -51,7 +33,7 @@
           '<p id="info-description">' + sensor.description + '</p>'+
           '<p>PM2.5: <span class="value" id="info-pm25-index" data-status="' +
           status +'">' + sensor.pm25Index + '</span>' +
-          '<p class="info">Air quality is '+ '<span class="status" data-status="'+status+'">'+DQAI[status].banding+'</span>'+'<span> ( <a href="https://uk-air.defra.gov.uk/air-pollution/daqi?view=more-info&pollutant=pm25#pollutant" target="_blank">' +
+          '<p class="info">Air quality is '+ '<span class="status" data-status="'+status+'">'+DAQI[status].banding+'</span>'+'<span> ( <a href="https://uk-air.defra.gov.uk/air-pollution/daqi?view=more-info&pollutant=pm25#pollutant" target="_blank">' +
           '<a href="http://taqm.epa.gov.tw/taqm/tw/fpmi.htm" target="_blank">Taiwan\'s Practice</a> )</p>' +
           '<p class="info">Last Update: <span id="info-last-update">' + moment(sensor.latestUpdate).format(CHART_FORMAT) + '</span></p>'+
         '</div>'+
@@ -103,13 +85,13 @@
       type: 'line',
       data: {
         datasets: [{
-          label: "PM2.5 value",
-    			pointBorderWidth: 0,
-          pointBorderColor: "#fff",
+          label: 'PM2.5 value',
+          pointBorderWidth: 0,
+          pointBorderColor: '#fff',
           pointHoverRadius: 5,
           pointHoverBorderWidth: 0,
-          pointBackgroundColor: "#5cc7B9",
-          pointHoverBackgroundColor: "#1cbcad",
+          pointBackgroundColor: '#5cc7B9',
+          pointHoverBackgroundColor: '#1cbcad',
           backgroundColor: gradient,//"rgba(136,216,205,0.5)",
           fill: true,
           data: dataArray.map(function(d) {
@@ -123,13 +105,13 @@
         responsive: true,
         maintainAspectRatio: false,
         hover: {
-          mode: "single",
-          animationDuration: 0,
+          mode: 'single',
+          animationDuration: 0
         },
         elements: {
           line: {
             borderWidth: .1,
-            borderColor: "#88d8cd"
+            borderColor: '#88d8cd'
           },
           point: {
             radius: 0,
@@ -138,7 +120,7 @@
           }
         },
         scaleLabel: {
-          fontColor: "#7d7d7d"
+          fontColor: '#7d7d7d'
         },
         scales: {
           xAxes: [{
@@ -154,7 +136,7 @@
               unitStepSize: 100,
               displayFormats: {
                 'hour': 'MMM D, H'
-              },
+              }
             }
           } ],
           yAxes: [{
@@ -167,7 +149,7 @@
               beginAtZero: true,
               suggestedMax: 100
             }
-          }],
+          }]
         }
       }
     };
@@ -215,12 +197,12 @@
       dataChart.destroy();
     }
 
-    var ctx = $("#sensor-data-chart").get(0).getContext("2d");
+    var ctx = $('#sensor-data-chart').get(0).getContext('2d');
     gradient = ctx.createLinearGradient(0,520,0,0);
-    gradient.addColorStop(.70,"#c3b3e4");
-    gradient.addColorStop(.54,"#faafce");
-    gradient.addColorStop(.36,"#ffde9b");
-    gradient.addColorStop(0,"#94dbbb");
+    gradient.addColorStop(.70,'#c3b3e4');
+    gradient.addColorStop(.54,'#faafce');
+    gradient.addColorStop(.36,'#ffde9b');
+    gradient.addColorStop(0,'#94dbbb');
     ctx.canvas.height = 400;
     dataChart = new Chart(ctx, dataConvertion(dataArray));
     console.log(dataChart);

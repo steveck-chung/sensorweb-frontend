@@ -1,10 +1,12 @@
 'use strict';
 
 (function() {
-  // TODO: Enable after visual agree
-  return;
+  if (!DRAW_DAQI_LINE) {
+    return;
+  }
 
   var draw = Chart.controllers.line.prototype.draw;
+  // Extend the draw function to draw additional horizontal line for DAQI level
   Chart.controllers.line = Chart.controllers.line.extend({
     draw: function() {
       draw.call(this, arguments[0]);
