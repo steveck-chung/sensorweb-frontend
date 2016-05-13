@@ -7,7 +7,7 @@
   var DAQI = {
     low: {
       iconURL: 'images/green_flag.png',
-      banding: 'Low'
+      banding: 'Good'
     },
     moderate: {
       iconURL: 'images/yellow_flag.png',
@@ -15,11 +15,11 @@
     },
     high: {
       iconURL: 'images/red_flag.png',
-      banding: 'High'
+      banding: 'Unhealthy'
     },
     extreme: {
       iconURL: 'images/purple_flag.png',
-      banding: 'Very High'
+      banding: 'Very Unhealthy'
     }
   };
 

@@ -29,6 +29,7 @@ module.exports = {
     },
     "globals": {
         "API_URL": true,
+        "DRAW_DAQI_LINE": true,
         "google": true,
         "gapi": true,
         "Chart": true,

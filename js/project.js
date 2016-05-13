@@ -10,24 +10,7 @@
     '<a href="user.html?id=${userId}"><div class="card-image">' +
     '<img src="${picture}"></div></div></a>' +
     '<p id="contributor-name" class="center-align">${name}</p></div>';
-  const DQAI = {
-    low: {
-      iconURL: 'images/green_flag.png',
-      banding: 'Good'
-    },
-    moderate: {
-      iconURL: 'images/yellow_flag.png',
-      banding: 'Moderate'
-    },
-    high: {
-      iconURL: 'images/red_flag.png',
-      banding: 'Unhealthy'
-    },
-    extreme: {
-      iconURL: 'images/purple_flag.png',
-      banding: 'Very Unhealthy'
-    }
-  };
+
 
   // TODO: Maybe we should remove it once server-side rendering is ready?
   // var projectId = $.url().param('id');
@@ -38,10 +21,10 @@
 
   var ctx = $('#sensor-data-chart').get(0).getContext('2d');
   gradient = ctx.createLinearGradient(0,350,0,0);
-  gradient.addColorStop(.70,"#c3b3e4");
-  gradient.addColorStop(.54,"#faafce");
-  gradient.addColorStop(.36,"#ffde9b");
-  gradient.addColorStop(0,"#94dbbb");
+  gradient.addColorStop(.70,'#c3b3e4');
+  gradient.addColorStop(.54,'#faafce');
+  gradient.addColorStop(.36,'#ffde9b');
+  gradient.addColorStop(0,'#94dbbb');
   ctx.canvas.height = 400;
 
   var dataChartContainer =
@@ -64,18 +47,6 @@
     }
   });
 
-  function getDQAIStatus(index) {
-    if (index <= 35) {
-      return 'low';
-    } else if (index <= 53) {
-      return 'moderate';
-    } else if (index <= 70) {
-      return 'high';
-    } else {
-      return 'extreme';
-    }
-  }
-
   function dataConvertion(dataArray) {
     var config = {
       type: 'line',
@@ -83,11 +54,11 @@
         datasets: [{
           label: 'PM2.5 value',
           pointBorderWidth: 0,
-          pointBorderColor: "#fff",
+          pointBorderColor: '#fff',
           pointHoverRadius: 5,
           pointHoverBorderWidth: 0,
-          pointBackgroundColor: "#5cc7B9",
-          pointHoverBackgroundColor: "#1cbcad",
+          pointBackgroundColor: '#5cc7B9',
+          pointHoverBackgroundColor: '#1cbcad',
           backgroundColor: gradient,//"rgba(136,216,205,0.5)",
           fill: true,
           data: dataArray.map(function(d) {
@@ -106,7 +77,7 @@
         elements: {
           line: {
             borderWidth: .1,
-            borderColor: "#88d8cd"
+            borderColor: '#88d8cd'
           },
           point: {
             radius: 0,
@@ -115,7 +86,7 @@
           }
         },
         scaleLabel: {
-          fontColor: "#7d7d7d"
+          fontColor: '#7d7d7d'
         },
         scales: {
           xAxes: [{
@@ -131,7 +102,7 @@
               unitStepSize: 100,
               displayFormats: {
                 'hour': 'MMM D, H'
-              },
+              }
             }
           } ],
           yAxes: [{
@@ -149,6 +120,33 @@
       }
     };
     return config;
+  }
+
+  function getGeolocation() {
+    return new Promise(function(resolve, reject) {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          var pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+
+          // TODO: Maybe we can set a geolocation icon here?
+          // var gMapMarker = new google.maps.Marker({
+          //   position: pos,
+          //   map: gMap,
+          //   zIndex: -1
+          // });
+
+          // gMapMarker.setIcon('images/location.png');
+          resolve(pos);
+        }, function() {
+          reject('Browser unable to get current location');
+        });
+      } else {
+        reject('Browser doesn\'t support Geolocation');
+      }
+    });
   }
 
   function updateMap(sensors) {
@@ -184,9 +182,9 @@
         );
         chartDescription.text(sensor.description);
         chartValue.text(sensor.pm25Index);
-        chartValue.attr('data-status', getDQAIStatus(sensor.pm25Index));
-        chartStatus.text(DQAI[getDQAIStatus(sensor.pm25Index)].banding);
-        chartStatus.attr('data-status', getDQAIStatus(sensor.pm25Index));
+        chartValue.attr('data-status', getDAQIStatus(sensor.pm25Index));
+        chartStatus.text(DAQI[getDAQIStatus(sensor.pm25Index)].banding);
+        chartStatus.attr('data-status', getDAQIStatus(sensor.pm25Index));
         chartLatestUpdate.text(moment(sensor.latestUpdate).fromNow());
         dataChartContainer.classList.remove('hide');
         $('#sensor-details').attr('href','./sensor.html?id=' + sensor._id);
@@ -209,6 +207,13 @@
 
     gMap.setCenter(bound.getCenter());
     gMap.fitBounds(bound);
+
+    getGeolocation().then(function(pos) {
+      gMap.setCenter(pos);
+      gMap.setZoom(11/* TODO: Refine this part to set correct scale*/);
+    }, function(e) {
+      console.log(e);
+    });
   }
 
   function renderContributorList(contributors) {
