@@ -16,8 +16,11 @@
       var sensor = sensors[0];
       link.setAttribute('href', SENSORWEB_URL + 'sensor.html?id=' + sensorId);
       var pm25Index = sensor.pm25 || sensor.pm25Index;
+      pm25Index = pm25Index || 0
       if (pm25Index < 10) {
         pm25.style.left = '50px';
+      } else {
+        pm25.style.left = '39px';
       }
       pm25.innerText = pm25Index;
       lastUpdate.innerText =
