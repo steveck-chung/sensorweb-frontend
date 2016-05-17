@@ -167,8 +167,6 @@ h3, h4 {
 .page-footer {
   height: 265px;
   background-color: #222 !important;
-  position: absolute;
-  bottom: 0;
   width: 100%;
 }
 
