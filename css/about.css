@@ -1,8 +1,18 @@
+#our-team {
+  padding-top: 3rem;
+}
+
 #our-team .card {
   background-color: transparent;
   box-shadow: none;
   border-radius: 4px;
   overflow: hidden;
+}
+
+@media only screen and (min-width: 993px) {
+	#contributors {
+	  padding-bottom:265px;
+	}
 }
 
 .card-name, .card-name-title{

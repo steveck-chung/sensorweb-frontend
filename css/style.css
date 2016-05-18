@@ -168,6 +168,8 @@ h3, h4 {
   height: 265px;
   background-color: #222 !important;
   width: 100%;
+  position: absolute;
+  bottom: 0;
 }
 
 @media only screen and (max-width: 992px) {
