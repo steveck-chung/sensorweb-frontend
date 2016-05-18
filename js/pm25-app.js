@@ -17,13 +17,18 @@
   var dataChartContainer =
     document.getElementById('sensor-data-chart-container');
   var dataChart;
+  var chartStatus = $('#sensor-information .status');
   var chartName = $('#sensor-information .name');
   var chartDescription = $('#sensor-information .description');
   var chartValue = $('#sensor-information .value');
   var chartLatestUpdate = $('#sensor-information .latest-update');
-  var chartCloseBtn = $('#chart-close-btn');
+  var navBarTitle = $('#app-navbar h3');
+  var backBtn = $('#back-btn');
 
-  chartCloseBtn.click(function () {
+  $('#sensor-data-chart').get(0).height = document.body.clientWidth * 0.6;
+
+  backBtn.click(function () {
+    updateNavBar('map');
     dataChartContainer.classList.add('hide');
     if (dataChart) {
       dataChart.destroy();
@@ -39,6 +44,16 @@
     });
     config.options.scales.yAxes[0].scaleLabel.display = false;
     return config;
+  }
+
+  function updateNavBar(view) {
+    if (view === 'map') {
+      navBarTitle.text('SensorWeb');
+      backBtn[0].classList.add('hide');
+    } else if (view === 'detail') {
+      navBarTitle.text('Detail');
+      backBtn[0].classList.remove('hide');
+    }
   }
 
   function updateMap(sensors) {
@@ -61,6 +76,9 @@
       });
 
       gMapMarker.addListener('click', function() {
+        updateNavBar('detail');
+        chartStatus.text(DAQI[getDAQIStatus(sensor.pm25Index)].banding);
+        chartStatus.attr('data-status', getDAQIStatus(sensor.pm25Index));
         chartName.text(sensor.name);
         chartDescription.text(sensor.description);
         chartValue.text(sensor.pm25Index);

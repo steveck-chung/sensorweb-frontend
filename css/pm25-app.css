@@ -1,6 +1,23 @@
 
-#app-navbar {
-  height: 75px;
+#app-navbar nav {
+  height: 64px !important;
+}
+
+#app-navbar .container {
+  position: static;
+}
+
+#app-navbar h3 {
+  color: white;
+  text-align: center;
+  margin-top: 18px;
+}
+
+#back-btn {
+  position: absolute;
+  padding: 0 1rem 0;
+  top: 0;
+  left: 0;
 }
 
 #sensors-location-map {
@@ -11,11 +28,12 @@
   position: absolute;
   top: 0px;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgb(255, 255, 255);
 }
 
 #sensor-information {
   padding: 2em 0;
+  background-color: #fafafa;
 }
 
 #sensor-information a {
@@ -44,20 +62,11 @@
 
 
 #sensor-chart {
-  padding: 2em;
+  padding: 1em;
 }
 
 #map-container {
   position: relative;
-}
-
-#chart-close-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 35px;
-  padding: 0px;
-  box-shadow: none;
 }
 
 #sensor-data-chart-container,
@@ -67,23 +76,23 @@
 }
 
 .fullscreen {
-  height: calc(100% - 75px);
+  height: calc(100% - 64px);
 }
 
-#chart-close-btn:hover{
-  background-color: #20BBAD !important;
-}
-
-.pm25-value {
-  margin-bottom: 1rem;
+.pm25-value h1 {
+  vertical-align: sub;
 }
 
 .pm25-value > * {
   display: inline;
 }
 
+#status-container {
+  display: block;
+  margin-top: 0;
+}
+
 .description-container {
-  background-color: lightgrey;
   padding: 0.5rem 2rem;
 }
 
