@@ -21,7 +21,6 @@
 
   // Chart related
   var dataChart;
-  var gradient;
 
   function updateInfo(sensor) {
     var status = getDAQIStatus(sensor.pm25Index);
@@ -81,78 +80,12 @@
   }
 
   function dataConvertion(dataArray) {
-    var config = {
-      type: 'line',
-      data: {
-        datasets: [{
-          label: 'PM2.5 value',
-          pointBorderWidth: 0,
-          pointBorderColor: '#fff',
-          pointHoverRadius: 5,
-          pointHoverBorderWidth: 0,
-          pointBackgroundColor: '#5cc7B9',
-          pointHoverBackgroundColor: '#1cbcad',
-          backgroundColor: gradient,//"rgba(136,216,205,0.5)",
-          fill: true,
-          data: dataArray.map(function(d) {
-            return { x: moment(d.datetime).format(CHART_FORMAT),
-                     // FIXME: Remove `pm25Index`.
-                     y: d.pm25Index || d.data.pm25 };
-          })
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        hover: {
-          mode: 'single',
-          animationDuration: 0
-        },
-        elements: {
-          line: {
-            borderWidth: .1,
-            borderColor: '#88d8cd'
-          },
-          point: {
-            radius: 0,
-            borderWidth: 0,
-            hitRadius: 10
-          }
-        },
-        scaleLabel: {
-          fontColor: '#7d7d7d'
-        },
-        scales: {
-          xAxes: [{
-            type: 'time',
-            gridLines: {
-              display: false
-            },
-            scaleLabel: {
-              display: true
-            },
-            time: {
-              round: true,
-              unitStepSize: 100,
-              displayFormats: {
-                'hour': 'MMM D, H'
-              }
-            }
-          } ],
-          yAxes: [{
-            display: true,
-            scaleLabel: {
-              display: true,
-              labelString: 'PM2.5 (μg/m)'
-            },
-            ticks: {
-              beginAtZero: true,
-              suggestedMax: 100
-            }
-          }]
-        }
-      }
-    };
+    var config = ChartUtils.getChartConfig();
+    config.data.datasets[0].data = dataArray.map(function(d) {
+      return { x: moment(d.datetime).format(CHART_FORMAT),
+               // FIXME: Remove `pm25Index`.
+               y: d.pm25Index || d.data.pm25 };
+    });
     return config;
   }
 
@@ -196,16 +129,11 @@
     if (dataChart) {
       dataChart.destroy();
     }
-
     var ctx = $('#sensor-data-chart').get(0).getContext('2d');
-    gradient = ctx.createLinearGradient(0,520,0,0);
-    gradient.addColorStop(.70,'#c3b3e4');
-    gradient.addColorStop(.54,'#faafce');
-    gradient.addColorStop(.36,'#ffde9b');
-    gradient.addColorStop(0,'#94dbbb');
-    ctx.canvas.height = 400;
     dataChart = new Chart(ctx, dataConvertion(dataArray));
-    console.log(dataChart);
+    // FIXME: Not sure why the gradient is not applied at first. So we force
+    // it to update after animation.
+    setTimeout(dataChart.update.bind(dataChart), 1000);
   })
   .fail(function(error) {
     console.error(error);
@@ -242,7 +170,8 @@
         } else if (formattedDate > dataChart.data.datasets[0].data[0].x) {
           dataChart.data.datasets[0].data.unshift({
             x: moment(sensor.latestUpdate).format(CHART_FORMAT),
-            y: sensor.pm25Index
+            // FIXME: Remove `pm25Index`.
+            y: sensor.pm25Index || sensor.data.pm25
           });
           dataChart.update();
         }
