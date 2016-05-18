@@ -33,9 +33,11 @@ module.exports = {
         "google": true,
         "gapi": true,
         "Chart": true,
+        "ChartUtils": true,
         "moment": true,
         "DAQI": true,
         "getDAQIStatus": true,
-        "Materialize": true
+        "Materialize": true,
+        "SENSORWEB_URL": true
     }
 };

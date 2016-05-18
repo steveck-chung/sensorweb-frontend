@@ -31,59 +31,13 @@
   });
 
   function dataConvertion(dataArray) {
-    var config = {
-      type: 'line',
-      data: {
-        datasets: [{
-          label: 'PM2.5 value',
-          pointBorderWidth: 0,
-          pointHoverRadius: 4,
-          pointHoverBackgroundColor: 'grey',
-          fill: true,
-          data: dataArray.map(function(d) {
-            return { x: moment(d.datetime).format(CHART_FORMAT),
-                     // FIXME: Remove `pm25Index`.
-                     y: d.pm25Index || d.data.pm25 };
-          })
-        }]
-      },
-      options: {
-        responsive: true,
-        hover: {
-          animationDuration: 0
-        },
-        elements: {
-          line: {
-            borderWidth: 2
-          },
-          point: {
-            radius: 2,
-            borderWidth: 2
-          }
-        },
-        scales: {
-          xAxes: [{
-            type: 'time',
-            display: true,
-            scaleLabel: {
-              display: true
-              // labelString: 'Time'
-            }
-          }],
-          yAxes: [{
-            display: true,
-            scaleLabel: {
-              display: true,
-              labelString: 'PM2.5 index(μg/m)'
-            },
-            ticks: {
-              beginAtZero: true,
-              suggestedMax: 100
-            }
-          }]
-        }
-      }
-    };
+    var config = ChartUtils.getChartConfig();
+    config.data.datasets[0].data = dataArray.map(function(d) {
+      return { x: moment(d.datetime).format(CHART_FORMAT),
+               // FIXME: Remove `pm25Index`.
+               y: d.pm25Index || d.data.pm25 };
+    });
+    config.options.scales.yAxes[0].scaleLabel.display = false;
     return config;
   }
 
@@ -157,7 +111,7 @@
       enableHighAccuracy: true
     };
 
-    function onSuccess(position) {
+    navigator.geolocation.getCurrentPosition(function(position) {
       var pos = {
         lat: position.coords.latitude,
         lng: position.coords.longitude
@@ -170,9 +124,7 @@
       });
       gMap.setCenter(pos);
       gMapMarker.setIcon('images/location.png');
-    }
-
-    navigator.geolocation.getCurrentPosition(onSuccess, null, opts);
+    }, null, opts);
   } else {
     console.error('Browser doesn\'t support Geolocation');
   }

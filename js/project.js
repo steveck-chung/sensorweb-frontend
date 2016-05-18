@@ -19,19 +19,11 @@
   var gMap;
   var markerMap = new Map();
 
-  var ctx = $('#sensor-data-chart').get(0).getContext('2d');
-  gradient = ctx.createLinearGradient(0,350,0,0);
-  gradient.addColorStop(.70,'#c3b3e4');
-  gradient.addColorStop(.54,'#faafce');
-  gradient.addColorStop(.36,'#ffde9b');
-  gradient.addColorStop(0,'#94dbbb');
-  ctx.canvas.height = 400;
 
   var dataChartContainer =
     document.getElementById('sensor-data-chart-container');
-
+  var ctx = $('#sensor-data-chart').get(0).getContext('2d');
   var dataChart;
-  var gradient;
 
   var chartName = $('#sensor-information .name');
   var chartDescription = $('#sensor-information .description');
@@ -48,77 +40,12 @@
   });
 
   function dataConvertion(dataArray) {
-    var config = {
-      type: 'line',
-      data: {
-        datasets: [{
-          label: 'PM2.5 value',
-          pointBorderWidth: 0,
-          pointBorderColor: '#fff',
-          pointHoverRadius: 5,
-          pointHoverBorderWidth: 0,
-          pointBackgroundColor: '#5cc7B9',
-          pointHoverBackgroundColor: '#1cbcad',
-          backgroundColor: gradient,//"rgba(136,216,205,0.5)",
-          fill: true,
-          data: dataArray.map(function(d) {
-            return { x: moment(d.datetime).format(CHART_FORMAT),
-                     // FIXME: Remove `pm25Index`.
-                     y: d.pm25Index || d.data.pm25 };
-          })
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        hover: {
-          animationDuration: 0
-        },
-        elements: {
-          line: {
-            borderWidth: .1,
-            borderColor: '#88d8cd'
-          },
-          point: {
-            radius: 0,
-            borderWidth: 0,
-            hitRadius: 10
-          }
-        },
-        scaleLabel: {
-          fontColor: '#7d7d7d'
-        },
-        scales: {
-          xAxes: [{
-            type: 'time',
-            gridLines: {
-              display: false
-            },
-            scaleLabel: {
-              display: true
-            },
-            time: {
-              round: true,
-              unitStepSize: 100,
-              displayFormats: {
-                'hour': 'MMM D, H'
-              }
-            }
-          } ],
-          yAxes: [{
-            display: true,
-            scaleLabel: {
-              display: true,
-              labelString: 'PM2.5 index(μg/m)'
-            },
-            ticks: {
-              beginAtZero: true,
-              suggestedMax: 100
-            }
-          }]
-        }
-      }
-    };
+    var config = ChartUtils.getChartConfig();
+    config.data.datasets[0].data = dataArray.map(function(d) {
+      return { x: moment(d.datetime).format(CHART_FORMAT),
+               // FIXME: Remove `pm25Index`.
+               y: d.pm25Index || d.data.pm25 };
+    });
     return config;
   }
 
@@ -195,7 +122,6 @@
         })
         .done(function(dataArray) {
           dataChart = new Chart(ctx, dataConvertion(dataArray));
-
         })
         .fail(function(error) {
           console.error(error);

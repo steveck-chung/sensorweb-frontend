@@ -1,15 +1,99 @@
 'use strict';
 
-(function() {
-  if (!DRAW_DAQI_LINE) {
-    return;
+(function(exports) {
+
+  function getChartConfig() {
+    return {
+      type: 'line',
+      data: {
+        datasets: [{
+          label: 'PM2.5 value',
+          pointBorderWidth: 0,
+          pointBorderColor: '#fff',
+          pointHoverRadius: 5,
+          pointHoverBorderWidth: 0,
+          pointBackgroundColor: '#5cc7B9',
+          pointHoverBackgroundColor: '#1cbcad',
+          fill: true
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        hover: {
+          mode: 'single',
+          animationDuration: 0
+        },
+        elements: {
+          line: {
+            borderWidth: .1,
+            borderColor: '#88d8cd'
+          },
+          point: {
+            radius: 0,
+            borderWidth: 0,
+            hitRadius: 10
+          }
+        },
+        scaleLabel: {
+          fontColor: '#7d7d7d'
+        },
+        scales: {
+          xAxes: [{
+            type: 'time',
+            gridLines: {
+              display: false
+            },
+            scaleLabel: {
+              display: true
+            },
+            time: {
+              round: true,
+              unitStepSize: 100,
+              displayFormats: {
+                'hour': 'MMM D, H'
+              }
+            }
+          } ],
+          yAxes: [{
+            display: true,
+            scaleLabel: {
+              display: true,
+              labelString: 'PM2.5 (μg/m)'
+            },
+            ticks: {
+              beginAtZero: true,
+              suggestedMax: 100
+            }
+          }]
+        }
+      }
+    };
   }
 
   var draw = Chart.controllers.line.prototype.draw;
-  // Extend the draw function to draw additional horizontal line for DAQI level
+  // Extend the draw function to draw:
+  //  - additional horizontal line for DAQI level
+  //  - gradient color of the chart
   Chart.controllers.line = Chart.controllers.line.extend({
-    draw: function() {
-      draw.call(this, arguments[0]);
+    setDAQIGradient: function() {
+      var ctx = this.chart.chart.ctx;
+      var yScale = this.chart.scales['y-axis-0'];
+      var end = yScale.end;
+      var top = yScale.top;
+      var bottom = yScale.bottom;
+      var gradient = ctx.createLinearGradient(0,bottom,0,top);
+
+      gradient.addColorStop(70 / end,'#c3b3e4');
+      gradient.addColorStop(54 / end,'#faafce');
+      gradient.addColorStop(36 / end,'#ffde9b');
+      gradient.addColorStop(0,'#94dbbb');
+      this.chart.config.data.datasets[0].backgroundColor = gradient;
+    },
+    drawDAQILines: function() {
+      if (!DRAW_DAQI_LINE) {
+        return;
+      }
 
       function yPosConverter(value) {
         var end = yScale.end;
@@ -45,6 +129,16 @@
         ctx.stroke();
         ctx.closePath();
       }
+    },
+    draw: function() {
+      this.setDAQIGradient();
+      draw.call(this, arguments[0]);
+      this.drawDAQILines();
     }
   });
-})();
+
+  exports.ChartUtils = {
+    getChartConfig: getChartConfig
+  };
+
+})(window);
