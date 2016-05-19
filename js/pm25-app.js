@@ -43,6 +43,16 @@
                y: d.pm25Index || d.data.pm25 };
     });
     config.options.scales.yAxes[0].scaleLabel.display = false;
+    config.options.scales.xAxes[0].time.unitStepSize = 3;
+    config.options.tooltips.callbacks = {
+      label: function(items) {
+        updateInfo({
+          pm25Index: items.yLabel,
+          latestUpdate: items.xLabel
+        });
+        return 'PM2.5: ' + items.yLabel;
+      }
+    };
     return config;
   }
 
@@ -53,6 +63,26 @@
     } else if (view === 'detail') {
       navBarTitle.text('Detail');
       backBtn[0].classList.remove('hide');
+    }
+  }
+
+  function updateInfo(opts) {
+    var idx = opts.pm25Index;
+    var time = opts.latestUpdate;
+    var name = opts.name;
+    var description = opts.description;
+
+    chartStatus.text(DAQI[getDAQIStatus(idx)].banding);
+    chartStatus.attr('data-status', getDAQIStatus(idx));
+    chartValue.text(idx);
+    chartValue.attr('data-status', getDAQIStatus(idx));
+    chartLatestUpdate.text(moment(time).fromNow());
+
+    if (name) {
+      chartName.text(name);
+    }
+    if (description) {
+      chartDescription.text(description);
     }
   }
 
@@ -77,13 +107,12 @@
 
       gMapMarker.addListener('click', function() {
         updateNavBar('detail');
-        chartStatus.text(DAQI[getDAQIStatus(sensor.pm25Index)].banding);
-        chartStatus.attr('data-status', getDAQIStatus(sensor.pm25Index));
-        chartName.text(sensor.name);
-        chartDescription.text(sensor.description);
-        chartValue.text(sensor.pm25Index);
-        chartValue.attr('data-status', getDAQIStatus(sensor.pm25Index));
-        chartLatestUpdate.text(moment(sensor.latestUpdate).fromNow());
+        updateInfo({
+          pm25Index: sensor.pm25Index,
+          latestUpdate: sensor.latestUpdate,
+          name: sensor.name,
+          description: sensor.description
+        });
         dataChartContainer.classList.remove('hide');
 
         $.ajax({

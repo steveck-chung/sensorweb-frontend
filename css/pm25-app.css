@@ -36,6 +36,20 @@
   background-color: #fafafa;
 }
 
+#sensor-information h3,
+#sensor-information span {
+  color: #8a8a8a;
+}
+
+#sensor-information .name {
+  color: #5f5f5f;
+  font-size: 1.4rem;
+}
+
+#sensor-information p {
+  margin: 0 0 0.5rem;
+}
+
 #sensor-information a {
   color: #87D9D1;
 }
@@ -93,7 +107,7 @@
 }
 
 .description-container {
-  padding: 0.5rem 2rem;
+  padding: 0.5rem 1rem;
 }
 
 .description-container .info-icon,
