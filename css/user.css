@@ -73,10 +73,10 @@ a.collection-item:hover {
 	list-style: none;
 	font-weight: 700;
 }
-@media only screen and (min-width: 993px) {
+/*@media only screen and (min-width: 993px) {
 	#user-details {
 		padding-bottom: 265px;
-	}
+	}*/
 
 
 #project-names {

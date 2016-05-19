@@ -439,4 +439,30 @@ h3.subtitle {
   box-sizing: border-box;
 }
 
+/* Documentation*/
+
+#documentation {
+  padding-bottom: 265px;
+}
+
+#documentation li {
+  line-height: 2;
+  color: #757575;
+}
+
+
+h5 {
+  margin-top: 50px;
+  font-weight: bold;
+  color: #454545;
+
+}
+
+h6 {
+  font-size: 1.3em;
+  margin-top: 40px;
+  font-weight: 600 !important;
+  color: #555;
+}
+
 

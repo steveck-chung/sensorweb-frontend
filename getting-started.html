@@ -13,33 +13,39 @@
 </head>
 <body>
 
+  <div id="page-container">
+  <ul id="dropdown" class="dropdown-content">
+    <li><a href="about.html">English Version</a></li>
+    <li class="divider"></li>
+    <li><a href="tw/about.html">中文版</a></li>
+  </ul>
   <div class="navbar-fixed">
     <nav class="teal" role="navigation">
       <div class="nav-wrapper container">
         <a id="logo-container" href="/" class="brand-logo">SensorWeb</a>
-
         <ul class="right hide-on-med-and-down">
-          <li><a href="about.html">About</a></li>
-          <li class="active"><a href="getting-started.html">Getting Started</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li class="active"><a href="getting-started.html">Documentation</a></li>
           <li><a href="http://blog.sensorweb.io">Blog</a></li>
+          <li><a href="about.html">About</a></li>
           <!-- Dropdown Trigger -->
-          <li class="login"><a href="user-detail.html">Log In</a></li>
+          <!-- <li><a class="dropdown-button" href="#!" data-activates="dropdown">EN<i id="arrow" class="material-icons right">arrow_drop_down</i></a></li> -->
+          <!-- <li class="login"><a href="user-detail.html">Log In</a></li> -->
           <!-- <li>
             <div id="tabzilla">
               <a href="https://www.mozilla.org/en-US/" data-link-type="nav" data-link-name="tabzilla">Mozilla</a>
             </div>
           </li> -->
         </ul>
-
         <!-- Mobile Navigation -->
         <ul id="nav-mobile" class="side-nav">
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="getting-started.html">Documentation</a></li>
+          <li><a href="http://blog.sensorweb.io">Blog</a></li>
           <li><a href="about.html">About</a></li>
-          <li class="active"><a href="getting-started.html">Getting Started</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="user-detail.html">Log In</a></li>
+          <!-- <li><a href="user-detail.html">Log In</a></li> -->
         </ul>
         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-
       </div>
     </nav>
   </div>
@@ -58,78 +64,123 @@
             <a href="#post-sensor-data" class="collection-item">POST /sensors/{sensor_id}/data</a>
           </div>
         </div>
-        <div class="col s12 m9 col-right">
+        <div class="col s12 m9 col-right" id="documentation">
 
-<h2 id="getting-started">Getting Started Guide</h2>
-<p>SensorWeb aims to pave the way for volunteers who is willing to solve real problems by exposing sensor data to the public. We don't just accept any random data, we encourage and help people work on shared vision together to achieve specific goals.</p>
-<p>For instance, our first initiative is to build a crowdsourcing PM2.5 sensor network. With more data published, people would have better visibility of the air quality in their surroundings. So they can take actions accordingly.</p>
-<p>Not everyone need to be a contributor. But if your do, tons of people would benifit from it. </p>
-<p>Excited? Below are 4 steps to get you started.</p>
-<h3 id="step-1">Step 1: Create Your SensorWeb Account</h3>
-<p>Fill in the <a href="/#signup">sign up form</a> or just <a href="/#login">login</a> with exsiting account. After logged in, a popup will tell you that you just joined PM2.5 initiative, since it's our only first initiative for now. Click <strong>OK</strong> will bring you to your dashboard.</p>
-<h3 id="step-2">Step 2: Create a Sensor ID and API Key</h3>
-<p>Click <strong>Add Device</strong>, fill in necessary information about your sensor and submit. You will see your <code>sensor_id</code> and <code>api_key</code> in the sensor detail page.</p>
-<h3 id="step-3">Step 3: Setup Your Sensor Station</h3>
-<p>Currently we provide some basic software to enable various ways to setup your sensor station. It might have frictions for non-developers for now. We will improve the setup process step by step, please <a href="http://blog.sensorweb.io/">stay tuned</a> for upcoming releases.</p>
-<p>A sensor station that integrates with our services should have:</p>
-<ul>
-<li>Sensors connected to it via IO headers/sockets to provide readings.</li>
-<li>Basic ability to process and (temporarily) store the data.</li>
-<li>Wired/Wireless internet connection to post to our REST API.</li>
-</ul>
-<p>We listed 3 alternative ways below, you might already have some of the hardware parts, choose the one you comfortable with the most.</p>
-<h4>PC-based Sensor Station Setup</h4>
-<p>PC has sufficient computing power, storage, and internet connection, but to read data from sensors, we need USB adapters to connect to various kind of sockets/headers. Arduino could do the job in most cases, and for UART based sensors like some PM2.5 sensor, a simple and cheap (around $5) USB 2 TTL adapter would make it easy.</p>
-<ul>
-<li>Skills Required: PC software installation, command line interface, simple wiring.</li>
-<li>Hardware Requirement: PC or laptop, USB adapter, Sensors</li>
-<li>Instructions: <a href="https://github.com/sensor-web/js-station">See instructions on github</a></li>
-</ul>
-<h4>Arduino-based Sensor Station Setup</h4>
-<p>With internet-enabled Arduino-like boards, it's perfect for a sensor station setup since it supports various kind of sensors.</p>
-<ul>
-<li>Skills Required: PC software installation, command line interface, wiring Arduino</li>
-<li>Hardware Requirement: Arduino compatible board with the capability or module to connect to the internet, Sensors</li>
-<li>Instructions: <a href="https://github.com/sensor-web/arduino-station">See instructions on github</a></li>
-</ul>
-<h4>Raspberry Pi Sensor Station Setup</h4>
-<p>Raspberry Pi is a single board computer with IO pins, therefore it has the capability we need for a sensor station.</p>
-<ul>
-<li>Skills Required: command line interface, wiring Raspberry Pi</li>
-<li>Hardware Requirement: Raspberry Pi, SD Card, ethernet cable or wifi dongle, Sensors</li>
-<li>Instructions: <a href="https://github.com/sensor-web/pi-station">See instructions on github</a> </li>
-</ul>
-<h4>Using Other Hardware You Prefer</h4>
-<p>If you have other preferred hardware boards, you can build your own and have it send data to our service by calling our <a href="/api-reference.html">REST API</a>.</p>
-<h3 id="step-4">Step 4: See Your Live Data</h3>
-<p>After setting up your sensor station properly, it should begin to send data to SensorWeb. Go back to the sensor detail page you just created in <a href="#step-2">step 2</a>, you'll see your data being visualized and updated in realtime.</p>
-
-<br><br><br><br><br><br>
-
-<hr>
-
-<h2 id="api-reference">REST API Reference</h2>
-<p>Currently we only expose API for sensor devices to push data to SensorWeb. </p>
-<p>Stay tuned for query APIs.</p>
-<hr />
-<h3 id="post-sensor-data">POST /sensors/<code>sensor_id</code>/data</h3>
-<p>After you <a href="/#login">logged in</a> and created a sensor device, you can start to send data to SensorWeb with your <code>api_key</code> and <code>sensor_id</code>.</p>
-<h4>Request</h4>
-<p><strong>POST</strong> <code>http://api.sensorweb.io/sensors/{sensor_id}/data/</code></p>
-<pre><code>?api_key={api_key}&amp;pm2_5={pm2.5_value}
+<h3 id="getting-started">Getting Started Guide</h3>
+    <p class="contents">SensorWeb aims to pave the way for volunteers who is willing to solve
+    real problems by exposing sensor data to the public. We don't just accept
+    any random data, we encourage and help people work on shared vision
+    together to achieve specific goals.</p>
+    <p class="contents">For instance, our first initiative is to build a crowdsourcing PM2.5
+    sensor network. With more data published, people would have better
+    visibility of the air quality in their surroundings. So they can take
+    actions accordingly.</p>
+    <p class="contents">Not everyone need to be a contributor. But if your do, tons of people
+    would benifit from it.</p>
+    <p class="contents">Excited? Below are 4 steps to get you started.</p>
+    <h5 id="step-1">Step 1: Create Your SensorWeb Account</h5>
+    <p class="contents">Fill in the <a href="/#signup">sign up form</a> or just <a href=
+    "/#login">login</a> with exsiting account. After logged in, a popup will
+    tell you that you just joined PM2.5 initiative, since it's our only first
+    initiative for now. Click <strong>OK</strong> will bring you to your
+    dashboard.</p>
+    <h5 id="step-2">Step 2: Create a Sensor ID and API Key</h5>
+    <p class="contents">Click <strong>Add Device</strong>, fill in necessary information about
+    your sensor and submit. You will see your <code>sensor_id</code> and
+    <code>api_key</code> in the sensor detail page.</p>
+    <h5 id="step-3">Step 3: Setup Your Sensor Station</h5>
+    <p class="contents">Currently we provide some basic software to enable various ways to setup
+    your sensor station. It might have frictions for non-developers for now. We
+    will improve the setup process step by step, please <a href=
+    "http://blog.sensorweb.io/">stay tuned</a> for upcoming releases.</p>
+    <p class="contents">A sensor station that integrates with our services should have:</p>
+    <ul>
+        <li>Sensors connected to it via IO headers/sockets to provide
+        readings.</li>
+        <li>Basic ability to process and (temporarily) store the data.</li>
+        <li>Wired/Wireless internet connection to post to our REST API.</li>
+    </ul>
+    <p class="contents">We listed 3 alternative ways below, you might already have some of the
+    hardware parts, choose the one you comfortable with the most.</p>
+    <h6>PC-based Sensor Station Setup</h6>
+    <p class="contents">PC has sufficient computing power, storage, and internet connection, but
+    to read data from sensors, we need USB adapters to connect to various kind
+    of sockets/headers. Arduino could do the job in most cases, and for UART
+    based sensors like some PM2.5 sensor, a simple and cheap (around $5) USB 2
+    TTL adapter would make it easy.</p>
+    <ul>
+        <li>Skills Required: PC software installation, command line interface,
+        simple wiring.</li>
+        <li>Hardware Requirement: PC or laptop, USB adapter, Sensors</li>
+        <li>Instructions: <a href="https://github.com/sensor-web/js-station">
+            See instructions on github</a>
+        </li>
+    </ul>
+    <h6>Arduino-based Sensor Station Setup</h6>
+    <p class="contents">With internet-enabled Arduino-like boards, it's perfect for a sensor
+    station setup since it supports various kind of sensors.</p>
+    <ul>
+        <li>Skills Required: PC software installation, command line interface,
+        wiring Arduino</li>
+        <li>Hardware Requirement: Arduino compatible board with the capability
+        or module to connect to the internet, Sensors</li>
+        <li>Instructions: <a href=
+        "https://github.com/sensor-web/arduino-station">See instructions on
+        github</a>
+        </li>
+    </ul>
+    <h6>Raspberry Pi Sensor Station Setup</h6>
+    <p class="contents">Raspberry Pi is a single board computer with IO pins, therefore it has
+    the capability we need for a sensor station.</p>
+    <ul>
+        <li>Skills Required: command line interface, wiring Raspberry Pi</li>
+        <li>Hardware Requirement: Raspberry Pi, SD Card, ethernet cable or wifi
+        dongle, Sensors</li>
+        <li>Instructions: <a href="https://github.com/sensor-web/pi-station">
+            See instructions on github</a>
+        </li>
+    </ul>
+    <h6>Using Other Hardware You Prefer</h6>
+    <p class="contents">If you have other preferred hardware boards, you can build your own and
+    have it send data to our service by calling our <a href=
+    "/api-reference.html">REST API</a>.</p>
+    <h5 id="step-4">Step 4: See Your Live Data</h5>
+    <p class="contents">After setting up your sensor station properly, it should begin to send
+    data to SensorWeb. Go back to the sensor detail page you just created in
+    <a href="#step-2">step 2</a>, you'll see your data being visualized and
+    updated in realtime.</p><br>
+    <br>
+    <hr>
+    <br>
+    <h3 id="api-reference">REST API Reference</h3>
+    <p class="contents">Currently we only expose API for sensor devices to push data to SensorWeb. Stay tuned for query APIs.</p>
+    <h5 id="post-sensor-data">POST /sensors/<code>sensor_id</code>/data</h5>
+    <p class="contents">After you <a href="/#login">logged in</a> and created a sensor device,
+    you can start to send data to SensorWeb with your <code>api_key</code> and
+    <code>sensor_id</code>.</p>
+    <h6>Request</h6>
+    <p class="contents"><strong>POST</strong>
+    <code>http://api.sensorweb.io/sensors/{sensor_id}/data/</code></p>
+    <pre><code>?api_key={api_key}&amp;pm2_5={pm2.5_value}
 </code></pre>
-<h5>Parameters</h5>
-<ul>
-<li><code>sensor_id</code>: Your sensor id, you can find it in <a href="/user-detail.html">your dashboard</a></li>
-<li><code>api_key</code>: Your API key to access SensorWeb, you can find it in <a href="/user-detail.html">your dashboard</a></li>
-<li><code>pm2_5</code>: PM sensor reading in µg/m³</li>
-</ul>
-<h5>Headers</h5>
-<pre><code>Content-Type: application/x-www-form-urlencoded
+    <h5>Parameters</h5>
+    <ul>
+        <li>
+            <code>sensor_id</code>: Your sensor id, you can find it in <a href=
+            "/user-detail.html">your dashboard</a>
+        </li>
+        <li>
+            <code>api_key</code>: Your API key to access SensorWeb, you can
+            find it in <a href="/user-detail.html">your dashboard</a>
+        </li>
+        <li><code>pm2_5</code>: PM sensor reading in µg/m³</li>
+    </ul>
+    <h5>Headers</h5>
+    <pre><code>Content-Type: application/x-www-form-urlencoded
 Accept: application/json
 </code></pre>
-<h4>Response</h4>
-<pre><code>{
+    <h6>Response</h6>
+    <pre><code>{
     "name": "My First PM2.5 Sensor",
     "description": "It's in my work place'",
     "address": "No. 106, Section 5, Xinyi Rd, Taipei City, Taiwan 110",
@@ -140,7 +191,7 @@ Accept: application/json
     }
 }
 </code></pre>
-<hr />
+    <hr>
 
 
         </div>
@@ -159,16 +210,12 @@ Accept: application/json
         <div class="col l3 s12">
           <h5 class="white-text head">SensorWeb</h5>
           <ul>
-            <li><a class="white-text" href="about.html">About</a></li>
-            <li><a class="white-text" href="projects.html">Projects</a></li>
-            <li><a class="white-text" href="documentation.html">Documentation</a></li>
-            <li><a class="white-text" href="blog.html">Blog</a></li>
+            <li><a class="white-text" href="https://github.com/sensor-web" target="_blank">GitHub</a></li>
           </ul>
         </div>
         <div class="col l3 s12">
           <h5 class="white-text head">Connect</h5>
           <ul>
-            <li><a class="white-text" href="https://github.com/sensor-web" target="_blank">GitHub</a></li>
             <li><a class="white-text" href="https://wiki.mozilla.org/SensorWeb" target="_blank">Wiki</a></li>
             <li><a class="white-text" href="https://wiki.mozilla.org/Connected_Devices/Participation" target="_blank">Participation</a></li>
           </ul>
@@ -188,6 +235,7 @@ Accept: application/json
       </div>
     </div>
   </footer>
+  </div>
 
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="js/materialize.min.js"></script>
