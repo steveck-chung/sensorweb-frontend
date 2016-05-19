@@ -20,11 +20,17 @@
     extreme: {
       iconURL: 'images/purple_flag.png',
       banding: 'Very Unhealthy'
+    },
+    invalid: {
+      iconURL: 'images/gray_flag.png',
+      banding: 'Invalid'
     }
   };
 
   function getDAQIStatus(index) {
-    if (index <= 35) {
+    if (!Number.isInteger(index) || index < 0) {
+      return 'invalid';
+    } else if (index <= 35) {
       return 'low';
     } else if (index <= 53) {
       return 'moderate';

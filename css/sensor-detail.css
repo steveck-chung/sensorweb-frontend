@@ -34,6 +34,10 @@
   color: #D95AF9;
 }
 
+#info-pm25-index[data-status="invalid"],
+#map-infowindow .status[data-status="invalid"] {
+  color: gray;
+}
 
 @media only screen and (min-width: 993px) {
 	#sensor-data {

@@ -23,7 +23,9 @@
   var dataChart;
 
   function updateInfo(sensor) {
-    var status = getDAQIStatus(sensor.pm25Index);
+    var idx = sensor.pm25Index;
+    var status = getDAQIStatus(idx);
+    var idxStr = idx || 'Invalid';
     var newContent =
     /* jshint ignore:start */
       '<div id="map-infowindow">'+
@@ -31,7 +33,7 @@
         '<div id="bodyContent">'+
           '<p id="info-description">' + sensor.description + '</p>'+
           '<p>PM2.5: <span class="value" id="info-pm25-index" data-status="' +
-          status +'">' + sensor.pm25Index + '</span>' +
+          status +'">' + idxStr + '</span>' +
           '<p class="info">Air quality is '+ '<span class="status" data-status="'+status+'">'+DAQI[status].banding+'</span>'+'<span> ( <a href="https://uk-air.defra.gov.uk/air-pollution/daqi?view=more-info&pollutant=pm25#pollutant" target="_blank">' +
           '<a href="http://taqm.epa.gov.tw/taqm/tw/fpmi.htm" target="_blank">Taiwan\'s Practice</a> )</p>' +
           '<p class="info">Last Update: <span id="info-last-update">' + moment(sensor.latestUpdate).format(CHART_FORMAT) + '</span></p>'+
@@ -157,7 +159,7 @@
       if (sensor.latestUpdate !== undefined &&
           sensor.pm25Index !== undefined) {
         latestUpdateElm.text(moment(sensor.latestUpdate).fromNow());
-        pm25Elm.text(sensor.pm25Index);
+        pm25Elm.text(sensor.pm25Index || 'Invalid');
 
         latestSensorData = sensor;
         gMapMarker.setIcon(DAQI[status].iconURL);
