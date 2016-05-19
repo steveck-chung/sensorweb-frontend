@@ -61,7 +61,7 @@
       navBarTitle.text('SensorWeb');
       backBtn[0].classList.add('hide');
     } else if (view === 'detail') {
-      navBarTitle.text('Detail');
+      navBarTitle.text('Sensor Details');
       backBtn[0].classList.remove('hide');
     }
   }

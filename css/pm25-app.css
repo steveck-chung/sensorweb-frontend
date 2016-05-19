@@ -1,6 +1,7 @@
 
 #app-navbar nav {
   height: 64px !important;
+  line-height: 64px !important;
 }
 
 #app-navbar .container {
@@ -11,12 +12,14 @@
   color: white;
   text-align: center;
   margin-top: 18px;
+  font-size: 18pt;
+  font-weight: normal;
 }
 
 #back-btn {
   position: absolute;
   padding: 0 1rem 0;
-  top: 0;
+  top: 4px;
   left: 0;
 }
 
@@ -32,7 +35,7 @@
 }
 
 #sensor-information {
-  padding: 2em 0;
+  padding: 2.5em 0 2em 0;
   background-color: #fafafa;
 }
 
@@ -43,7 +46,8 @@
 
 #sensor-information .name {
   color: #5f5f5f;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
+  margin-bottom: 5px;
 }
 
 #sensor-information p {
@@ -59,19 +63,19 @@
 }
 
 #sensor-information [data-status="low"] {
-  color: green;
+  color: #60CC4A;
 }
 
 #sensor-information [data-status="moderate"] {
-  color: gold;
+  color: #F1BE4A;
 }
 
 #sensor-information [data-status="high"] {
-  color: red;
+  color: #FF6360;
 }
 
 #sensor-information [data-status="extreme"] {
-  color: purple;
+  color: #D95AF9;
 }
 
 
@@ -95,6 +99,12 @@
 
 .pm25-value h1 {
   vertical-align: sub;
+  font-size: 5em;
+}
+
+.pm25-value h3 {
+  font-weight: 100;
+  font-size: 1.8em;
 }
 
 .pm25-value > * {
@@ -109,6 +119,11 @@
 .description-container {
   padding: 0.5rem 1rem;
 }
+
+.description-container p{
+  line-height: 1.5;
+}
+
 
 .description-container .info-icon,
 .description-container .update-time-icon {
