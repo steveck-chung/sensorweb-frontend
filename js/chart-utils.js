@@ -21,8 +21,14 @@
         responsive: true,
         maintainAspectRatio: false,
         hover: {
-          mode: 'single',
+          mode: 'label',
           animationDuration: 0
+        },
+        tooltips: {
+          mode: 'label'
+        },
+        legend: {
+          display: false
         },
         elements: {
           line: {
@@ -51,7 +57,7 @@
               round: true,
               unitStepSize: 100,
               displayFormats: {
-                'hour': 'MMM D, H'
+                'hour': 'MMM D, HH'
               }
             }
           } ],
@@ -70,6 +76,40 @@
       }
     };
   }
+
+  /* FIXME: HOT PATCH GetElementsAtEvent for chartjs version 2.0.0
+     Remove it once https://github.com/chartjs/Chart.js/issues/2299 fixed. */
+  Chart.Controller.prototype.getElementsAtEvent = function(e) {
+    var helpers = Chart.helpers;
+    var eventPosition = helpers.getRelativePosition(e, this.chart);
+    var elementsArray = [];
+
+    var found = (function() {
+      if (this.data.datasets) {
+        for (var i = 0; i < this.data.datasets.length; i++) {
+          if (helpers.isDatasetVisible(this.data.datasets[i])) {
+            for (var j = 0; j < this.data.datasets[i].metaData.length; j++) {
+              if (this.data.datasets[i].metaData[j].inLabelRange(eventPosition.x, eventPosition.y)) {
+                return this.data.datasets[i].metaData[j];
+              }
+            }
+          }
+        }
+      }
+    }).call(this);
+
+    if (!found) {
+      return elementsArray;
+    }
+
+    helpers.each(this.data.datasets, function(dataset) {
+      if (helpers.isDatasetVisible(dataset)) {
+        elementsArray.push(dataset.metaData[found._index]);
+      }
+    });
+
+    return elementsArray;
+  };
 
   var draw = Chart.controllers.line.prototype.draw;
   // Extend the draw function to draw:
