@@ -48,6 +48,9 @@
   color: #D95AF9;
 }
 
+#sensor-information [data-status="invalid"] {
+  color: gray;
+}
 
 #sensor-chart {
   padding: 2em;

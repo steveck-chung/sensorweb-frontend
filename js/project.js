@@ -93,7 +93,8 @@
         position: { lat: Number(coords.lat), lng: Number(coords.lng) },
         map: gMap,
         title: sensor.name,
-        zIndex: index + 1,
+        // Place the invliad marker to bottom
+        zIndex: sensor.pm25Index ? index + 1 : 0,
         icon: DAQI[getDAQIStatus(sensor.pm25Index)].iconURL
       });
 
@@ -102,13 +103,9 @@
       );
 
       gMapMarker.addListener('click', function() {
-        chartName.html(
-          // '<a href="./sensor.html?id=' + sensor._id + '">' +
-          // sensor.name + '</a>'
-          sensor.name
-        );
+        chartName.text(sensor.name);
         chartDescription.text(sensor.description);
-        chartValue.text(sensor.pm25Index);
+        chartValue.text(sensor.pm25Index || 'Invalid');
         chartValue.attr('data-status', getDAQIStatus(sensor.pm25Index));
         chartStatus.text(DAQI[getDAQIStatus(sensor.pm25Index)].banding);
         chartStatus.attr('data-status', getDAQIStatus(sensor.pm25Index));
