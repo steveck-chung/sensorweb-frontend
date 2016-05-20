@@ -1,7 +1,8 @@
 #tagline {
 	font-weight: 300;
 	line-height: 1.2;
-	letter-spacing: 1px;
+	letter-spacing: .5px;
+  color: #fff !important;
 }
 
 #index-form {
