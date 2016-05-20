@@ -56,7 +56,7 @@ nav li a{
   font-size: 1.5em !important;
   font-weight: 400;
   font-style: italic;
-  letter-spacing: 1.2px; 
+  letter-spacing: 1.2px;
   overflow: hidden;
   width: 220px;
   margin-top: 18px;
@@ -411,7 +411,7 @@ h3.subtitle {
 }
 
 #sensorweb-projects .card-image {
-  background: url(../images/02_cover.png) no-repeat center center;
+  background: url(../images/02_cover.jpg) no-repeat center center;
   background-size: cover;
   height:400px;
 }
@@ -424,6 +424,11 @@ h3.subtitle {
   left:0;
   right: 0;
   margin: auto;
+}
+
+.modal-content .terms {
+  color: gray;
+  font-size: 0.8rem;
 }
 
 #google-sign-in-modal {
@@ -464,5 +469,3 @@ h6 {
   font-weight: 600 !important;
   color: #555;
 }
-
-
