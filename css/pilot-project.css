@@ -78,8 +78,6 @@ margin-left: -0.5rem !important;
   color: #5CC7B9 !important;
 }
 
-
-
 /*
 .projects-textarea {
   padding: 1rem !important;
@@ -89,11 +87,11 @@ margin-left: -0.5rem !important;
 
 .set-margin {
 	margin-top: 3px !important;
-	margin-bottom: 38px !important;
+	/*margin-bottom: 38px !important;*/
 }
 
 .projects-textarea.set-margin {
-	margin-bottom: 36px !important;
+	/*margin-bottom: 36px !important;*/
 }
 
 .form-submit .btn-large {

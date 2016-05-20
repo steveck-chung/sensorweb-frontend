@@ -120,7 +120,7 @@ h3, h4 {
 
 .dropdown-content{
   width: 200px !important;
-  margin-top:73px;
+  margin-top:49px;
   z-index: 1;
 }
 
@@ -363,7 +363,8 @@ h3.subtitle {
 }
 
 .modal {
-  padding: .5rem;
+  padding: 1rem;
+  max-height: 100%;
 }
 
 .col-right {
@@ -429,6 +430,8 @@ h3.subtitle {
 .modal-content .terms {
   color: gray;
   font-size: 0.8rem;
+  line-height: 1.8;
+  margin-bottom: 30px;
 }
 
 #google-sign-in-modal {
