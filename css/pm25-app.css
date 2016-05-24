@@ -1,4 +1,8 @@
 
+#app-navbar {
+  height: 64px;
+}
+
 #app-navbar nav {
   height: 64px !important;
   line-height: 64px !important;

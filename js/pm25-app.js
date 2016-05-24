@@ -25,8 +25,6 @@
   var navBarTitle = $('#app-navbar h3');
   var backBtn = $('#back-btn');
 
-  $('#sensor-data-chart').get(0).height = document.body.clientWidth * 0.6;
-
   backBtn.click(function () {
     updateNavBar('map');
     dataChartContainer.classList.add('hide');
@@ -113,6 +111,7 @@
           name: sensor.name,
           description: sensor.description
         });
+        $('#sensor-data-chart').get(0).height = document.body.clientWidth * 0.6;
         dataChartContainer.classList.remove('hide');
 
         $.ajax({
