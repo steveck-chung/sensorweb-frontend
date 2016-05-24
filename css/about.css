@@ -2,6 +2,10 @@
   padding-top: 3rem;
 }
 
+#our-team .card-image {
+	overflow: hidden;
+}
+
 #our-team .card {
   background-color: transparent;
   box-shadow: none;
