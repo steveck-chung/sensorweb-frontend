@@ -20,11 +20,34 @@
   font-weight: normal;
 }
 
-#back-btn {
+.nav-btn {
   position: absolute;
   padding: 0 1rem 0;
-  top: 4px;
+  top: 0;
+}
+
+.nav-btn,
+.nav-btn > .material-icons {
+  height: 64px;
+  line-height: 64px;
+}
+
+#back-btn {
   left: 0;
+}
+
+#list-btn,
+#map-btn {
+  right: 0;
+}
+
+#list-view {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
 }
 
 #sensors-location-map {
@@ -67,19 +90,23 @@
   color: #1CBCAD;
 }
 
-#sensor-information [data-status="low"] {
+#sensor-information [data-status="low"],
+#sensor-list [data-status="low"] {
   color: #60CC4A;
 }
 
-#sensor-information [data-status="moderate"] {
+#sensor-information [data-status="moderate"],
+#sensor-list [data-status="moderate"] {
   color: #F1BE4A;
 }
 
-#sensor-information [data-status="high"] {
+#sensor-information [data-status="high"],
+#sensor-list [data-status="high"] {
   color: #FF6360;
 }
 
-#sensor-information [data-status="extreme"] {
+#sensor-information [data-status="extreme"],
+#sensor-list [data-status="extreme"] {
   color: #D95AF9;
 }
 
@@ -141,10 +168,72 @@
   display: inline-block;
 }
 
-.description-container .info-icon {
-  background-image: url("../images/info.png");
+#sensor-list {
+  margin: 0;
 }
 
-.description-container .update-time-icon {
-  background-image: url("../images/update-time.png");
+#sensor-list li {
+  position: relative;
+  border-bottom: 1px solid lightgray;
+}
+
+#sensor-list li > * {
+  pointer-events: none;
+}
+
+
+#sensor-list .info {
+  width: calc(100% - 10rem);
+  padding-left: 1rem;
+}
+
+#sensor-list .name,
+#sensor-list .description {
+  margin: 0.5rem 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#sensor-list .description span {
+  vertical-align: super;
+  padding: 0 0.5rem 0 0.2rem;
+}
+
+#sensor-list .index {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 10rem;
+
+  padding: 0.5rem 1rem 0 1rem;
+  text-align: right;
+}
+
+#sensor-list .index > * {
+  display: inline;
+}
+
+#sensor-list .value {
+  font-size: 3rem;
+}
+
+#sensor-list .unit {
+  font-size: 1.5rem;
+}
+
+/* Navbar button control */
+#app-navbar[data-type="map"] #back-btn,
+#app-navbar[data-type="map"] #map-btn,
+#app-navbar[data-type="list"] #back-btn,
+#app-navbar[data-type="list"] #list-btn,
+#app-navbar[data-type="detail"] #map-btn {
+  display: none;
+}
+
+#app-navbar[data-type="map"] #list-btn,
+#app-navbar[data-type="list"] #map-btn,
+#app-navbar[data-type="detail"] #list-btn,
+#app-navbar[data-type="detail"] #back-btn {
+  display: block;
 }
