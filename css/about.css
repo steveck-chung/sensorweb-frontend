@@ -13,12 +13,6 @@
   overflow: hidden;
 }
 
-@media only screen and (min-width: 993px) {
-	#contributors {
-	  padding-bottom:265px;
-	}
-}
-
 .card-name, .card-name-title{
   text-align: center;
 }

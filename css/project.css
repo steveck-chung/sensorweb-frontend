@@ -85,11 +85,6 @@
 #join-project {
     background-color: #f7f7f7;
 }
-@media only screen and (min-width: 993px) {
-  #join-project {
-    padding-bottom: 265px;
-  }
-}
 
 .project-info {
   text-align: right;
