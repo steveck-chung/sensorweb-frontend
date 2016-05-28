@@ -11,6 +11,7 @@
   const TOAST_DUR = 4000;
 
   var userId = $.url().param('id');
+  var session = $.url().param('session');
   var sensorName = $('#sensor-name');
   var sensorLocation = $('#sensor-location');
   var sensorDescription = $('#sensor-description');
@@ -33,6 +34,7 @@
       url: API_URL + 'projects/' + projectKey + '/sensors',
       data: {
         userId: userId,
+        session: session,
         name: name,
         description: sensorDescription.val(),
         address: sensorLocation.val(),
