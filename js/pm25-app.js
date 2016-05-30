@@ -24,9 +24,12 @@
   var dataChartContainer =
     document.getElementById('sensor-data-chart-container');
   var listView = document.getElementById('list-view');
-  var navBar = document.getElementById('app-navbar');
 
   var listContainer = $('#sensor-list');
+  var previousView = {
+    type: '',
+    scrollTop: 0
+  };
 
   var dataChart;
   var chartStatus = $('#sensor-information .status');
@@ -40,9 +43,13 @@
   var mapBtn = $('#map-btn');
 
   backBtn.click(function () {
-    updateNavBar('map');
+    if (previousView.type === 'list') {
+      listView.classList.remove('hide');
+      document.documentElement.scrollTop = previousView.scrollTop;
+    }
+
+    updateViewType(previousView.type);
     clearDetailView();
-    clearListView();
   });
 
   listBtn.click(function () {
@@ -67,17 +74,21 @@
   });
 
   mapBtn.click(function () {
-    updateNavBar('map');
+    updateViewType('map');
     clearDetailView();
     clearListView();
   });
 
   listContainer.click(function(evt) {
     if (evt.target && evt.target.dataset.id) {
-      renderDetailView(sensorMap.get(evt.target.dataset.id));
+      renderDetailView(sensorMap.get(evt.target.dataset.id), {
+        type: 'list',
+        // Save the scrollTop position to resume the original scroll position.
+        scrollTop: document.documentElement.scrollTop
+      });
     }
 
-    clearListView();
+    listView.classList.add('hide');
   });
 
   function init() {
@@ -171,8 +182,14 @@
     return config;
   }
 
+  function updateViewType(view) {
+    // Use native dataset instead of jquery data function because it doesn't
+    // actually change dataset.
+    document.body.dataset.type = view;
+    updateNavBar(view);
+  }
+
   function updateNavBar(view) {
-    navBar.dataset.type = view;
     if (view === 'map') {
       navBarTitle.text('SensorWeb');
     } else if (view === 'detail') {
@@ -188,16 +205,11 @@
 
     chartStatus.text(DAQI[getDAQIStatus(idx)].banding);
     chartStatus.attr('data-status', getDAQIStatus(idx));
-    chartValue.text(idx);
+    chartValue.text(idx || DAQI[getDAQIStatus(idx)].banding);
     chartValue.attr('data-status', getDAQIStatus(idx));
     chartLatestUpdate.text(moment(time).fromNow());
-
-    if (name) {
-      chartName.text(name);
-    }
-    if (description) {
-      chartDescription.text(description);
-    }
+    chartName.text(name);
+    chartDescription.text(description);
   }
 
   function updateMap(sensors) {
@@ -220,7 +232,9 @@
       });
 
       gMapMarker.addListener('click', function() {
-        renderDetailView(sensor);
+        renderDetailView(sensor, {
+          type: 'map'
+        });
       });
 
       markerMap.set(sensor._id, gMapMarker);
@@ -228,14 +242,19 @@
   }
 
   function clearDetailView() {
+    previousView = {
+      type: '',
+      scrollTop: 0
+    };
     dataChartContainer.classList.add('hide');
     if (dataChart) {
       dataChart.destroy();
     }
   }
 
-  function renderDetailView(sensor) {
-    updateNavBar('detail');
+  function renderDetailView(sensor, opts) {
+    previousView = opts;
+    updateViewType('detail');
     updateInfo({
       pm25Index: sensor.pm25Index,
       latestUpdate: sensor.latestUpdate,
@@ -276,7 +295,7 @@
       return;
     }
 
-    updateNavBar('list');
+    updateViewType('list');
 
     var sensorData = sensors.map(function(sensor) {
       var coords = sensor.coords;
