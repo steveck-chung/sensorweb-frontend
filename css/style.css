@@ -425,6 +425,21 @@ h3.subtitle {
   margin: auto;
 }
 
+.modal {
+  min-width: 400px;
+}
+
+@media only screen and (max-width: 992px) {
+  .modal {
+    width: 95%;
+    min-width: auto;
+    top: 2% !important;
+  }
+  .modal .modal-content {
+    padding: 12px;
+  }
+}
+
 .modal-content .terms {
   color: gray;
   font-size: 0.8rem;

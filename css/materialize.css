@@ -5215,27 +5215,17 @@ a.waves-effect .waves-ripple {
   right: 0;
   background-color: #fafafa;
   padding: 0;
-  max-height: 300px;
+  max-height: 70%;
   width: 55%;
-  min-width: 400px;
   margin: auto;
   overflow-y: auto;
   border-radius: 2px;
   will-change: top, opacity;
 }
 
-.modal .modal-content {
-  padding: 24px;
-}
-
 @media only screen and (max-width: 992px) {
   .modal {
-    width: 95%;
-    min-width: auto;
-    top: 2% !important;
-  }
-  .modal .modal-content {
-    padding: 12px;
+    width: 80%;
   }
 }
 
@@ -5243,7 +5233,9 @@ a.waves-effect .waves-ripple {
   margin-top: 0;
 }
 
-
+.modal .modal-content {
+  padding: 24px;
+}
 
 .modal .modal-close {
   cursor: pointer;
