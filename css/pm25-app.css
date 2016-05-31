@@ -56,6 +56,7 @@
 
 #sensor-data-chart-container {
   position: absolute;
+  z-index: 10;
   top: 0px;
   width: 100%;
   min-height: 100%;
@@ -223,17 +224,17 @@
 }
 
 /* Navbar button control */
-#app-navbar[data-type="map"] #back-btn,
-#app-navbar[data-type="map"] #map-btn,
-#app-navbar[data-type="list"] #back-btn,
-#app-navbar[data-type="list"] #list-btn,
-#app-navbar[data-type="detail"] #map-btn {
+[data-type="map"] #back-btn,
+[data-type="map"] #map-btn,
+[data-type="list"] #back-btn,
+[data-type="list"] #list-btn,
+[data-type="detail"] #map-btn,
+[data-type="detail"] #list-btn {
   display: none;
 }
 
-#app-navbar[data-type="map"] #list-btn,
-#app-navbar[data-type="list"] #map-btn,
-#app-navbar[data-type="detail"] #list-btn,
-#app-navbar[data-type="detail"] #back-btn {
+[data-type="map"] #list-btn,
+[data-type="list"] #map-btn,
+[data-type="detail"] #back-btn {
   display: block;
 }
