@@ -5224,9 +5224,18 @@ a.waves-effect .waves-ripple {
   will-change: top, opacity;
 }
 
+.modal .modal-content {
+  padding: 24px;
+}
+
 @media only screen and (max-width: 992px) {
   .modal {
-    width: 80%;
+    width: 95%;
+    min-width: auto;
+    top: 2% !important;
+  }
+  .modal .modal-content {
+    padding: 12px;
   }
 }
 
@@ -5234,9 +5243,7 @@ a.waves-effect .waves-ripple {
   margin-top: 0;
 }
 
-.modal .modal-content {
-  padding: 24px;
-}
+
 
 .modal .modal-close {
   cursor: pointer;
