@@ -49,6 +49,10 @@ color: #757575;
 line-height: 1.5;
 }
 
+#contributors {
+	padding-bottom: 6rem;
+}
+
 /*#our-team img:hover {
 	transform: scale(1.1);
 	-webkit-transition: transform .25s ease-in-out;
