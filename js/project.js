@@ -2,10 +2,20 @@
 
 (function(exports){
   $(document).ready(function(){
-    if (navigator.userAgent.match(/Android/i)) {
-      document.querySelector('#app-download-li').classList.remove('hide');
-      $('.modal-trigger').leanModal();
+    if (!navigator.userAgent.match(/Android/i)) {
+      return;
     }
+
+    document.querySelector('#app-download-li').classList.remove('hide');
+    $('.modal-trigger').leanModal();
+
+    if (localStorage.getItem('isDownloadModalShowed') === 'true') {
+      return;
+    }
+    setTimeout(function() {
+      $('#app-dl-modal').openModal();
+      localStorage.setItem('isDownloadModalShowed', 'true');
+    }, 5000);
   });
 
   const CHART_FORMAT = 'LLL';
