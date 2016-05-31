@@ -50,3 +50,17 @@
   background-repeat: no-repeat;
   background-position: center center;
 }
+
+#background-1 .btn-large {
+    width: auto;
+    margin: 0 15px;
+}
+
+@media only screen and (max-width: 430px) {
+  #background-1 .btn-large {
+    display: block;
+    width: 80%;
+    margin: 20px auto;
+    text-align: center; 
+  }
+}
