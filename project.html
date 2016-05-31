@@ -30,7 +30,7 @@
   <link href="css/project.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 <body>
-  
+
   <!-- Navigation -->
   <ul id="dropdown" class="dropdown-content">
     <li><a href="about.html">English Version</a></li>
@@ -64,7 +64,7 @@
           <li><a href="projects.html">Projects</a></li>
           <!-- <li><a href="getting-started.html">Document</a></li> -->
           <li><a href="http://blog.sensorweb.io">Blog</a></li>
-          <li><a href="about.html">About</a></li>
+          <li id="app-download-li" class="hide"><a class="modal-trigger" href="#app-dl-modal">Download App</a></li>
           <!-- <li><a href="user-detail.html">Log In</a></li> -->
         </ul>
         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -158,6 +158,16 @@
   </div>
   </div>
 
+  <div id="app-dl-modal" class="modal">
+    <div class="modal-content center">
+      <h4>Try Out The Pre-release PM2.5 APP</h4>
+      <img src="images/pm25_app.png" width="70%" height="70%">
+    </div>
+    <div class="modal-footer center">
+      <a href="resource/android-debug.apk" class="modal-action modal-close waves-effect waves-light btn teal" style="float:unset">Download</a>
+    </div>
+  </div>
+
   <!-- Footer -->
   <footer class="page-footer teal">
     <div class="container">
@@ -193,7 +203,7 @@
       </div>
     </div>
   </footer>
-  
+
 
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>

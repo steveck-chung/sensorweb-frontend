@@ -2,7 +2,10 @@
 
 (function(exports){
   $(document).ready(function(){
-    $('.modal-trigger').leanModal();
+    if (navigator.userAgent.match(/Android/i)) {
+      document.querySelector('#app-download-li').classList.remove('hide');
+      $('.modal-trigger').leanModal();
+    }
   });
 
   const CHART_FORMAT = 'LLL';
