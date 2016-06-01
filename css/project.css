@@ -136,4 +136,7 @@
 #contributor-name {
   font-size: 1.2em;
   color: #454545;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
