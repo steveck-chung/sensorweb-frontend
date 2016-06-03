@@ -7,8 +7,8 @@
 
   const CHART_FORMAT = 'LLL';
   const SENSOR_MARKUP ='<li data-id=${id}><div class="info"><p class="name">${name}</p>' +
-    '<p class="description"><i class="material-icons">place</i><span>${distanceStr}</span>' +
-    '<i class="material-icons">access_time</i><span>${time}</span></p></div>' +
+    '<p class="description"><span>${distanceStr}</span></p>' +
+    '<p class="description"><span>${time}</span></p></div>' +
     '<div class="index"><span class="value" data-status=${status}>${value}</span>' +
     '<span class="unit">µg/</span><span class="unit" style="vertical-align: sub">m</span>' +
     '<span style="vertical-align: super">3</span></div></li>';
@@ -309,11 +309,11 @@
       return {
         id: sensor._id,
         name: sensor.name,
-        time: sensor.latestUpdate ? moment(sensor.latestUpdate).fromNow() : '--',
+        time: sensor.latestUpdate ? moment(sensor.latestUpdate).fromNow() : '-----',
         distance: distance,
         distanceStr: getDistanceString(distance),
         status: getDAQIStatus(sensor.pm25Index),
-        value: sensor.pm25Index || '--'
+        value: sensor.pm25Index || '---'
       };
     });
 
