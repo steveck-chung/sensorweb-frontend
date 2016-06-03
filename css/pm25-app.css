@@ -41,6 +41,15 @@
   right: 0;
 }
 
+#map-btn > .map-icon {
+  width: 32px;
+  height: 64px;
+  background-image: url("../images/icon_map.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 #list-view {
   position: absolute;
   top: 0;
@@ -176,6 +185,7 @@
 #sensor-list li {
   position: relative;
   border-bottom: 1px solid lightgray;
+  padding-bottom: 0.5rem;
 }
 
 #sensor-list li > * {
@@ -196,8 +206,13 @@
   white-space: nowrap;
 }
 
+#sensor-list .description {
+  font-size: 1rem;
+  line-height: 1.2rem;
+  color: #8e8e8e;
+}
+
 #sensor-list .description span {
-  vertical-align: super;
   padding: 0 0.5rem 0 0.2rem;
 }
 
