@@ -42,8 +42,9 @@
 }
 
 #map-btn > .map-icon {
-  width: 32px;
-  height: 64px;
+  width: 28px;
+  height: 56px;
+  margin-top: 3px;
   background-image: url("../images/icon_map.png");
   background-position: center;
   background-repeat: no-repeat;
@@ -178,8 +179,8 @@
 #sensor-list .info {
   width: calc(100% - 9rem);
   padding-left: 20px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 #sensor-list .name {
@@ -221,7 +222,8 @@
 }
 
 #sensor-list .value {
-  font-size: 2.7rem;
+  font-size: 2.2rem;
+  font-weight: 400;
   margin-right: 4px;
 }
 
