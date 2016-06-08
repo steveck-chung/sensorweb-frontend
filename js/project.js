@@ -18,8 +18,8 @@
     }, 5000);
   });
 
-  const CHART_FORMAT = 'LLL';
-  const CONTRIBUTOR_MARKUP ='<div class="col s6 m3 l2"><div class="card">' +
+  var CHART_FORMAT = 'LLL';
+  var CONTRIBUTOR_MARKUP ='<div class="col s6 m3 l2"><div class="card">' +
     '<a href="user.html?id=${userId}"><div class="card-image">' +
     '<img src="${picture}"></div></div></a>' +
     '<p id="contributor-name" class="center-align">${name}</p></div>';
@@ -132,6 +132,9 @@
         })
         .done(function(dataArray) {
           dataChart = new Chart(ctx, dataConvertion(dataArray));
+          // FIXME: Not sure why the gradient is not applied at first. So we force
+          // it to update after animation.
+          setTimeout(dataChart.update.bind(dataChart), 1000);
         })
         .fail(function(error) {
           console.error(error);

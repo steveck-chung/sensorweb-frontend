@@ -1,7 +1,7 @@
 'use strict';
 
 (function(exports){
-  const USER_URL = 'user.html?id=';
+  var USER_URL = 'user.html?id=';
 
   $(window).load(function handleClientLoad() {
     var auth = gapi.auth2.getAuthInstance();

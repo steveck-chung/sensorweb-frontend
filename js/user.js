@@ -5,9 +5,9 @@
     $('.modal-trigger').leanModal();
   });
 
-  const SENSOR_LIST_MARKUP =
+  var SENSOR_LIST_MARKUP =
     '<a href="sensor.html?id=${_id}" class="collection-item">${name}</a>';
-  const PROJECT_LIST_MARKUP =
+  var PROJECT_LIST_MARKUP =
     '<div class="col s6 m3"><a href="project.html?id=${id}">' +
     '<div class="card"><div class="card-image"></div></div>' +
     '<p id="project-names" class="center-align">${name}</p></a></div>';

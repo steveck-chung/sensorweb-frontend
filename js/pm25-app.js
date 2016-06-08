@@ -5,8 +5,8 @@
     $('.modal-trigger').leanModal();
   });
 
-  const CHART_FORMAT = 'LLL';
-  const SENSOR_MARKUP ='<li data-id=${id}><div class="info"><p class="name">${name}</p>' +
+  var CHART_FORMAT = 'LLL';
+  var SENSOR_MARKUP ='<li data-id=${id}><div class="info"><p class="name">${name}</p>' +
     '<p class="description"><span>${distanceStr}</span></p>' +
     '<p class="description"><span>${time}</span></p></div>' +
     '<div class="index"><span class="value" data-status=${status}>${value}</span>' +

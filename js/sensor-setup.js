@@ -5,10 +5,10 @@
     $('.modal-trigger').leanModal();
   });
 
-  const GEOCODE_URL =
+  var GEOCODE_URL =
     'https://maps.googleapis.com/maps/api/geocode/json?address=';
-  const API_KEY = '&key=AIzaSyAWlJoUn2DS8XUYilLXZE8dxYEXbo6dnaE';
-  const TOAST_DUR = 4000;
+  var API_KEY = '&key=AIzaSyAWlJoUn2DS8XUYilLXZE8dxYEXbo6dnaE';
+  var TOAST_DUR = 4000;
 
   var userId = $.url().param('id');
   var session = $.url().param('session');

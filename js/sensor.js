@@ -1,7 +1,7 @@
 'use strict';
 
 (function(exports){
-  const CHART_FORMAT = 'LLL';
+  var CHART_FORMAT = 'LLL';
 
   $(document).ready(function(){
     if (!navigator.userAgent.match(/Android/i)) {
