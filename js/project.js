@@ -146,7 +146,7 @@
 
     getGeolocation().then(function(pos) {
       gMap.setCenter(pos);
-      gMap.setZoom(11/* TODO: Refine this part to set correct scale*/);
+      gMap.setZoom(16/* TODO: Refine this part to set correct scale*/);
     }, function(e) {
       console.log(e);
     });
