@@ -14,7 +14,8 @@
           pointHoverBorderWidth: 0,
           pointBackgroundColor: '#5cc7B9',
           pointHoverBackgroundColor: '#1cbcad',
-          fill: true
+          fill: true,
+          tension: 0
         }]
       },
       options: {
