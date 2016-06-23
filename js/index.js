@@ -1,6 +1,6 @@
 'use strict';
 
-(function(){
+(function(exports){
   $('.button-collapse').sideNav();
   $('.modal-trigger').leanModal();
   $('select').material_select();
@@ -52,4 +52,88 @@
     }
     $('#login-btn').leanModal();
   });
+
+  var latestSensors;
+  var gMap;
+  var markerMap = new Map();
+
+  function getGeolocation() {
+    return new Promise(function(resolve, reject) {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          var pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+          resolve(pos);
+        }, function() {
+          reject('Browser unable to get current location');
+        });
+      } else {
+        reject('Browser doesn\'t support Geolocation');
+      }
+    });
+  }
+
+  function updateMap(sensors) {
+    if (!gMap || !sensors) {
+      return;
+    }
+    var bound = new google.maps.LatLngBounds();
+    sensors.forEach(function(sensor, index) {
+      if (markerMap.has(sensor._id)) {
+        return;
+      }
+      var coords = sensor.coords;
+      var gMapMarker = new google.maps.Marker({
+        position: { lat: Number(coords.lat), lng: Number(coords.lng) },
+        map: gMap,
+        title: sensor.name,
+        // Place the invliad marker to bottom
+        zIndex: sensor.pm25Index ? index + 1 : 0,
+        icon: DAQI[getDAQIStatus(sensor.pm25Index)].iconURL
+      });
+      bound.extend(
+        new google.maps.LatLng(Number(coords.lat), Number(coords.lng))
+      );
+      gMapMarker.addListener('click', function() {
+        window.location = 'sensor.html?id=' + sensor._id;
+      });
+      markerMap.set(sensor._id, gMapMarker);
+    });
+
+    gMap.setCenter(bound.getCenter());
+    gMap.fitBounds(bound);
+
+    getGeolocation().then(function(pos) {
+      gMap.setCenter(pos);
+      gMap.setZoom(16/* TODO: Refine this part to set correct scale*/);
+    }, function(e) {
+      console.log(e);
+    });
+  }
+
+  function initMap() {
+    var mapElement = document.getElementById('sensors-location-map');
+    gMap = new google.maps.Map(mapElement, {
+      streetViewControl: false,
+      scrollwheel: false
+    });
+    updateMap(latestSensors);
+  }
+
+  // Fetch sensor list
+  $.ajax({
+    url: API_URL + 'projects/sensorweb/pm25/sensors',
+    dataType: 'jsonp'
+  })
+  .done(function(sensors) {
+    latestSensors = sensors;
+    updateMap(latestSensors);
+  })
+  .fail(function(error) {
+    console.error(error);
+  });
+
+  exports.initMap = initMap;
 })(window);

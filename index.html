@@ -80,7 +80,7 @@
     <div class="section">
       <div class="row">
         <div class="col s12 m6">
-          <h5>What is SensorWeb?</h5>
+          <h3>What is SensorWeb?</h3>
           <p class="contents">
             <span style="font-weight: 600; font-size: larger;">Project SensorWeb</span> is an open data platform for IoT. Our platform allows you to create REST APIs through a web interface to easily share data from IoT devices without coding. SensorWeb empowers developers to collectively solve problems they care about.
           </p>
@@ -157,51 +157,43 @@
     </div>
   </div>
 
-  <!-- vvv TODO: Remove after 1st demo vvv -->
-
-    <div class="fullscreen" id="background-1">
-      <div class="container projects">
-        <div class="section">
-          <div class="row">
-            <div class="col s12 l8 offset-l2" id="our-initiative">
-              <h3 class="center-align text-white">Our Initiative</h3>
-              <p class="contents text-white">
-                We are working on a pilot project to build a crowdsourced <a href="http://english.cntv.cn/special/pm25/Homepage/index.shtml" target="_blank">PM2.5</a> air pollution sensor network.  PM2.5 air pollution is a growing global issue. Governments around the world are asked to publish open data of PM2.5 index from their monitoring stations.  The problem is that governments and companies can only set up a limited number of stations.
-              </p>
-              <p class="contents text-white">
-                It is our belief that by collectively building a PM2.5 air pollution sensor network and making the  data accessible to everyone, we can empower people to make better decisions and find solutions for the problems we are facing.
-              </p>
-              <p class="contents text-white">
-                We are building the foundation to make it easier for anyone to contribute. If you are interested in  participating, please leave your contact information and let us know what areas interest you.  We will get in touch when we are ready.
-                </br></br>
-              </p>
-              <div class="center">
-                <a href="project.html" class="waves-effect waves-light btn-large">View Project</a>
-                <a href="#pm25-fb-modal" class="waves-effect waves-light btn-large modal-trigger">Contribute</a>
+  <div class="fullscreen" id="other-projects">
+    <div class="container projects">
+      <div class="section">
+        <div class="row">
+          <div class="col s12 m6">
+              <div id="map-container">
+                <div id="sensors-location-map"></div>
+                <div id="sensor-data-chart-container" class="hide">
+                  <div class="row no-margin">
+                    <div id="sensor-information" class="col s12 l3">
+                      <h3 class="name"></h3>
+                      <p class="description"></p>
+                      <p><span>PM2.5: </span><span class="value"></span></p>
+                      <p class="info"><span>Air quality is </span><span class="status"></span>.</p>
+                      <p class="info"><span>Updated </span><span class="latest-update"></span>.</p>
+                      </br>
+                      <a id="sensor-details" class="waves-effect waves-light btn-large" style="width: auto; margin-top: 12px">Sensor Details</a>
+                    </div>
+                    <div id="sensor-chart" class="col s12 l9">
+                      <canvas id="sensor-data-chart" height="400"></canvas>
+                      <button id="chart-close-btn" class="waves-effect waves-light btn teal"><i class="material-icons center">close</i></button>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
+          </div>
+          <div class="col s12 m6">
+            <h3>Real-Time PM2.5 Sensor Data</h3>
+            <p class="contents wordings">
+              View the real-time PM2.5 data in your neighbor. If you do not see one, set one up yourself!
+            </p>
+            <a href="project.html" class="btn-large" style="width: auto;">View Project</a>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="fullscreen" id="other-projects">
-      <div class="container projects">
-        <div class="section">
-          <div class="row">
-            <div class="col s12 l8 offset-l2">
-              <h3 class="center-align">Other Project Ideas</h3>
-              <p class="contents wordings">
-                The Mozilla team believes SensorWeb is a model that can be used to solve diverse problems worldwide. Please let us know if you have  ideas or are experiencing a problem that you believe can be solved by using sensors to monitor an environment and publishing that data for public access.</br></br>
-              </p>
-              <div class="center">
-                <a href="#new-idea-fb-modal" class="waves-effect waves-light btn-large modal-trigger" style="width: auto;">I have an idea</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  </div>
 
     <!-- Modal Structure -->
     <div id="pm25-fb-modal" class="modal">
@@ -375,14 +367,22 @@
   </footer>
 
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
   <script src="https://apis.google.com/js/platform.js" async defer></script>
   <script src="https://apis.google.com/js/client.js"></script>
   <script src="js/materialize.min.js"></script>
   <script src="js/lib/konami.js"></script>
+  <script src="js/moment-with-locales.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.0.0/Chart.min.js"></script>
   <script src="js/config.js"></script>
   <script src="js/init.js"></script>
   <script src="js/auth-utils.js"></script>
+  <script src="js/daqi-utils.js"></script>
+  <script src="js/chart-utils.js"></script>
   <script src="js/index.js"></script>
+  <script async defer
+       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWlJoUn2DS8XUYilLXZE8dxYEXbo6dnaE&signed_in=false&callback=initMap">
+  </script>
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
