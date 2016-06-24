@@ -12,8 +12,7 @@
       url: API_URL + 'sensors/' + sensorId,
       dataType: 'jsonp'
     })
-    .done(function(sensors) {
-      var sensor = sensors[0];
+    .done(function(sensor) {
       link.setAttribute('href', SENSORWEB_URL + 'sensor.html?id=' + sensorId);
       var pm25Index = sensor.pm25 || sensor.pm25Index;
       pm25Index = pm25Index || 0
