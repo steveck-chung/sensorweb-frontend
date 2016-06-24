@@ -108,8 +108,7 @@
     url: API_URL + 'sensors/' + sensorId,
     dataType: 'jsonp'
   })
-  .done(function(sensors) {
-    var sensor = sensors[0];
+  .done(function(sensor) {
     var sensorNameElm = $('#sensor-name');
     var sensorIdElm = $('#sensor-id');
     var sensorOwner = $('#sensor-owner');
@@ -166,8 +165,7 @@
       url: API_URL + 'sensors/' + sensorId,
       dataType: 'jsonp'
     })
-    .done(function(sensors) {
-      var sensor = sensors[0];
+    .done(function(sensor) {
       var status = getDAQIStatus(sensor.pm25Index);
       if (sensor.latestUpdate !== undefined &&
           sensor.pm25Index !== undefined) {
