@@ -22,7 +22,7 @@
   var CONTRIBUTOR_MARKUP ='<div class="col s6 m3 l2"><div class="card">' +
     '<a href="user.html?id=${userId}"><div class="card-image">' +
     '<img src="${picture}"></div></div></a>' +
-    '<p id="contributor-name" class="center-align">${name}</p></div>';
+    '<p id="contributor-name" class="center-align">${userId}</p></div>';
 
 
   // TODO: Maybe we should remove it once server-side rendering is ready?

@@ -33,8 +33,8 @@
       dataType: 'jsonp'
     })
     .done(function(user) {
+      /* Remove user.name because of legal's concern */
       $('#user-card .user-id').text(user.userId);
-      $('#user-card .user-name').text(user.name);
       $('#user-card .user-info').text(user.publicEmail);
       $('#user-card img').attr('src', user.picture);
     })
