@@ -1,12 +1,3 @@
-#feedback-nav {
-  height: 100%;
-  padding: 2%;
-}
-
-#feedback-modal {
-  overflow: hidden;
-}
-
 #sensors-location-map {
   height: 750px;
   width: 100%;
@@ -76,10 +67,6 @@
 #contributor .card {
   border-radius: 4px;
   overflow: hidden;
-}
-
-#contributor .card-title{
-  font-size: 1em;
 }
 
 #join-project {
