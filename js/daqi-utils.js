@@ -2,6 +2,11 @@
 
 /* export DAQI, getDAQIStatus */
 
+/**
+ * This DAQI utility defines the flag icon and banding for 5 different status,
+ * from good, moderate, high to extreme, and invalid.
+ */
+
 (function(exports){
 
   var DAQI = {
