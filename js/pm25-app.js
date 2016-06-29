@@ -326,21 +326,6 @@
     listView.classList.remove('hide');
   }
 
-  // Fetch project detail, should set project ID as parameter
-  // $.ajax({
-  //   url: API_URL + 'projects/sensorweb/pm25',
-  //   dataType: 'jsonp'
-  // })
-  // .done(function(project) {
-  //   $('#pm25 .description').text(project.description);
-  //   $('#pm25 .creator').text(project.creator.name);
-  //   // $('#pm25 .last-update').text(project.detail);
-  //   $('#pm25 .created-date').text(moment(project.createDate).format('LL'));
-  // })
-  // .fail(function(error) {
-  //   console.error(error);
-  // });
-
   init();
   exports.initMap = initMap;
 

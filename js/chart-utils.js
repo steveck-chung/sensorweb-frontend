@@ -1,7 +1,21 @@
 'use strict';
+/**
+ * This chart utility is for controlling the chart rendering, and it contains
+ * general chart config and some additional functionality for pm2.5 DAQI purpose.
+ */
 
 (function(exports) {
+  // Turn off the DAQI line in the chart. Maybe we can make it switchable in the
+  // future.
+  var DRAW_DAQI_LINE = false;
 
+  /**
+   * Return a general config for pm2.5 line chart. You could still change
+   * some value from returned config for rendering a customized chart, so do not
+   * change the value unless you're confident that all the charts need to be
+   * updated all at once.
+   * @return {Object}
+   */
   function getChartConfig() {
     return {
       type: 'line',
