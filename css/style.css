@@ -130,11 +130,11 @@ h3, h4 {
   text-align: left;
 }
 
-.contents a {
+.contents a, .privacy li a {
   color: #87D9D1;
 }
 
-.contents a:hover {
+.contents a:hover, .privacy li a:hover {
   color: #1CBCAD;
 }
 
@@ -476,4 +476,10 @@ h3.subtitle {
   margin-top: 40px;
   font-weight: 600 !important;
   color: #555;
+}
+
+.privacy .contents{
+  color: #454545;
+  margin-top: 30px;
+  font-weight: 400;
 }
