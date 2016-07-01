@@ -10,69 +10,11 @@
   min-height:440px;
 }
 
-
-
-#index-form {
-  /*margin: 0 20%;*/
-  padding: 0;
-}
-
-#index-contact-banner {
-  background-image: url("../images/01_contact.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-}
-
-#index-contact-banner h3,
-#index-form .content {
-  color: white;
-}
-
-#showcase {
-	margin-left: 30px;
-}
-
-#index-form .content {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-left: 1px solid #9e9e9e;
-  border-right: 1px solid #9e9e9e;
-  border-top: 1px solid #9e9e9e;
-  padding: 0 1rem;
-  box-sizing: border-box;
-}
-
-#index-form .btn-large {
-  padding: 0;
-}
-
-#index-form .waves-button-input {
-  height: 100%;
-  width:100%;
-}
-
-#background-1{
-  background: url(../images/01_pm25.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-}
-
-#background-1 .btn-large {
-    width: auto;
-    margin: 0 15px;
-}
-
 #sensors-location-map {
   height: 315px;
   width: 95%;
 }
 
 @media only screen and (max-width: 430px) {
-  #background-1 .btn-large {
-    display: block;
-    width: 80%;
-    margin: 20px auto;
-    text-align: center; 
-  }
+
 }
