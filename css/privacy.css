@@ -1,0 +1,13 @@
+.privacy li a {
+  color: #87D9D1;
+}
+
+.privacy li a:hover {
+  color: #1CBCAD;
+}
+
+.privacy .contents{
+  color: #454545;
+  margin-top: 30px;
+  font-weight: 400;
+}
